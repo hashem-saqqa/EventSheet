@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
+import android.view.WindowManager;
 
 public class Splach extends AppCompatActivity {
 
@@ -15,10 +17,21 @@ public class Splach extends AppCompatActivity {
         setContentView(R.layout.splach);
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
-    }
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent i = new Intent(Splach.this,
+                        create_new_account.class);
+                //Intent is used to switch from one activity to another.
 
-    public void GoToNext(View view) {
-        Intent intent = new Intent(getApplicationContext(),create_new_account.class);
-        startActivity(intent);
+                startActivity(i);
+                //invoke the SecondActivity.
+
+                finish();
+                //the current activity will get finished.
+            }
+        }, 3000);
     }
 }
