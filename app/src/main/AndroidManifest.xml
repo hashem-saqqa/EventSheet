@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".create_new_account"></activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".Splach">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
