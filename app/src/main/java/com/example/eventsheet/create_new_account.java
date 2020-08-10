@@ -20,26 +20,26 @@ public class create_new_account extends AppCompatActivity {
         getSupportActionBar().hide();
 
 
-
     }
+
     public void BACk(View view) {
         Intent myIntent = new Intent(getApplicationContext(), Splach.class);
         startActivityForResult(myIntent, 0);
     }
 
-    public void ShowHidePass(View view){
+    public void ShowHidePass(View view) {
+        if (view.getId() == R.id.show_pass_btn) {
 
-        if(view.getId()==R.id.show_pass_btn){
+            if (password.getTransformationMethod().equals(PasswordTransformationMethod.getInstance())) {
 
-            if(password.getTransformationMethod().equals(PasswordTransformationMethod.getInstance())){
                 //Show Password
                 password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-            }
-            else{
+            } else {
                 //Hide Password
                 password.setTransformationMethod(PasswordTransformationMethod.getInstance());
 
             }
         }
+
     }
 }

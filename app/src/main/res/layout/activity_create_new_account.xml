@@ -132,8 +132,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:alpha=".5"
         android:onClick="ShowHidePass"
         android:src="@drawable/group_176"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -142,7 +140,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.598"
-        tools:ignore="MissingConstraints" />
+       />
 
     <Button
         android:id="@+id/Button"
