@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.text.InputType;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -42,7 +43,6 @@ public class create_new_account extends AppCompatActivity {
 
                 //Show Password
                 password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                password.setSelection(0);
             } else {
                 //Hide Password
                 password.setTransformationMethod(PasswordTransformationMethod.getInstance());
@@ -55,4 +55,6 @@ public class create_new_account extends AppCompatActivity {
 //            password.setInputType(InputType.TYPE_MASK_CLASS);
 //        }
     }
+
+
 }
