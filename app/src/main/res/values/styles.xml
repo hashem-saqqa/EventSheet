@@ -5,5 +5,8 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">#A3CB38</item>
     </style>
-
+    <style name="CustomCheckbox02" parent="@style/Widget.AppCompat.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/checkbox_selector</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
 </resources>
