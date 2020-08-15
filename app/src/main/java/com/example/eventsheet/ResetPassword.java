@@ -23,10 +23,10 @@ public class ResetPassword extends AppCompatActivity {
         edittext2 = findViewById(R.id.InsertNumber2);
         edittext3 = findViewById(R.id.InsertNumber3);
         edittext4 = findViewById(R.id.InsertNumber4);
-        edittext1.setFilters(new InputFilter[]{new InputFilterMinMax("1","9")});
-        edittext2.setFilters(new InputFilter[]{new InputFilterMinMax("1","9")});
-        edittext3.setFilters(new InputFilter[]{new InputFilterMinMax("1","9")});
-        edittext4.setFilters(new InputFilter[]{new InputFilterMinMax("1","9")});
+        edittext1.setFilters(new InputFilter[]{new InputFilterMinMax("0","9")});
+        edittext2.setFilters(new InputFilter[]{new InputFilterMinMax("0","9")});
+        edittext3.setFilters(new InputFilter[]{new InputFilterMinMax("0","9")});
+        edittext4.setFilters(new InputFilter[]{new InputFilterMinMax("0","9")});
     }
     public void BACK(View view) {
         Intent myIntent = new Intent(getApplicationContext(), Login.class);
