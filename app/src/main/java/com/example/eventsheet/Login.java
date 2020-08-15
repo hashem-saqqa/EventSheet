@@ -43,4 +43,9 @@ public class Login extends AppCompatActivity {
         Intent myIntent = new Intent(getApplicationContext(), create_new_account.class);
         startActivityForResult(myIntent, 0);
     }
+
+    public void GotoResetPassword(View view) {
+        Intent intent = new Intent(getApplicationContext(),ResetPassword.class);
+        startActivityForResult(intent,0);
+    }
 }
