@@ -40,7 +40,7 @@ public class Login extends AppCompatActivity {
     }
 
     public void BACK(View view) {
-        Intent myIntent = new Intent(getApplicationContext(), Splach.class);
+        Intent myIntent = new Intent(getApplicationContext(), create_new_account.class);
         startActivityForResult(myIntent, 0);
     }
 }
