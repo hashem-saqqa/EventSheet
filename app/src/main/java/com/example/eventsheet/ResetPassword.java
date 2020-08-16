@@ -25,8 +25,15 @@ public class ResetPassword extends AppCompatActivity {
         edittext4 = findViewById(R.id.InsertNumber4);
 
     }
+
     public void BACK(View view) {
         Intent myIntent = new Intent(getApplicationContext(), Login.class);
         startActivityForResult(myIntent, 0);
+    }
+
+    public void ShowBottomSheet(View view) {
+        ActionBottomDialogFragment bottomsheet = new ActionBottomDialogFragment();
+        bottomsheet.show(getSupportFragmentManager(),"TAG");
+
     }
 }
