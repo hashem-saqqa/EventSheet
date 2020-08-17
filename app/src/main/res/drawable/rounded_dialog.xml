@@ -5,9 +5,9 @@
     tools:ignore="MissingDefaultResource">
     <solid
         android:color="@android:color/white" />
-    <stroke
-        android:width="2dp"
-        android:color="#C4CDE0" />
+<!--    <stroke-->
+<!--        android:width="2dp"-->
+<!--        android:color="#C4CDE0" />-->
     <padding
         android:left="0dp"
         android:right="0dp"
@@ -18,6 +18,5 @@
         android:topRightRadius="16dp"
         android:bottomLeftRadius="16dp"
         android:bottomRightRadius="16dp"
-
         />
 </shape>
