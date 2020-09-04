@@ -18,7 +18,6 @@ public class ResetPassword extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reset_password);
-        getSupportActionBar().hide();
         edittext1 = findViewById(R.id.InsertNumber1);
         edittext2 = findViewById(R.id.InsertNumber2);
         edittext3 = findViewById(R.id.InsertNumber3);

@@ -24,7 +24,6 @@ public class create_new_account extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_new_account);
-        getSupportActionBar().hide();
         show_pass_btn = findViewById(R.id.show_pass_btn);
         password = findViewById(R.id.Password);
 
