@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.Toolbar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="#BADC58"
+    android:id="@+id/MyToolBar"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark"
+    >
+    <TextView
+        android:id="@+id/Title"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="الرئيسية"
+        android:textSize="25"
+        android:textStyle="bold"
+        android:gravity="center"
+        />
+
+</androidx.appcompat.widget.Toolbar>
