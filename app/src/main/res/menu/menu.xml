@@ -5,11 +5,13 @@
         android:id="@+id/back"
         android:icon="@drawable/group_1744"
         android:title="Back"
-        app:showAsAction="ifRoom" />
-    <item
-        android:id="@+id/notification"
-        android:icon="@drawable/group_3217"
-        android:title="notification"
         app:showAsAction="ifRoom"
-        />
+        android:orderInCategory="2"/>
+<!--    <item-->
+<!--        android:id="@+id/notification"-->
+<!--        android:icon="@drawable/group_3217"-->
+<!--        android:title="notification"-->
+<!--        app:showAsAction="ifRoom" />-->
+
+
 </menu>

@@ -35,4 +35,9 @@ public class ResetPassword extends AppCompatActivity {
         bottomsheet.show(getSupportFragmentManager(),"TAG");
 
     }
+
+    public void GoToHome(View view) {
+        Intent intent = new Intent(getApplicationContext(),Home.class);
+        startActivityForResult(intent,0);
+    }
 }
