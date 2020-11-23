@@ -9,17 +9,19 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 
+import com.google.android.material.appbar.AppBarLayout;
+
 public class Home extends AppCompatActivity {
 
-    private Toolbar toolbar;
+//    private AppBarLayout appbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        toolbar = findViewById(R.id.MyToolBar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+//        toolbar = findViewById(R.id.appbar);
+//        setSupportActionBar(toolbar);
+//        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
     }
 

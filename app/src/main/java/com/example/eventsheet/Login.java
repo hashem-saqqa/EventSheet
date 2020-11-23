@@ -47,4 +47,9 @@ public class Login extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(),ResetPassword.class);
         startActivityForResult(intent,0);
     }
+
+    public void GoToHome(View view) {
+        Intent intent = new Intent(getApplicationContext(),Home.class);
+        startActivityForResult(intent,0);
+    }
 }
