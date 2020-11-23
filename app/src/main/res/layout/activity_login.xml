@@ -175,7 +175,7 @@
                 android:textSize="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.495"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rememberMe"
                 app:layout_constraintVertical_bias="0.16"
@@ -186,29 +186,30 @@
                 android:id="@+id/forgetPasswordtext"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:onClick="GotoResetPassword"
                 android:text="هل نسيت كلمة المرور؟"
                 android:textColor="#CD4A58"
                 android:textSize="16dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.515"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/loginButton"
-                app:layout_constraintVertical_bias="0.10"
-                android:onClick="GotoResetPassword"
-                />
+                app:layout_constraintVertical_bias="0.1" />
 
             <TextView
                 android:id="@+id/signUpText1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="52dp"
                 android:text="ليس لديك حساب؟"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.690"
+                app:layout_constraintHorizontal_bias="0.668"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/forgetPasswordtext"
-                app:layout_constraintVertical_bias="0.500" />
+                app:layout_constraintVertical_bias="0.433" />
 
             <TextView
                 android:id="@+id/signUpText2"
