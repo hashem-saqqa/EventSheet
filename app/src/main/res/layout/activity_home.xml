@@ -35,8 +35,8 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/Constraint1"
-                        android:layout_width="380dp"
-                        android:layout_height="400dp"
+                        android:layout_width="333dp"
+                        android:layout_height="347dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
