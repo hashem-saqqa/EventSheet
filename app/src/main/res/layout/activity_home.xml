@@ -42,7 +42,7 @@
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="1.0">
+                        app:layout_constraintVertical_bias="0.0">
 
                         <ImageView
                             android:id="@+id/HS_Image"
@@ -167,7 +167,7 @@
                             />
                         <View
                             android:id="@+id/vertical_line"
-                            android:layout_width="0.1dp"
+                            android:layout_width="1dp"
                             android:layout_height="23dp"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toStartOf="@+id/mn_calender_text"
@@ -176,6 +176,7 @@
                             app:layout_constraintVertical_bias="0.05"
                             app:layout_constraintHorizontal_bias="0.9"
                             android:outlineAmbientShadowColor="#000000"
+                            android:background="#888888"
                             />
                         <ImageView
                             android:id="@+id/calender_icon_2"
@@ -245,8 +246,9 @@
                         <View
                             android:id="@+id/horizontal_line"
                             android:layout_width="310dp"
-                            android:layout_height="0.1dp"
+                            android:layout_height="1dp"
                             android:outlineAmbientShadowColor="#888888"
+                            android:background="#888888"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/person_text"
@@ -283,7 +285,7 @@
                             />
                         <View
                             android:id="@+id/vertical_line2"
-                            android:layout_width="0.1dp"
+                            android:layout_width="1dp"
                             android:layout_height="23dp"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toStartOf="@+id/fav_text"
@@ -292,6 +294,7 @@
                             app:layout_constraintVertical_bias="0.1"
                             app:layout_constraintHorizontal_bias="0.9"
                             android:outlineAmbientShadowColor="#000000"
+                            android:background="#888888"
                             />
                         <ImageView
                             android:id="@+id/share_icon"
