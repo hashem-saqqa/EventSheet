@@ -9,12 +9,12 @@
     <include
         android:id="@+id/appbar"
         layout="@layout/appbar" />
-<include
-    layout="@layout/bottom_app_bar"
-    />
+<!--<include-->
+<!--    layout="@layout/bottom_app_bar"-->
+<!--    />-->
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="1200dp"
+        android:layout_height="wrap_content"
         android:background="#EEEEEE"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appbar"
@@ -932,7 +932,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintVertical_bias="0.1"
+                app:layout_constraintVertical_bias="0.05"
                 app:layout_constraintHorizontal_bias="0.95"
                 />
             <TextView
@@ -946,7 +946,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintVertical_bias="0.1"
+                app:layout_constraintVertical_bias="0.05"
                 app:layout_constraintHorizontal_bias="0.05"
                 />
             <HorizontalScrollView
@@ -957,14 +957,14 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text_f3alyat"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintVertical_bias="0.05">
+                app:layout_constraintVertical_bias="0.03">
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/Constraint_4"
                         android:layout_width="333dp"
-                        android:layout_height="347dp"
+                        android:layout_height="253dp"
                         android:background="#ffffff"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -1214,7 +1214,7 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/Constraint_5"
                         android:layout_width="333dp"
-                        android:layout_height="347dp"
+                        android:layout_height="253dp"
                         android:background="#ffffff"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -1465,7 +1465,7 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/Constraint_6"
                         android:layout_width="333dp"
-                        android:layout_height="347dp"
+                        android:layout_height="253dp"
                         android:background="#ffffff"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -1726,7 +1726,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintVertical_bias="0.1"
+                app:layout_constraintVertical_bias="0.05"
                 app:layout_constraintHorizontal_bias="0.95"
                 />
             <TextView
@@ -1740,7 +1740,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintVertical_bias="0.1"
+                app:layout_constraintVertical_bias="0.05"
                 app:layout_constraintHorizontal_bias="0.05"
                 />
             <HorizontalScrollView
@@ -1751,14 +1751,14 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text_f3alyat_2"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintVertical_bias="0.05">
+                app:layout_constraintVertical_bias="0.03">
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/Constraint_7"
                         android:layout_width="333dp"
-                        android:layout_height="347dp"
+                        android:layout_height="253dp"
                         android:background="#ffffff"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -2008,7 +2008,7 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/Constraint_8"
                         android:layout_width="333dp"
-                        android:layout_height="347dp"
+                        android:layout_height="253dp"
                         android:background="#ffffff"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -2259,7 +2259,7 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/Constraint_9"
                         android:layout_width="333dp"
-                        android:layout_height="347dp"
+                        android:layout_height="253dp"
                         android:background="#ffffff"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -2520,7 +2520,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintVertical_bias="0.1"
+                app:layout_constraintVertical_bias="0.05"
                 app:layout_constraintHorizontal_bias="0.95"
                 />
             <TextView
@@ -2534,7 +2534,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintVertical_bias="0.1"
+                app:layout_constraintVertical_bias="0.05"
                 app:layout_constraintHorizontal_bias="0.05"
                 />
             <HorizontalScrollView
@@ -2545,14 +2545,14 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text_f3alyat_3"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintVertical_bias="0.05">
+                app:layout_constraintVertical_bias="0.03">
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/Constraint_10"
                         android:layout_width="333dp"
-                        android:layout_height="347dp"
+                        android:layout_height="253dp"
                         android:background="#ffffff"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -2802,7 +2802,7 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/Constraint_11"
                         android:layout_width="333dp"
-                        android:layout_height="347dp"
+                        android:layout_height="253dp"
                         android:background="#ffffff"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -3053,7 +3053,7 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/Constraint_12"
                         android:layout_width="333dp"
-                        android:layout_height="347dp"
+                        android:layout_height="253dp"
                         android:background="#ffffff"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"

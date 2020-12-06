@@ -1,26 +1,8 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.MaterialComponents">
-        <!-- Customize your theme here. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">#A3CB38</item>
-<!--        <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>-->
-
     </style>
-
-<!--    <style name="AppBottomSheetDialogTheme"-->
-<!--        parent="Theme.Design.Light.BottomSheetDialog">-->
-<!--        <item name="bottomSheetStyle">@style/AppModalStyle</item>-->
-<!--    </style>-->
-
-<!--    <style name="AppModalStyle"-->
-<!--        parent="Widget.Design.BottomSheet.Modal">-->
-<!--        <item name="android:background">@drawable/rounded_dialog</item>-->
-<!--    </style>-->
-<!--&lt;!&ndash;    <style&ndash;&gt;-->
-<!--        name="CustomBottomSheetStyle" parent="">-->
-<!--        <item name="android:background">@android:color/transparent</item>-->
-<!--    </style>-->
 
 
 </resources>
