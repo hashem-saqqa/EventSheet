@@ -4,24 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="108dp"
-    android:layout_gravity="bottom">
+    android:layout_gravity="bottom"
+    app:layout_constraintBottom_toBottomOf="parent"
+    >
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/Bottom_app_bar"
         android:layout_width="match_parent"
         android:layout_height="83dp"
         android:layout_gravity="bottom"
-        android:backgroundTint="#4B1383"
+        android:backgroundTint="#F8F8F8"
         app:fabCradleMargin="0dp"
         app:fabCradleRoundedCornerRadius="0dp">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@android:color/transparent"
             android:layout_marginEnd="16dp"
-            app:menu="@menu/bottom_menu"
-            android:layout_marginRight="16dp" />
+            android:layout_marginRight="16dp"
+            android:background="@android:color/transparent"
+            app:menu="@menu/bottom_menu" />
     </com.google.android.material.bottomappbar.BottomAppBar>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

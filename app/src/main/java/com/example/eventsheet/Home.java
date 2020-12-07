@@ -13,15 +13,13 @@ import com.google.android.material.appbar.AppBarLayout;
 
 public class Home extends AppCompatActivity {
 
-//    private AppBarLayout appbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-//        toolbar = findViewById(R.id.appbar);
-//        setSupportActionBar(toolbar);
-//        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().hide();
+
 
     }
 
