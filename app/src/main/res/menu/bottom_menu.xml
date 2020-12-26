@@ -3,20 +3,26 @@
 
     <item android:id="@+id/miHome"
         android:title="Home"
-        android:icon="@drawable/_icon_olor" />
+        android:icon="@drawable/_icon_olor"
+        android:iconTint="#9A9A9A"
+        />
 
     <item android:id="@+id/miSearch"
         android:title="Search"
-        android:icon="@drawable/_icon_olor" />
+        android:icon="@drawable/_icon_olor"
+        android:iconTint="#9A9A9A"
+        />
 
-    <item android:id="@+id/placeholder"
-        android:title="" />
 
     <item android:id="@+id/miProfile"
         android:title="Profile"
-        android:icon="@drawable/_icon_olor" />
+        android:icon="@drawable/_icon_olor"
+        android:iconTint="#9A9A9A"
+        />
 
     <item android:id="@+id/miSettings"
         android:title="Settings"
-        android:icon="@drawable/_icon_olor" />
+        android:icon="@drawable/_icon_olor"
+        android:iconTint="#9A9A9A"
+        />
 </menu>

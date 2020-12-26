@@ -4,7 +4,6 @@
         <item name="colorPrimary">#A3CB38</item>
     </style>
     <style name="AppTheme_ForAppBar" parent="Theme.MaterialComponents">
-<!--        <item name="colorPrimary">#CD4A58</item>-->
     </style>
 
 
