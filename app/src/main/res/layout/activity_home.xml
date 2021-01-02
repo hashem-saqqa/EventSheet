@@ -3362,6 +3362,6 @@
             </HorizontalScrollView>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
-
+<!--    glerjgejge gege-->
     <include layout="@layout/bottom_app_bar" />
 </androidx.constraintlayout.widget.ConstraintLayout>
