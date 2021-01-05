@@ -12,7 +12,7 @@
         layout="@layout/appbar" />
 <LinearLayout
     android:layout_width="wrap_content"
-    android:layout_height="580dp"
+    android:layout_height="550dp"
     android:orientation="vertical"
     app:layout_constraintTop_toBottomOf="@id/appbar"
     >
@@ -51,7 +51,8 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
+                        app:layout_constraintTop_toTopOf="parent"
+                        >
 
                         <ImageView
                             android:id="@+id/HS_Image"
@@ -121,7 +122,9 @@
                             app:layout_constraintHorizontal_bias="0.95"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/location_text"
-                            app:layout_constraintVertical_bias="0.04" />
+                            app:layout_constraintVertical_bias="0.04"
+                            android:onClick="GoToEvent_details"
+                            />
 
                         <TextView
                             android:id="@+id/long_text"

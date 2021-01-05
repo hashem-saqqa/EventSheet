@@ -13,6 +13,7 @@
             android:theme="@style/AppTheme_ForAppBar"
          ></activity>
         <activity android:name=".ResetPassword" />
+        <activity android:name=".Event_details" />
         <activity android:name=".Login" />
         <activity android:name=".create_new_account" />
         <activity android:name=".Splach">

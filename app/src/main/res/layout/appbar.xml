@@ -16,18 +16,6 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="50dp">
-            <!--            <androidx.appcompat.widget.Toolbar-->
-            <!--                android:id="@+id/MyToolBar"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:background="#BADC58"-->
-            <!--                app:layout_constraintStart_toEndOf="parent"-->
-            <!--                app:layout_constraintEnd_toStartOf="parent"-->
-            <!--                app:layout_constraintTop_toTopOf="parent"-->
-            <!--                app:title="الرئيسية"-->
-            <!--                app:titleMarginStart="200dp"-->
-            <!--                app:titleTextColor="#FFFFFF"-->
-            <!--                />-->
 
             <ImageView
                 android:id="@+id/image1"
@@ -54,6 +42,7 @@
 
             <ImageView
                 android:id="@+id/image2"
+                android:onClick="BACK"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/group_1744"
