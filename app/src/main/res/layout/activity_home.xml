@@ -17,7 +17,6 @@
     app:layout_constraintTop_toBottomOf="@id/appbar"
     >
 
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -52,6 +51,7 @@
                         app:layout_constraintHorizontal_bias="0"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
+                        android:onClick="GoToEvent_details"
                         >
 
                         <ImageView
@@ -123,7 +123,6 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/location_text"
                             app:layout_constraintVertical_bias="0.04"
-                            android:onClick="GoToEvent_details"
                             />
 
                         <TextView
@@ -268,15 +267,14 @@
                             android:outlineAmbientShadowColor="#888888"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.95"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/person_text"
                             app:layout_constraintVertical_bias="0.1" />
 
                         <ImageView
                             android:id="@+id/fav_icon"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="20dp"
+                            android:layout_height="17dp"
                             android:background="@drawable/ellipse_1100"
                             android:src="@drawable/heart"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -315,8 +313,8 @@
 
                         <ImageView
                             android:id="@+id/share_icon"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="19dp"
+                            android:layout_height="18dp"
                             android:background="@drawable/ellipse_1101"
                             android:src="@drawable/share"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -336,7 +334,7 @@
                             app:layout_constraintEnd_toStartOf="@id/share_icon"
                             app:layout_constraintHorizontal_bias="0.95"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/horizontal_line"
+                            app:layout_constraintTop_toBottomOf="@id/horizontal_line"
                             app:layout_constraintVertical_bias="0.1" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -564,15 +562,14 @@
                             android:outlineAmbientShadowColor="#888888"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.95"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/person_text_2"
                             app:layout_constraintVertical_bias="0.1" />
 
                         <ImageView
                             android:id="@+id/fav_icon_2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="20dp"
+                            android:layout_height="17dp"
                             android:background="@drawable/ellipse_1100"
                             android:src="@drawable/heart"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -611,8 +608,8 @@
 
                         <ImageView
                             android:id="@+id/share_icon_2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="19dp"
+                            android:layout_height="18dp"
                             android:background="@drawable/ellipse_1101"
                             android:src="@drawable/share"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -632,7 +629,7 @@
                             app:layout_constraintEnd_toStartOf="@id/share_icon_2"
                             app:layout_constraintHorizontal_bias="0.95"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/horizontal_line_2"
+                            app:layout_constraintTop_toBottomOf="@id/horizontal_line_2"
                             app:layout_constraintVertical_bias="0.1" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -860,15 +857,14 @@
                             android:outlineAmbientShadowColor="#888888"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.95"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/person_text_3"
                             app:layout_constraintVertical_bias="0.1" />
 
                         <ImageView
                             android:id="@+id/fav_icon_3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="20dp"
+                            android:layout_height="17dp"
                             android:background="@drawable/ellipse_1100"
                             android:src="@drawable/heart"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -907,8 +903,8 @@
 
                         <ImageView
                             android:id="@+id/share_icon_3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="19dp"
+                            android:layout_height="18dp"
                             android:background="@drawable/ellipse_1101"
                             android:src="@drawable/share"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -928,7 +924,7 @@
                             app:layout_constraintEnd_toStartOf="@id/share_icon_3"
                             app:layout_constraintHorizontal_bias="0.95"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/horizontal_line_3"
+                            app:layout_constraintTop_toBottomOf="@id/horizontal_line_3"
                             app:layout_constraintVertical_bias="0.1" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -1158,15 +1154,14 @@
                             android:outlineAmbientShadowColor="#888888"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.95"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/calender_icon_4"
                             app:layout_constraintVertical_bias="0.1" />
 
                         <ImageView
                             android:id="@+id/fav_icon_4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="20dp"
+                            android:layout_height="17dp"
                             android:background="@drawable/ellipse_1100"
                             android:src="@drawable/heart"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -1205,8 +1200,8 @@
 
                         <ImageView
                             android:id="@+id/share_icon_4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="19dp"
+                            android:layout_height="18dp"
                             android:background="@drawable/ellipse_1101"
                             android:src="@drawable/share"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -1226,7 +1221,7 @@
                             app:layout_constraintEnd_toStartOf="@id/share_icon_4"
                             app:layout_constraintHorizontal_bias="0.95"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/horizontal_line_4"
+                            app:layout_constraintTop_toBottomOf="@id/horizontal_line_4"
                             app:layout_constraintVertical_bias="0.1" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -1412,15 +1407,14 @@
                             android:outlineAmbientShadowColor="#888888"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.95"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/calender_icon_5"
                             app:layout_constraintVertical_bias="0.1" />
 
                         <ImageView
                             android:id="@+id/fav_icon_5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="20dp"
+                            android:layout_height="17dp"
                             android:background="@drawable/ellipse_1100"
                             android:src="@drawable/heart"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -1459,8 +1453,8 @@
 
                         <ImageView
                             android:id="@+id/share_icon_5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="19dp"
+                            android:layout_height="18dp"
                             android:background="@drawable/ellipse_1101"
                             android:src="@drawable/share"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -1480,7 +1474,7 @@
                             app:layout_constraintEnd_toStartOf="@id/share_icon_5"
                             app:layout_constraintHorizontal_bias="0.95"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/horizontal_line_5"
+                            app:layout_constraintTop_toBottomOf="@id/horizontal_line_5"
                             app:layout_constraintVertical_bias="0.1" />
 
 
@@ -1668,15 +1662,14 @@
                             android:outlineAmbientShadowColor="#888888"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.95"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/calender_icon_6"
                             app:layout_constraintVertical_bias="0.1" />
 
                         <ImageView
                             android:id="@+id/fav_icon_6"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="20dp"
+                            android:layout_height="17dp"
                             android:background="@drawable/ellipse_1100"
                             android:src="@drawable/heart"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -1715,8 +1708,8 @@
 
                         <ImageView
                             android:id="@+id/share_icon_6"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="19dp"
+                            android:layout_height="18dp"
                             android:background="@drawable/ellipse_1101"
                             android:src="@drawable/share"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -1736,7 +1729,7 @@
                             app:layout_constraintEnd_toStartOf="@id/share_icon_6"
                             app:layout_constraintHorizontal_bias="0.95"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/horizontal_line_6"
+                            app:layout_constraintTop_toBottomOf="@id/horizontal_line_6"
                             app:layout_constraintVertical_bias="0.1" />
 
 
@@ -1967,15 +1960,14 @@
                             android:outlineAmbientShadowColor="#888888"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.95"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/calender_icon_7"
                             app:layout_constraintVertical_bias="0.1" />
 
                         <ImageView
                             android:id="@+id/fav_icon_7"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="20dp"
+                            android:layout_height="17dp"
                             android:background="@drawable/ellipse_1100"
                             android:src="@drawable/heart"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -2014,8 +2006,8 @@
 
                         <ImageView
                             android:id="@+id/share_icon_7"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="19dp"
+                            android:layout_height="18dp"
                             android:background="@drawable/ellipse_1101"
                             android:src="@drawable/share"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -2035,7 +2027,7 @@
                             app:layout_constraintEnd_toStartOf="@id/share_icon_7"
                             app:layout_constraintHorizontal_bias="0.95"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/horizontal_line_7"
+                            app:layout_constraintTop_toBottomOf="@id/horizontal_line_7"
                             app:layout_constraintVertical_bias="0.1" />
 
 
@@ -2223,15 +2215,14 @@
                             android:outlineAmbientShadowColor="#888888"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.95"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/calender_icon_8"
                             app:layout_constraintVertical_bias="0.1" />
 
                         <ImageView
                             android:id="@+id/fav_icon_8"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="20dp"
+                            android:layout_height="17dp"
                             android:background="@drawable/ellipse_1100"
                             android:src="@drawable/heart"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -2270,8 +2261,8 @@
 
                         <ImageView
                             android:id="@+id/share_icon_8"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="19dp"
+                            android:layout_height="18dp"
                             android:background="@drawable/ellipse_1101"
                             android:src="@drawable/share"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -2291,7 +2282,7 @@
                             app:layout_constraintEnd_toStartOf="@id/share_icon_8"
                             app:layout_constraintHorizontal_bias="0.95"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/horizontal_line_8"
+                            app:layout_constraintTop_toBottomOf="@id/horizontal_line_8"
                             app:layout_constraintVertical_bias="0.1" />
 
 
@@ -2479,15 +2470,14 @@
                             android:outlineAmbientShadowColor="#888888"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.95"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/calender_icon_9"
                             app:layout_constraintVertical_bias="0.1" />
 
                         <ImageView
                             android:id="@+id/fav_icon_9"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="20dp"
+                            android:layout_height="17dp"
                             android:background="@drawable/ellipse_1100"
                             android:src="@drawable/heart"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -2526,8 +2516,8 @@
 
                         <ImageView
                             android:id="@+id/share_icon_9"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="19dp"
+                            android:layout_height="18dp"
                             android:background="@drawable/ellipse_1101"
                             android:src="@drawable/share"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -2547,7 +2537,7 @@
                             app:layout_constraintEnd_toStartOf="@id/share_icon_9"
                             app:layout_constraintHorizontal_bias="0.95"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/horizontal_line_9"
+                            app:layout_constraintTop_toBottomOf="@id/horizontal_line_9"
                             app:layout_constraintVertical_bias="0.1" />
 
 
@@ -2778,15 +2768,14 @@
                             android:outlineAmbientShadowColor="#888888"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.95"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/calender_icon_10"
                             app:layout_constraintVertical_bias="0.1" />
 
                         <ImageView
                             android:id="@+id/fav_icon_10"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="20dp"
+                            android:layout_height="17dp"
                             android:background="@drawable/ellipse_1100"
                             android:src="@drawable/heart"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -2825,8 +2814,8 @@
 
                         <ImageView
                             android:id="@+id/share_icon_10"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="19dp"
+                            android:layout_height="18dp"
                             android:background="@drawable/ellipse_1101"
                             android:src="@drawable/share"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -2846,7 +2835,7 @@
                             app:layout_constraintEnd_toStartOf="@id/share_icon_10"
                             app:layout_constraintHorizontal_bias="0.95"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/horizontal_line_10"
+                            app:layout_constraintTop_toBottomOf="@id/horizontal_line_10"
                             app:layout_constraintVertical_bias="0.1" />
 
 
@@ -3034,15 +3023,14 @@
                             android:outlineAmbientShadowColor="#888888"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.95"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/calender_icon_11"
                             app:layout_constraintVertical_bias="0.1" />
 
                         <ImageView
                             android:id="@+id/fav_icon_11"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="20dp"
+                            android:layout_height="17dp"
                             android:background="@drawable/ellipse_1100"
                             android:src="@drawable/heart"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -3081,8 +3069,8 @@
 
                         <ImageView
                             android:id="@+id/share_icon_11"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="19dp"
+                            android:layout_height="18dp"
                             android:background="@drawable/ellipse_1101"
                             android:src="@drawable/share"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -3102,7 +3090,7 @@
                             app:layout_constraintEnd_toStartOf="@id/share_icon_11"
                             app:layout_constraintHorizontal_bias="0.95"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/horizontal_line_11"
+                            app:layout_constraintTop_toBottomOf="@id/horizontal_line_11"
                             app:layout_constraintVertical_bias="0.1" />
 
 
@@ -3290,15 +3278,14 @@
                             android:outlineAmbientShadowColor="#888888"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.95"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/calender_icon_12"
                             app:layout_constraintVertical_bias="0.1" />
 
                         <ImageView
                             android:id="@+id/fav_icon_12"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="20dp"
+                            android:layout_height="17dp"
                             android:background="@drawable/ellipse_1100"
                             android:src="@drawable/heart"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -3337,8 +3324,8 @@
 
                         <ImageView
                             android:id="@+id/share_icon_12"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="19dp"
+                            android:layout_height="18dp"
                             android:background="@drawable/ellipse_1101"
                             android:src="@drawable/share"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -3358,7 +3345,7 @@
                             app:layout_constraintEnd_toStartOf="@id/share_icon_12"
                             app:layout_constraintHorizontal_bias="0.95"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/horizontal_line_12"
+                            app:layout_constraintTop_toBottomOf="@id/horizontal_line_12"
                             app:layout_constraintVertical_bias="0.1" />
 
 
