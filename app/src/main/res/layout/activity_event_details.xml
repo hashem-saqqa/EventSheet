@@ -67,7 +67,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/stars"
-                app:layout_constraintVertical_bias="0.1"
+                app:layout_constraintVertical_bias="0.05"
                 >
 
                 <TextView
@@ -222,8 +222,9 @@
                     android:text="بيانات الفعالية"
                     android:textSize="20dp"
                     android:textColor="#3F4339"
-                    app:layout_constraintHorizontal_bias="0.85"
+                    app:layout_constraintHorizontal_bias="0.9"
                     app:layout_constraintVertical_bias="0.05"
+                    android:onClick="add_fragment_1"
                     />
                 <TextView
                     android:id="@+id/framgent_text2"
@@ -236,12 +237,13 @@
                     android:text="الجدول الزمني"
                     android:textSize="20dp"
                     android:textColor="#3F4339"
-                    app:layout_constraintHorizontal_bias="0.2"
+                    app:layout_constraintHorizontal_bias="0.25"
                     app:layout_constraintVertical_bias="0.05"
+                    android:onClick="add_fragment_2"
                     />
                 <View
                 android:id="@+id/horizontal_line2"
-                android:layout_width="310dp"
+                android:layout_width="340dp"
                 android:layout_height="2dp"
                 android:background="@drawable/multiple_colors2"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -250,7 +252,15 @@
                 app:layout_constraintTop_toBottomOf="@id/fragment_text1"
                 app:layout_constraintVertical_bias="0.05"
                     />
-
+                <FrameLayout
+                    android:id="@+id/Container"
+                    android:layout_width="match_parent"
+                    android:layout_height="325dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/horizontal_line2"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
