@@ -1,61 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Event_details">
+
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0"
+        android:layout_height="wrap_content"
         android:background="#EEEEEE"
-        >
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
+            android:layout_height="wrap_content">
 
-                <ImageView
-                    android:id="@+id/main_image"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/nopath___copy__84_"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0"
-                    />
+            <ImageView
+                android:id="@+id/main_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/nopath___copy__84_"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/heart"
-                    app:layout_constraintBottom_toBottomOf="@id/main_image"
-                    app:layout_constraintEnd_toEndOf="@+id/main_image"
-                    app:layout_constraintHorizontal_bias="0.1"
-                    app:layout_constraintStart_toStartOf="@+id/main_image"
-                    app:layout_constraintTop_toTopOf="@id/main_image"
-                    app:layout_constraintVertical_bias="0.1"
-                    app:tint="#ffffff" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/heart"
+                app:layout_constraintBottom_toBottomOf="@id/main_image"
+                app:layout_constraintEnd_toEndOf="@+id/main_image"
+                app:layout_constraintHorizontal_bias="0.1"
+                app:layout_constraintStart_toStartOf="@+id/main_image"
+                app:layout_constraintTop_toTopOf="@id/main_image"
+                app:layout_constraintVertical_bias="0.1"
+                app:tint="#ffffff" />
 
-                <ImageView
-                    android:id="@+id/stars"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/group_3186"
-                    app:layout_constraintBottom_toBottomOf="@id/main_image"
-                    app:layout_constraintEnd_toEndOf="@+id/main_image"
-                    app:layout_constraintHorizontal_bias="0.1"
-                    app:layout_constraintStart_toStartOf="@+id/main_image"
-                    app:layout_constraintTop_toTopOf="@id/main_image"
-                    app:layout_constraintVertical_bias="0.7" />
+            <ImageView
+                android:id="@+id/stars"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/group_3186"
+                app:layout_constraintBottom_toBottomOf="@id/main_image"
+                app:layout_constraintEnd_toEndOf="@+id/main_image"
+                app:layout_constraintHorizontal_bias="0.1"
+                app:layout_constraintStart_toStartOf="@+id/main_image"
+                app:layout_constraintTop_toTopOf="@id/main_image"
+                app:layout_constraintVertical_bias="0.7" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/text_constraint"
@@ -67,8 +65,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/stars"
-                app:layout_constraintVertical_bias="0.05"
-                >
+                app:layout_constraintVertical_bias="0.05">
 
                 <TextView
                     android:id="@+id/event_title"
@@ -200,66 +197,111 @@
                     app:layout_constraintVertical_bias="0.2" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/detail_constraint"
                 android:layout_width="match_parent"
                 android:layout_height="402dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_constraint"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginTop="30dp"
                 android:background="@drawable/rounded_corners"
                 android:backgroundTint="#ffffff"
-                android:layout_marginTop="30dp"
-                >
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_constraint"
+                app:layout_constraintVertical_bias="0.0">
+
                 <TextView
                     android:id="@+id/fragment_text1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    android:text="بيانات الفعالية"
-                    android:textSize="20dp"
-                    android:textColor="#3F4339"
-                    app:layout_constraintHorizontal_bias="0.9"
-                    app:layout_constraintVertical_bias="0.05"
                     android:onClick="add_fragment_1"
-                    />
+                    android:text="بيانات الفعالية"
+                    android:textColor="#3F4339"
+                    android:textSize="20dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.9"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.05" />
+
                 <TextView
                     android:id="@+id/framgent_text2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    android:text="الجدول الزمني"
-                    android:textSize="20dp"
-                    android:textColor="#3F4339"
-                    app:layout_constraintHorizontal_bias="0.25"
-                    app:layout_constraintVertical_bias="0.05"
                     android:onClick="add_fragment_2"
-                    />
+                    android:text="الجدول الزمني"
+                    android:textColor="#3F4339"
+                    android:textSize="20dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.25"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.05" />
+
                 <View
-                android:id="@+id/horizontal_line2"
-                android:layout_width="340dp"
-                android:layout_height="2dp"
-                android:background="@drawable/multiple_colors2"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/fragment_text1"
-                app:layout_constraintVertical_bias="0.05"
-                    />
+                    android:id="@+id/horizontal_line2"
+                    android:layout_width="340dp"
+                    android:layout_height="2dp"
+                    android:background="@drawable/multiple_colors2"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/fragment_text1"
+                    app:layout_constraintVertical_bias="0.05" />
+
                 <FrameLayout
                     android:id="@+id/Container"
                     android:layout_width="match_parent"
                     android:layout_height="325dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/horizontal_line2"
+                    app:layout_constraintVertical_bias="1" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="380dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/rounded_corners"
+                android:backgroundTint="#ffffff"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/detail_constraint"
+                app:layout_constraintVertical_bias="0.1"
+                >
+
+                <TextView
+                    android:id="@+id/map_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintHorizontal_bias="0.9"
+                    app:layout_constraintVertical_bias="0.05"
+                    android:text="عنوان الفعالية"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:textColor="#3F4339"
+                    />
+                <com.google.android.gms.maps.MapView
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="237dp"
+                    android:id="@+id/user_list_map"
+                    app:layout_constraintTop_toBottomOf="@id/map_title"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/horizontal_line2"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintVertical_bias="0.1"
                     />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
