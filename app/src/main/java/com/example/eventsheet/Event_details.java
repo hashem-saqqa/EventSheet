@@ -11,7 +11,6 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 public class Event_details extends AppCompatActivity implements OnMapReadyCallback {
 
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

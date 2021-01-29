@@ -39,5 +39,4 @@ dependencies {
     // Google play services for location information
     implementation 'com.google.android.gms:play-services-location:16.0.0'
 
-
 }
