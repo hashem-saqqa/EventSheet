@@ -9,9 +9,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-
 public class Event_details extends AppCompatActivity implements OnMapReadyCallback {
-
 
 
     @Override
