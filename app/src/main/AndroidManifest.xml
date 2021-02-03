@@ -3,8 +3,9 @@
     package="com.example.eventsheet">
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -12,9 +13,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Home"
-            android:theme="@style/AppTheme_ForAppBar"
-         ></activity>
+        <activity android:name=".All_Events"></activity>
+        <activity
+            android:name=".Home"
+            android:theme="@style/AppTheme_ForAppBar" />
         <activity android:name=".ResetPassword" />
         <activity android:name=".Event_details" />
         <activity android:name=".Login" />
@@ -26,9 +28,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCyQTJ0lxlWY9us9ObmY6nDUA9LxbCAjzw"/>
+            android:value="AIzaSyCyQTJ0lxlWY9us9ObmY6nDUA9LxbCAjzw" />
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />

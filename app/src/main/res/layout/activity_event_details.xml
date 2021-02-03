@@ -246,7 +246,7 @@
                     android:id="@+id/horizontal_line2"
                     android:layout_width="340dp"
                     android:layout_height="2dp"
-                    android:background="@drawable/multiple_colors2"
+                    android:background="@drawable/multiple_colors1"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
