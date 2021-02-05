@@ -30,4 +30,9 @@ public class Home extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), Event_details.class);
         startActivityForResult(intent, 0);
     }
+
+    public void Show_all_Events(View view) {
+        Intent intent = new Intent(getApplicationContext(), All_Events.class);
+        startActivityForResult(intent, 0);
+    }
 }

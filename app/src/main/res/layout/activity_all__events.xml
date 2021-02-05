@@ -5,9 +5,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".All_Events">
-<include
-    android:id="@+id/appbar"
-    layout="@layout/appbar"
-    />
+
+    <include
+        android:id="@+id/appbar"
+        layout="@layout/appbar" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/appbar_text"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#BADC58"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appbar"
+        app:layout_constraintVertical_bias="0">
+
+        <com.mancj.materialsearchbar.MaterialSearchBar
+            app:mt_hint="Custom hint"
+            app:mt_placeholder="place holder"
+            app:mt_placeholderColor="#000000"
+            app:mt_hintColor="#000000"
+            app:mt_maxSuggestionsCount="10"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:id="@+id/searchBar"
+            android:background="@drawable/rounded_corners"
+            android:backgroundTint="#000000"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
