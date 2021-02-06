@@ -13,7 +13,7 @@
 <!--        <item name="mt_clearIconTint">@color/searchBarClearIconTintColor</item>-->
 <!--        <item name="mt_menuIconTint">@color/searchBarMenuIconTintColor</item>-->
 <!--        <item name="mt_backIconTint">@color/searchBarBackIconTintColor</item>-->
-<!--        <item name="mt_textCursorTint">@color/searchBarCursorColor</item>-->
+<!--        <item name="mt_textCursorTint">@color/searchBarCursorColo r</item>-->
 <!--        <item name="mt_textColor">@color/searchBarTextColor</item>-->
 <!--        <item name="mt_hintColor">@color/searchBarHintColor</item>-->
 <!--        <item name="mt_placeholderColor">@color/searchBarPlaceholderColor</item>-->

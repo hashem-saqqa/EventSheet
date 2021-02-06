@@ -13,7 +13,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/appbar_text"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="65dp"
         android:background="#BADC58"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,20 +22,21 @@
         app:layout_constraintVertical_bias="0">
 
         <com.mancj.materialsearchbar.MaterialSearchBar
-            app:mt_hint="Custom hint"
-            app:mt_placeholder="place holder"
-            app:mt_placeholderColor="#000000"
-            app:mt_hintColor="#000000"
-            app:mt_maxSuggestionsCount="10"
-            android:layout_width="300dp"
-            android:layout_height="40dp"
             android:id="@+id/searchBar"
-            android:background="@drawable/rounded_corners"
-            android:backgroundTint="#000000"
+            app:mt_placeholder="البحث عن فعاليات "
+            app:mt_placeholderColor="#ffffff"
+            app:mt_maxSuggestionsCount="10"
+            android:layout_width="340dp"
+            android:layout_height="42dp"
+            app:mt_searchBarColor="#4FFFFFFF"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:mt_navIconEnabled="true"
+            app:mt_roundedSearchBarEnabled="true"
+            app:mt_searchIconTint="#ffffff"
+            app:mt_navIconTint="#ffffff"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
