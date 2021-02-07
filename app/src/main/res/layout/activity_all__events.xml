@@ -776,6 +776,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/Constraint_4"
                     app:layout_constraintVertical_bias="0.1"
+                    android:layout_marginTop="24dp"
                     >
 
                     <ImageView
