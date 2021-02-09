@@ -202,11 +202,10 @@
                 android:id="@+id/signUpText1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="52dp"
                 android:text="ليس لديك حساب؟"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.668"
+                app:layout_constraintHorizontal_bias="0.7"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/forgetPasswordtext"
                 app:layout_constraintVertical_bias="0.433" />
@@ -215,12 +214,13 @@
                 android:id="@+id/signUpText2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
                 android:text=" تسجيل حساب جديد"
-                app:layout_constraintBottom_toBottomOf="@+id/signUpText1"
-                app:layout_constraintEnd_toEndOf="@id/signUpText1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/signUpText1"
+                app:layout_constraintHorizontal_bias="1"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/signUpText1" />
+                app:layout_constraintTop_toBottomOf="@id/forgetPasswordtext"
+                app:layout_constraintVertical_bias="0.433" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".All_Events"></activity>
+        <activity android:name=".Search_map"></activity>
+        <activity android:name=".All_Events" />
         <activity
             android:name=".Home"
             android:theme="@style/AppTheme_ForAppBar" />

@@ -20,4 +20,8 @@ public class All_Events extends AppCompatActivity {
 
     }
 
+    public void Map(View view) {
+        Intent intent = new Intent(getApplicationContext(),Search_map.class);
+        startActivityForResult(intent,0);
+    }
 }
