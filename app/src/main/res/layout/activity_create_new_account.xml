@@ -174,7 +174,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Password"
             app:layout_constraintVertical_bias="0.183"
-            tools:ignore="MissingConstraints" />
+            android:onClick="GOToTest" />
 
         <TextView
             android:id="@+id/text2"
