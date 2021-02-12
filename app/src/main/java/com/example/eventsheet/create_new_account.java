@@ -62,8 +62,4 @@ public class create_new_account extends AppCompatActivity {
 
     }
 
-    public void GOToTest(View view) {
-        Intent intent = new Intent(getApplicationContext(),test.class);
-        startActivityForResult(intent,0);
-    }
 }
