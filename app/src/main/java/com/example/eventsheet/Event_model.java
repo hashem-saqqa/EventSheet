@@ -21,6 +21,15 @@ public class Event_model {
         Auther_text = auther_text;
     }
 
+    public Event_model(int image, String main_text, String location_text,
+                       String start_date_text, String end_date_text) {
+        this.image = image;
+        Main_text = main_text;
+        Location_text = location_text;
+        this.start_date_text = start_date_text;
+        End_date_text = end_date_text;
+    }
+
     public int getImage() {
         return image;
     }
