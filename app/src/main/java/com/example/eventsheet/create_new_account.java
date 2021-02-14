@@ -27,7 +27,6 @@ public class create_new_account extends AppCompatActivity {
         show_pass_btn = findViewById(R.id.show_pass_btn);
         password = findViewById(R.id.Password);
 
-
     }
 
     public void BACK(View view) {

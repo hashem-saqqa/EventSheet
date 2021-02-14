@@ -37,7 +37,7 @@ public class Event_adapter extends RecyclerView.Adapter<Event_adapter.ViewHolder
 
         Event_model model = DataSet.get(position);
 
-        holder.Main_image.setImageResource(R.drawable.nopath___copy__79_);
+        holder.Main_image.setImageResource(model.getImage());
         holder.Main_text.setText(model.getMain_text());
         holder.Location_text.setText(model.getLocation_text());
         holder.detail_text.setText(model.getDetail_text());
