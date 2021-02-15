@@ -41,6 +41,7 @@ public class Home extends AppCompatActivity {
 
         getSupportActionBar().hide();
 
+
         icon4 = findViewById(R.id.icon4);
         setTextViewDrawableColor(icon4,R.color.color_icon);
         icon4.setTextColor(Color.parseColor("#CD4A58"));
