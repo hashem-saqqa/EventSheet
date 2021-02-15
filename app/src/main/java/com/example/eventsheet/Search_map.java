@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
@@ -13,6 +14,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
@@ -70,6 +72,10 @@ public class Search_map extends AppCompatActivity implements OnMapReadyCallback,
                 drawable.setColorFilter(new PorterDuffColorFilter(getColor(color), PorterDuff.Mode.SRC_IN));
             }
         }
+    }
+    public void GoToHome_icon(View view) {
+        Intent intent = new Intent(getApplicationContext(),Home.class);
+        startActivityForResult(intent,0);
     }
 
     @Override
