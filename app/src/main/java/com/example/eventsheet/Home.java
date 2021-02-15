@@ -1,12 +1,17 @@
 package com.example.eventsheet;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -27,6 +32,7 @@ public class Home extends AppCompatActivity {
     Event_adapter event_adapter;
 
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +42,9 @@ public class Home extends AppCompatActivity {
         getSupportActionBar().hide();
 
         icon4 = findViewById(R.id.icon4);
+        setTextViewDrawableColor(icon4,R.color.color_icon);
+        icon4.setTextColor(Color.parseColor("#CD4A58"));
+
 
         Create_events_1();
 
@@ -67,6 +76,15 @@ public class Home extends AppCompatActivity {
         startActivityForResult(intent, 0);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
+
+    private void setTextViewDrawableColor(TextView textView, int color) {
+        for (Drawable drawable : textView.getCompoundDrawables()) {
+            if (drawable != null) {
+                drawable.setColorFilter(new PorterDuffColorFilter(getColor(color), PorterDuff.Mode.SRC_IN));
+            }
+        }
+    }
 
     public void Create_events_1() {
         mDataset_1 = new ArrayList<>();
