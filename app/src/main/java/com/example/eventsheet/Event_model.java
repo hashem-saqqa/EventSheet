@@ -1,46 +1,52 @@
 package com.example.eventsheet;
 
 public class Event_model {
-    private int image;
+    private int Image;
     private String Main_text;
     private String Location_text;
-    private String detail_text;
-    private String start_date_text;
+    private String Detail_text;
+    private String Start_date_text;
     private String End_date_text;
     private String Auther_text;
 
     public Event_model(int image, String main_text, String location_text,
                        String detail_text, String start_date_text,
                        String end_date_text, String auther_text) {
-        this.image = image;
+        Image = image;
         Main_text = main_text;
         Location_text = location_text;
-        this.detail_text = detail_text;
-        this.start_date_text = start_date_text;
+        Detail_text = detail_text;
+        Start_date_text = start_date_text;
         End_date_text = end_date_text;
         Auther_text = auther_text;
     }
 
     public Event_model(int image, String main_text, String location_text,
                        String start_date_text, String end_date_text) {
-        this.image = image;
+        Image = image;
         Main_text = main_text;
         Location_text = location_text;
-        this.start_date_text = start_date_text;
+        Start_date_text = start_date_text;
         End_date_text = end_date_text;
     }
     public Event_model(int image, String main_text, String location_text) {
-        this.image = image;
+        Image = image;
         Main_text = main_text;
         Location_text = location_text;
     }
+    public Event_model(int image, String main_text, String location_text,String start_date_text) {
+        Image = image;
+        Main_text = main_text;
+        Location_text = location_text;
+        Start_date_text = start_date_text;
+    }
 
     public int getImage() {
-        return image;
+        return Image;
     }
 
     public void setImage(int image) {
-        this.image = image;
+        this.Image = image;
     }
 
     public String getMain_text() {
@@ -60,19 +66,19 @@ public class Event_model {
     }
 
     public String getDetail_text() {
-        return detail_text;
+        return Detail_text;
     }
 
     public void setDetail_text(String detail_text) {
-        this.detail_text = detail_text;
+        this.Detail_text = detail_text;
     }
 
     public String getStart_date_text() {
-        return start_date_text;
+        return Start_date_text;
     }
 
     public void setStart_date_text(String start_date_text) {
-        this.start_date_text = start_date_text;
+        this.Start_date_text = start_date_text;
     }
 
     public String getEnd_date_text() {

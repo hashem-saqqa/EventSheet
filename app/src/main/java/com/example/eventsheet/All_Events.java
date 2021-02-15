@@ -9,8 +9,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.google.android.material.appbar.AppBarLayout;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +21,7 @@ public class All_Events extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_all__events);
+        setContentView(R.layout.activity_all_events);
         TextView appbar_title = findViewById(R.id.appbar_title);
         appbar_title.setText("فعاليات صغرى");
 
@@ -32,7 +30,7 @@ public class All_Events extends AppCompatActivity {
     }
 
     public void Map(View view) {
-        Intent intent = new Intent(getApplicationContext(),Search_map.class);
+        Intent intent = new Intent(getApplicationContext(), All_event_map.class);
         startActivityForResult(intent,0);
     }
     public void Create_events_5() {

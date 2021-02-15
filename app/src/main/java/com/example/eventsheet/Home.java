@@ -4,14 +4,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
+
+import com.google.android.material.bottomappbar.BottomAppBar;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Home extends AppCompatActivity {
+    TextView icon4;
     protected List<Event_model> mDataset_1;
     protected List<Event_model> mDataset_2;
     protected List<Event_model> mDataset_3;
@@ -21,11 +27,15 @@ public class Home extends AppCompatActivity {
     Event_adapter event_adapter;
 
 
+    @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
         getSupportActionBar().hide();
+
+        icon4 = findViewById(R.id.icon4);
 
         Create_events_1();
 
@@ -49,6 +59,11 @@ public class Home extends AppCompatActivity {
 
     public void Show_all_Events(View view) {
         Intent intent = new Intent(getApplicationContext(), All_Events.class);
+        startActivityForResult(intent, 0);
+    }
+
+    public void GoToSearch(View view) {
+        Intent intent = new Intent(getApplicationContext(), Search.class);
         startActivityForResult(intent, 0);
     }
 

@@ -25,20 +25,20 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Search_map extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
+public class All_event_map extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
     Marker marker1;
     Marker marker2;
     protected List<Event_model> mDataset_map;
     protected RecyclerView mRecyclerView;
     protected LinearLayoutManager mLayoutManager;
-    Map_adapter map_adapter;
+    All_event_Map_adapter all_event_map_adapter;
 
     //    ConstraintLayout dialog_constraint;
 //    ConstraintLayout dialog_constraint_basic;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search_map);
+        setContentView(R.layout.activity_all_event_map);
         TextView appbar_title = findViewById(R.id.appbar_title);
         appbar_title.setText("فعاليات صغرى");
         SupportMapFragment mapFragment =
@@ -111,8 +111,8 @@ public class Search_map extends AppCompatActivity implements OnMapReadyCallback,
         mRecyclerView = findViewById(R.id.recyclerView_map);
         mLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        map_adapter = new Map_adapter(mDataset_map);
-        mRecyclerView.setAdapter(map_adapter);
+        all_event_map_adapter = new All_event_Map_adapter(mDataset_map);
+        mRecyclerView.setAdapter(all_event_map_adapter);
     }
 
 //    public void hide_Dialog(View view) {
