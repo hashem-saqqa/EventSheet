@@ -8,7 +8,7 @@
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/Constraint_1"
+        android:id="@+id/Constraint"
         android:layout_width="match_parent"
         android:layout_height="379dp"
         android:background="#ffffff"

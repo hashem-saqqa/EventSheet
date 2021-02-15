@@ -1,14 +1,12 @@
 package com.example.eventsheet;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.ActivityGroup;
 import android.app.Dialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
@@ -18,16 +16,22 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Search_map extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
     Marker marker1;
     Marker marker2;
+    protected List<Event_model> mDataset_map;
+    protected RecyclerView mRecyclerView;
+    protected LinearLayoutManager mLayoutManager;
+    Map_adapter map_adapter;
 
     //    ConstraintLayout dialog_constraint;
 //    ConstraintLayout dialog_constraint_basic;
@@ -41,6 +45,8 @@ public class Search_map extends AppCompatActivity implements OnMapReadyCallback,
                 (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.MapContainer);
         assert mapFragment != null;
         mapFragment.getMapAsync(this);
+
+        Create_events();
 //        dialog_constraint = findViewById(R.id.dialog_constraint);
 //        dialog_constraint_basic = findViewById(R.id.dialog_constraint_basic);
     }
@@ -92,6 +98,21 @@ public class Search_map extends AppCompatActivity implements OnMapReadyCallback,
 
         }
         return false;
+    }
+    public void Create_events() {
+        mDataset_map = new ArrayList<>();
+        mDataset_map.add(new Event_model(R.drawable.nopath___copy__79_,
+                "First event", "ksa"));
+        mDataset_map.add(new Event_model(R.drawable.nopath___copy__79_,
+                "second event", "ksa"));
+        mDataset_map.add(new Event_model(R.drawable.nopath___copy__79_,
+                "third event", "ksa"));
+
+        mRecyclerView = findViewById(R.id.recyclerView_map);
+        mLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        map_adapter = new Map_adapter(mDataset_map);
+        mRecyclerView.setAdapter(map_adapter);
     }
 
 //    public void hide_Dialog(View view) {

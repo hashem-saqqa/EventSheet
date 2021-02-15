@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Home extends AppCompatActivity {
-    protected List<Event_model> mDataset;
+    protected List<Event_model> mDataset_1;
     protected List<Event_model> mDataset_2;
     protected List<Event_model> mDataset_3;
     protected List<Event_model> mDataset_4;
@@ -53,21 +53,21 @@ public class Home extends AppCompatActivity {
     }
 
     public void Create_events_1() {
-        mDataset = new ArrayList<>();
-        mDataset.add(new Event_model(R.drawable.nopath___copy__79_, "First event", "ksa"
+        mDataset_1 = new ArrayList<>();
+        mDataset_1.add(new Event_model(R.drawable.nopath___copy__79_, "First event", "ksa"
                 , "dont bring animal", "5/ 11/2021"
                 , "6/11/2021", "hasan"));
-        mDataset.add(new Event_model(R.drawable.nopath___copy__79_, "second event", "ksa"
+        mDataset_1.add(new Event_model(R.drawable.nopath___copy__79_, "second event", "ksa"
                 , "dont bring animal", "5/ 11/2021"
                 , "6/11/2021", "hasan"));
-        mDataset.add(new Event_model(R.drawable.nopath___copy__79_, "third event", "ksa"
+        mDataset_1.add(new Event_model(R.drawable.nopath___copy__79_, "third event", "ksa"
                 , "dont bring animal", "5/ 11/2021"
                 , "6/11/2021", "hasan"));
 
         mRecyclerView = findViewById(R.id.recyclerView);
         mLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        event_adapter = new Event_adapter(mDataset);
+        event_adapter = new Event_adapter(mDataset_1);
         mRecyclerView.setAdapter(event_adapter);
     }
 
@@ -118,4 +118,5 @@ public class Home extends AppCompatActivity {
         Small_event_adapter event_adapter = new Small_event_adapter(mDataset_4);
         mRecyclerView.setAdapter(event_adapter);
     }
+
 }

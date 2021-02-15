@@ -74,275 +74,35 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.65" />
 
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.95">
-
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/Constraint_1"
-                    android:layout_width="333dp"
-                    android:layout_height="143dp"
-                    android:background="#ffffff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.95">
+                <LinearLayout
+                    android:id="@+id/linearlayout_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    android:orientation="horizontal"
+                    >
 
-                    <ImageView
-                        android:id="@+id/HS_Image_1"
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerView_map"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/nopath___copy__79_"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.95"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.05" />
-
-                    <TextView
-                        android:id="@+id/Text1_1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="المؤتمر الدولي للثقافة\n والفنون"
-                        android:textColor="#3F4339"
-                        android:textSize="17dp"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/HS_Image_1"
-                        app:layout_constraintHorizontal_bias="0.9"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.04" />
-
-                    <ImageView
-                        android:id="@+id/location_icon_1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/group_1297"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@id/HS_Image_1"
-                        app:layout_constraintHorizontal_bias="0.95"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/Text1_1"
-                        app:layout_constraintVertical_bias="0.04" />
-
-                    <TextView
-                        android:id="@+id/location_text_1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="السعودية - جدة"
-                        android:textColor="#888888"
-                        android:textSize="16dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/location_icon_1"
-                        app:layout_constraintHorizontal_bias="0.95"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/Text1_1"
-                        app:layout_constraintVertical_bias="0.04" />
-
-                    <TextView
-                        android:layout_width="70dp"
-                        android:layout_height="25dp"
-                        android:background="@drawable/rounded_corners"
-                        android:backgroundTint="#CD4A58"
-                        android:gravity="center_horizontal"
-                        android:text="مجانية"
-                        android:textAlignment="center"
-                        android:textColor="#FFFFFF"
-                        android:textSize="14dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/HS_Image_1"
-                        app:layout_constraintHorizontal_bias="0.95"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/location_text_1"
-                        app:layout_constraintVertical_bias="0.1" />
-
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/Constraint_2"
-                    android:layout_width="333dp"
-                    android:layout_height="143dp"
-                    android:layout_marginLeft="15dp"
-                    android:background="#ffffff"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0"
-                    app:layout_constraintStart_toEndOf="@id/Constraint_1"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <ImageView
-                        android:id="@+id/HS_Image_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/nopath___copy__79_"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.95"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.05" />
-
-                    <TextView
-                        android:id="@+id/Text1_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="المؤتمر الدولي للثقافة\n والفنون"
-                        android:textColor="#3F4339"
-                        android:textSize="17dp"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/HS_Image_2"
-                        app:layout_constraintHorizontal_bias="0.9"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.04" />
-
-                    <ImageView
-                        android:id="@+id/location_icon_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/group_1297"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@id/HS_Image_2"
-                        app:layout_constraintHorizontal_bias="0.95"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/Text1_2"
-                        app:layout_constraintVertical_bias="0.04" />
-
-                    <TextView
-                        android:id="@+id/location_text_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="السعودية - جدة"
-                        android:textColor="#888888"
-                        android:textSize="16dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/location_icon_2"
-                        app:layout_constraintHorizontal_bias="0.95"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/Text1_2"
-                        app:layout_constraintVertical_bias="0.04" />
-
-                    <TextView
-                        android:layout_width="70dp"
-                        android:layout_height="25dp"
-                        android:background="@drawable/rounded_corners"
-                        android:backgroundTint="#CD4A58"
-                        android:gravity="center_horizontal"
-                        android:text="مجانية"
-                        android:textAlignment="center"
-                        android:textColor="#FFFFFF"
-                        android:textSize="14dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/HS_Image_2"
-                        app:layout_constraintHorizontal_bias="0.95"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/location_text_2"
-                        app:layout_constraintVertical_bias="0.1" />
-
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/Constraint_3"
-                    android:layout_width="333dp"
-                    android:layout_height="143dp"
-                    android:layout_marginLeft="15dp"
-                    android:background="#ffffff"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.05"
-                    app:layout_constraintStart_toEndOf="@id/Constraint_2"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <ImageView
-                        android:id="@+id/HS_Image_3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/nopath___copy__79_"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.95"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.05" />
-
-                    <TextView
-                        android:id="@+id/Text1_3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="المؤتمر الدولي للثقافة\n والفنون"
-                        android:textColor="#3F4339"
-                        android:textSize="17dp"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/HS_Image_3"
-                        app:layout_constraintHorizontal_bias="0.9"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.04" />
-
-                    <ImageView
-                        android:id="@+id/location_icon_3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/group_1297"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@id/HS_Image_3"
-                        app:layout_constraintHorizontal_bias="0.95"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/Text1_3"
-                        app:layout_constraintVertical_bias="0.04" />
-
-                    <TextView
-                        android:id="@+id/location_text_3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="السعودية - جدة"
-                        android:textColor="#888888"
-                        android:textSize="16dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/location_icon_3"
-                        app:layout_constraintHorizontal_bias="0.95"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/Text1_3"
-                        app:layout_constraintVertical_bias="0.04" />
-
-                    <TextView
-                        android:layout_width="70dp"
-                        android:layout_height="25dp"
-                        android:background="@drawable/rounded_corners"
-                        android:backgroundTint="#CD4A58"
-                        android:gravity="center_horizontal"
-                        android:text="مجانية"
-                        android:textAlignment="center"
-                        android:textColor="#FFFFFF"
-                        android:textSize="14dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/HS_Image_3"
-                        app:layout_constraintHorizontal_bias="0.95"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/location_text_3"
-                        app:layout_constraintVertical_bias="0.1" />
-
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                        >
+                    </androidx.recyclerview.widget.RecyclerView>
+                </LinearLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-        </HorizontalScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 <!--    <androidx.constraintlayout.widget.ConstraintLayout-->

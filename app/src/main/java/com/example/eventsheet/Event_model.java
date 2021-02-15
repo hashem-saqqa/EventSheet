@@ -29,6 +29,11 @@ public class Event_model {
         this.start_date_text = start_date_text;
         End_date_text = end_date_text;
     }
+    public Event_model(int image, String main_text, String location_text) {
+        this.image = image;
+        Main_text = main_text;
+        Location_text = location_text;
+    }
 
     public int getImage() {
         return image;
