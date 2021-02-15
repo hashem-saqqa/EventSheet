@@ -29,6 +29,10 @@ public class Search extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), All_event_map.class);
         startActivityForResult(intent, 0);
     }
+    public void GoToHome_icon(View view) {
+        Intent intent = new Intent(getApplicationContext(),Home.class);
+        startActivityForResult(intent,0);
+    }
 
     public void Create_events() {
         mDataset_search = new ArrayList<>();

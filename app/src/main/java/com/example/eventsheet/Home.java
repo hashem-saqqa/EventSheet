@@ -62,7 +62,7 @@ public class Home extends AppCompatActivity {
         startActivityForResult(intent, 0);
     }
 
-    public void GoToSearch(View view) {
+    public void GoToSearch_icon(View view) {
         Intent intent = new Intent(getApplicationContext(), Search.class);
         startActivityForResult(intent, 0);
     }
