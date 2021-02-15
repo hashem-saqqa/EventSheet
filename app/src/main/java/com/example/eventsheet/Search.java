@@ -74,4 +74,9 @@ public class Search extends AppCompatActivity {
         search_adapter = new Search_adapter(mDataset_search);
         mRecyclerView.setAdapter(search_adapter);
     }
+
+    public void GoTo_Search_map(View view) {
+        Intent intent = new Intent(getApplicationContext(),Search_map.class);
+        startActivityForResult(intent,0);
+    }
 }
