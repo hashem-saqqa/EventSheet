@@ -67,6 +67,7 @@ public class Home extends AppCompatActivity {
         startActivityForResult(intent, 0);
     }
 
+
     public void Create_events_1() {
         mDataset_1 = new ArrayList<>();
         mDataset_1.add(new Event_model(R.drawable.nopath___copy__79_, "First event", "ksa"
