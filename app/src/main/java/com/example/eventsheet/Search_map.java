@@ -1,14 +1,21 @@
 package com.example.eventsheet;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -28,15 +35,20 @@ public class Search_map extends AppCompatActivity implements OnMapReadyCallback,
     Marker marker1;
     Marker marker2;
 
+    TextView icon3;
+
     protected List<Event_model> mDataset_map;
     protected RecyclerView mRecyclerView;
     protected LinearLayoutManager mLayoutManager;
     All_event_Map_adapter all_event_map_adapter;
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_map);
+
+        getSupportActionBar().hide();
 
         SupportMapFragment mapFragment =
                 (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.MapContainer);
@@ -44,6 +56,20 @@ public class Search_map extends AppCompatActivity implements OnMapReadyCallback,
         mapFragment.getMapAsync(this);
 
         Create_events();
+
+        icon3 = findViewById(R.id.icon3);
+        setTextViewDrawableColor(icon3,R.color.color_icon);
+        icon3.setTextColor(Color.parseColor("#CD4A58"));
+
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private void setTextViewDrawableColor(TextView textView, int color) {
+        for (Drawable drawable : textView.getCompoundDrawables()) {
+            if (drawable != null) {
+                drawable.setColorFilter(new PorterDuffColorFilter(getColor(color), PorterDuff.Mode.SRC_IN));
+            }
+        }
     }
 
     @Override
