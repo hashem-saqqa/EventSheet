@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Search"
     android:background="#ffffff"
-    >
+    tools:context=".Search">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/appbar_searchBar"
@@ -41,29 +40,27 @@
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
         android:backgroundTint="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/appbar_searchBar"
         app:layout_constraintVertical_bias="0"
-        app:tabTextColor="#929292"
-        app:tabSelectedTextColor="#CD4A58"
         app:tabIndicatorColor="#CD4A58"
-        >
+        app:tabMode="scrollable"
+        app:tabSelectedTextColor="#CD4A58"
+        app:tabTextColor="#929292">
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="مبادرات"
-            />
+            android:text="مبادرات" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="دورات"
-            />
+            android:text="دورات" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
@@ -81,30 +78,30 @@
             android:text="مؤتمرات" />
 
         <com.google.android.material.tabs.TabItem
+            android:id="@+id/start_tab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="الكل" />
+            android:text="الكل"
+            />
 
     </com.google.android.material.tabs.TabLayout>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginBottom="90dp"
+        android:background="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tab_layout"
-        app:layout_constraintVertical_bias="1.0"
-        android:background="#ffffff"
-        android:layout_marginBottom="90dp"
-        >
+        app:layout_constraintVertical_bias="1.0">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="top|center"
-            >
+            android:layout_gravity="top|center">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView_search"

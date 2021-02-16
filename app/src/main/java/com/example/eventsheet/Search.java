@@ -15,6 +15,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.android.material.tabs.TabLayout;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,6 +38,10 @@ public class Search extends AppCompatActivity {
         icon3 = findViewById(R.id.icon3);
         setTextViewDrawableColor(icon3,R.color.color_icon);
         icon3.setTextColor(Color.parseColor("#CD4A58"));
+//
+//        TabLayout tabLayout =   findViewById(R.id.tab_layout);
+//        TabLayout.Tab tab = tabLayout.getTabAt(6);
+//        tab.select();
     }
 
     public void Map(View view) {
