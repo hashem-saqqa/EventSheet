@@ -15,9 +15,12 @@ public class Event_details extends AppCompatActivity implements OnMapReadyCallba
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_details);
+
         Fragment_1 fragment_1 = new Fragment_1();
         getSupportFragmentManager().beginTransaction().add(R.id.Container,fragment_1).commit();
+
         line = findViewById(R.id.horizontal_line2);
+
         SupportMapFragment mapFragment =
                 (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.MapContainer);
         assert mapFragment != null;

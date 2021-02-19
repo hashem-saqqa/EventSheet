@@ -22,7 +22,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Home extends AppCompatActivity {
-    TextView icon4;
     protected List<Event_model> mDataset_1;
     protected List<Event_model> mDataset_2;
     protected List<Event_model> mDataset_3;
@@ -42,8 +41,8 @@ public class Home extends AppCompatActivity {
         getSupportActionBar().hide();
 
 
-        icon4 = findViewById(R.id.icon4);
-        setTextViewDrawableColor(icon4,R.color.color_icon);
+        TextView icon4 = findViewById(R.id.icon4);
+        setTextViewDrawableColor(icon4, R.color.color_icon);
         icon4.setTextColor(Color.parseColor("#CD4A58"));
 
 
@@ -78,7 +77,6 @@ public class Home extends AppCompatActivity {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
-
     private void setTextViewDrawableColor(TextView textView, int color) {
         for (Drawable drawable : textView.getCompoundDrawables()) {
             if (drawable != null) {
@@ -154,4 +152,8 @@ public class Home extends AppCompatActivity {
         mRecyclerView.setAdapter(event_adapter);
     }
 
+    public void GoTo_my_events(View view) {
+        Intent intent = new Intent(getApplicationContext(), My_Events.class);
+        startActivityForResult(intent, 0);
+    }
 }

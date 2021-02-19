@@ -8,6 +8,7 @@ public class Event_model {
     private String Start_date_text;
     private String End_date_text;
     private String Auther_text;
+    private String My_created_event_status;
 
     public Event_model(int image, String main_text, String location_text,
                        String detail_text, String start_date_text,
@@ -29,16 +30,29 @@ public class Event_model {
         Start_date_text = start_date_text;
         End_date_text = end_date_text;
     }
+
     public Event_model(int image, String main_text, String location_text) {
         Image = image;
         Main_text = main_text;
         Location_text = location_text;
     }
-    public Event_model(int image, String main_text, String location_text,String start_date_text) {
+
+    public Event_model(int image, String main_text, String location_text, String start_date_text) {
         Image = image;
         Main_text = main_text;
         Location_text = location_text;
         Start_date_text = start_date_text;
+    }
+
+    public Event_model(int image, String main_text, String location_text,
+                       String start_date_text, String end_date_text,
+                       String my_created_event_status) {
+        Image = image;
+        Main_text = main_text;
+        Location_text = location_text;
+        Start_date_text = start_date_text;
+        End_date_text = end_date_text;
+        My_created_event_status = my_created_event_status;
     }
 
     public int getImage() {
@@ -95,6 +109,14 @@ public class Event_model {
 
     public void setAuther_text(String auther_text) {
         Auther_text = auther_text;
+    }
+
+    public String getMy_created_event_status() {
+        return My_created_event_status;
+    }
+
+    public void setMy_created_event_status(String my_created_event_status) {
+        My_created_event_status = my_created_event_status;
     }
 }
 

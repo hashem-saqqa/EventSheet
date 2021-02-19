@@ -50,22 +50,19 @@
         app:tabIndicatorColor="#CD4A58"
         app:tabMode="scrollable"
         app:tabSelectedTextColor="#CD4A58"
-        app:tabTextColor="#929292">
+        app:tabTextColor="#929292"
+        android:layoutDirection="rtl"
+        >
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="مبادرات" />
+            android:text="الكل" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="دورات" />
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ندوات" />
+            android:text="مؤتمرات" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
@@ -75,13 +72,18 @@
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="مؤتمرات" />
+            android:text="ندوات" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="دورات" />
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/start_tab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="الكل"
+            android:text="مبادرات"
             />
 
     </com.google.android.material.tabs.TabLayout>

@@ -23,7 +23,7 @@ public class Event_adapter extends RecyclerView.Adapter<Event_adapter.ViewHolder
     public Event_adapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View rootView = inflater.inflate(R.layout.event_item, parent, false);
+        View rootView = inflater.inflate(R.layout.home_basic_event_item, parent, false);
 
         // Return a new holder instance
         ViewHolder viewHolder = new ViewHolder(rootView);
