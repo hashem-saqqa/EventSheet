@@ -69,5 +69,9 @@ public class My_Events extends AppCompatActivity {
         CreatedEventText.setBackgroundColor(Color.parseColor("#BADC58"));
         JoinedEventText.setTextColor(Color.parseColor("#BADC58"));
         JoinedEventText.setBackgroundColor(Color.parseColor("#ffffff"));
+
+        Shared_fragment shared_fragment = new Shared_fragment();
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.Created_Joined_fragments, shared_fragment).commit();
     }
 }

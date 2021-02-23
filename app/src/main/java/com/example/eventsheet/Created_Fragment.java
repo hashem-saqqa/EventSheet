@@ -29,7 +29,6 @@ public class Created_Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         return inflater.inflate(R.layout.fragment_created_, container, false);
     }
 
@@ -70,14 +69,12 @@ public class Created_Fragment extends Fragment {
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
             mDataset_my_created.remove(viewHolder.getAdapterPosition());
             my_created_events_adapter.notifyDataSetChanged();
-
         }
 
         @Override
         public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
-
             new RecyclerViewSwipeDecorator.Builder(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
-                    .addSwipeLeftBackgroundColor(ContextCompat.getColor(getContext(),R.color.color_icon))
+                    .addSwipeLeftBackgroundColor(ContextCompat.getColor(getContext(), R.color.color_icon))
                     .addSwipeLeftActionIcon(R.drawable.swipe_delete_icon)
                     .addSwipeLeftLabel("حذف")
                     .create()
