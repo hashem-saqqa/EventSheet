@@ -36,9 +36,9 @@ public class My_Events extends AppCompatActivity {
         setTextViewDrawableColor(icon2, R.color.color_icon);
         icon2.setTextColor(Color.parseColor("#CD4A58"));
 
-        Created_Fragment created_fragment = new Created_Fragment();
+        Non_created_events non_created_events = new Non_created_events();
         getSupportFragmentManager().beginTransaction()
-                .add(R.id.Created_Joined_fragments, created_fragment).commit();
+                .add(R.id.Created_Joined_fragments, non_created_events).commit();
 
     }
 
