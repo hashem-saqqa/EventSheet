@@ -156,4 +156,9 @@ public class Home extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), My_Events.class);
         startActivityForResult(intent, 0);
     }
+
+    public void GoTo_Profile(View view) {
+        Intent intent = new Intent(getApplicationContext(),Profile.class);
+        startActivityForResult(intent,0);
+    }
 }
