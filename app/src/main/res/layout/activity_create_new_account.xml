@@ -81,13 +81,15 @@
 
         <LinearLayout
             android:id="@+id/line1"
-            android:layout_width="match_parent"
+            android:layout_width="310dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="23dp"
             android:layout_marginTop="10dp"
             android:orientation="horizontal"
             android:weightSum="3"
+            app:layout_constraintEnd_toEndOf="@+id/FullName"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/FullName"
+            app:layout_constraintHorizontal_bias="1"
             tools:ignore="MissingConstraints">
 
             <com.hbb20.CountryCodePicker
