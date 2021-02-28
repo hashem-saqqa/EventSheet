@@ -3,12 +3,14 @@ package com.example.eventsheet;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 public class Profile extends AppCompatActivity {
@@ -33,5 +35,10 @@ public class Profile extends AppCompatActivity {
                 drawable.setColorFilter(new PorterDuffColorFilter(getColor(color), PorterDuff.Mode.SRC_IN));
             }
         }
+    }
+
+    public void GoTo_personal_data(View view) {
+        Intent intent = new Intent(getApplicationContext(),Personal_data.class);
+        startActivityForResult(intent,0);
     }
 }

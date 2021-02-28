@@ -22,6 +22,7 @@ public class All_Events extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_events);
+
         TextView appbar_title = findViewById(R.id.appbar_title);
         appbar_title.setText("فعاليات صغرى");
 
