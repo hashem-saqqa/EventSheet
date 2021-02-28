@@ -6,9 +6,10 @@
     android:layout_height="wrap_content">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar_layout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:backgroundTint="#BADC58"
+        android:background="#BADC58"
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">

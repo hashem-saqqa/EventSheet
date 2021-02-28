@@ -19,7 +19,7 @@ public class Profile extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.test);
+        setContentView(R.layout.activity_profile);
 
         TextView appbar_title = findViewById(R.id.appbar_title);
         appbar_title.setText("حسابي");
@@ -39,6 +39,16 @@ public class Profile extends AppCompatActivity {
 
     public void GoTo_personal_data(View view) {
         Intent intent = new Intent(getApplicationContext(),Personal_data.class);
+        startActivityForResult(intent,0);
+    }
+
+    public void GoTo_change_password(View view) {
+        Intent intent = new Intent(getApplicationContext(),Change_password.class);
+        startActivityForResult(intent,0);
+    }
+
+    public void GoTo_settings(View view) {
+        Intent intent = new Intent(getApplicationContext(),Settings.class);
         startActivityForResult(intent,0);
     }
 }

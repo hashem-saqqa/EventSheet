@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Settings"
+    android:background="#ffffff"
+    >
+
+    <include
+        android:id="@+id/appbar"
+        layout="@layout/appbar" />
+
+    <TextView
+        android:id="@+id/notification_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="الإشعارات"
+        android:textColor="#B4B4B4"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appbar"
+        app:layout_constraintVertical_bias="0.05" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/new_event_notification_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:checked="false"
+        android:thumb="@drawable/thumb_selector"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/notification_text"
+        app:layout_constraintVertical_bias="0"
+        app:track="@drawable/track_selector" />
+
+    <TextView
+        android:id="@+id/new_event_notification_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="تلقي إشعارات الفعاليات الجديدة"
+        android:textColor="#545454"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/notification_text"
+        app:layout_constraintVertical_bias="0" />
+
+    <View
+        android:id="@+id/space_line1"
+        android:layout_width="321dp"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="20dp"
+        android:background="#888888"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/new_event_notification_text"
+        app:layout_constraintVertical_bias="0" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/message_notification_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:checked="true"
+        android:thumb="@drawable/thumb_selector"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/space_line1"
+        app:layout_constraintVertical_bias="0"
+        app:track="@drawable/track_selector" />
+
+    <TextView
+        android:id="@+id/message_notification_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="تلقي تنبيهات الرسائل"
+        android:textColor="#545454"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/space_line1"
+        app:layout_constraintVertical_bias="0" />
+
+    <View
+        android:id="@+id/space_line2"
+        android:layout_width="321dp"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="20dp"
+        android:background="#888888"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/message_notification_text"
+        app:layout_constraintVertical_bias="0" />
+
+    <TextView
+        android:id="@+id/language_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="اللغة"
+        android:textColor="#B4B4B4"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/space_line2"
+        app:layout_constraintVertical_bias="0" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/English_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:checked="true"
+        android:thumb="@drawable/thumb_selector"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/language_text"
+        app:layout_constraintVertical_bias="0"
+        app:track="@drawable/track_selector" />
+
+    <TextView
+        android:id="@+id/English_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="الإنجليزية"
+        android:textColor="#545454"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/language_text"
+        app:layout_constraintVertical_bias="0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
