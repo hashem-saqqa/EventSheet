@@ -61,7 +61,7 @@ public class All_event_Map_adapter extends RecyclerView.Adapter<All_event_Map_ad
 
             Main_image = itemView.findViewById(R.id.HS_Image);
 
-            Main_text = itemView.findViewById(R.id.Text1);
+            Main_text = itemView.findViewById(R.id.text1);
 
             Location_text = itemView.findViewById(R.id.location_text);
 

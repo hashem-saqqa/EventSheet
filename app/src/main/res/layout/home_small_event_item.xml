@@ -32,7 +32,7 @@
             app:layout_constraintVertical_bias="0.05" />
 
         <TextView
-            android:id="@+id/Text1"
+            android:id="@+id/text1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="المؤتمر الدولي للثقافة\n والفنون"
@@ -55,7 +55,7 @@
             app:layout_constraintEnd_toStartOf="@id/HS_Image"
             app:layout_constraintHorizontal_bias="0.95"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Text1"
+            app:layout_constraintTop_toBottomOf="@+id/text1"
             app:layout_constraintVertical_bias="0.04" />
 
         <TextView
@@ -69,7 +69,7 @@
             app:layout_constraintEnd_toStartOf="@+id/location_icon"
             app:layout_constraintHorizontal_bias="0.95"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Text1"
+            app:layout_constraintTop_toBottomOf="@+id/text1"
             app:layout_constraintVertical_bias="0.04" />
 
         <TextView
