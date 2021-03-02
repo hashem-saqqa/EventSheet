@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".About_us">
+
+    <include
+        android:id="@+id/appbar"
+        layout="@layout/appbar" />
+
+    <ImageView
+        android:id="@+id/logo_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appbar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.1"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="موقع (أوراق الفعاليات) موقع إلكتروني يتيح لمنظمي الفعاليات إنشاء فعالياتهم وإدارتها والاستفادة من خدماته مثل: تسجيل الراغب في الفعالية/ رفع المشارك مشاركته/ تحكيم المشاركات عن طريق الموقع/ إظهار قبول المشاركة أو رفضها للمشارك/ التواصل مع المشاركين/ إظها برنامج الفعالية/ جلسات الفعالية/ الأنشطة المرافقة للفعالية/ طباعة البطاقات الشخصية للمشاركين/ طباعة شهادات الحضور والمشاركة/ الاطلاع على تعليقات المشاركين، وغيرها من خدمات"
+        android:textStyle="bold"
+        android:textColor="#707070"
+        android:textSize="22dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logo_image"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0"
+        android:layout_marginTop="30dp"
+        android:layout_marginHorizontal="30dp"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>
