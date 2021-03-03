@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Support"></activity>
+        <activity android:name=".Search_filter"></activity>
+        <activity android:name=".Support" />
         <activity android:name=".About_us" />
         <activity android:name=".Privacy_policy" />
         <activity android:name=".Settings" />
