@@ -13,6 +13,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 public class My_Events extends AppCompatActivity {
     TextView CreatedEventText;
     TextView JoinedEventText;
@@ -39,6 +41,9 @@ public class My_Events extends AppCompatActivity {
         Non_created_events non_created_events = new Non_created_events();
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.Created_Joined_fragments, non_created_events).commit();
+
+        FloatingActionButton floatingActionButton = findViewById(R.id.fab);
+        floatingActionButton.setColorFilter(Color.argb(255, 255, 255, 255));
 
     }
 

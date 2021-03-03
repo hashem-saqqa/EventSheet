@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.material.bottomappbar.BottomAppBar;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +45,9 @@ public class Home extends AppCompatActivity {
         TextView icon4 = findViewById(R.id.icon4);
         setTextViewDrawableColor(icon4, R.color.color_icon);
         icon4.setTextColor(Color.parseColor("#CD4A58"));
+
+        FloatingActionButton floatingActionButton = findViewById(R.id.fab);
+        floatingActionButton.setColorFilter(Color.argb(255, 255, 255, 255));
 
 
         Create_events_1();

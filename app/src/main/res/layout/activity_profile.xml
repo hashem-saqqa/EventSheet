@@ -131,7 +131,9 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/location_text"
                 app:layout_constraintVertical_bias="0"
-                android:layout_marginTop="20dp" />
+                android:layout_marginTop="20dp"
+                android:onClick="GoTo_personal_data"
+                />
 
             <View
                 android:id="@+id/space_line1"
@@ -279,7 +281,9 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/space_line3"
                 app:layout_constraintVertical_bias="0"
-                android:layout_marginTop="20dp" />
+                android:layout_marginTop="20dp"
+                android:onClick="GoTo_aboutus"
+                />
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -291,7 +295,9 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/space_line3"
                 app:layout_constraintVertical_bias="0"
-                android:layout_marginTop="20dp"/>
+                android:layout_marginTop="20dp"
+                android:onClick="GoTo_aboutus"
+                />
 
             <View
                 android:id="@+id/space_line4"
@@ -346,7 +352,9 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/space_line4"
                 app:layout_constraintVertical_bias="0"
-                android:layout_marginTop="20dp" />
+                android:layout_marginTop="20dp"
+                android:onClick="GoTo_change_password"
+                />
 
             <TextView
                 android:id="@+id/settings_text"
@@ -391,7 +399,9 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/settings_text"
                 app:layout_constraintVertical_bias="0"
-                android:layout_marginTop="20dp" />
+                android:layout_marginTop="20dp"
+                android:onClick="GoTo_privacy"
+                />
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -403,7 +413,9 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/settings_text"
                 app:layout_constraintVertical_bias="0"
-                android:layout_marginTop="20dp" />
+                android:layout_marginTop="20dp"
+                android:onClick="GoTo_privacy"
+                />
 
             <View
                 android:id="@+id/space_line5"
@@ -429,7 +441,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/space_line5"
                 app:layout_constraintVertical_bias="0"
-                android:layout_marginTop="20dp" />
+                android:layout_marginTop="20dp"
+                />
 
             <TextView
                 android:id="@+id/support_text"
@@ -444,7 +457,9 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/space_line5"
                 app:layout_constraintVertical_bias="0"
-                android:layout_marginTop="20dp" />
+                android:layout_marginTop="20dp"
+                android:onClick="GoTo_support"
+                />
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -456,7 +471,9 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/space_line5"
                 app:layout_constraintVertical_bias="0"
-                android:layout_marginTop="20dp"/>
+                android:layout_marginTop="20dp"
+                android:onClick="GoTo_support"
+                />
 
             <View
                 android:id="@+id/space_line6"
@@ -511,7 +528,9 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/space_line6"
                 app:layout_constraintVertical_bias="0"
-                android:layout_marginTop="20dp" />
+                android:layout_marginTop="20dp"
+                android:onClick="GoTo_settings"
+                />
 
             <View
                 android:id="@+id/space_line7"

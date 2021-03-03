@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
@@ -38,7 +39,12 @@ public class Search extends AppCompatActivity {
         icon3 = findViewById(R.id.icon3);
         setTextViewDrawableColor(icon3,R.color.color_icon);
         icon3.setTextColor(Color.parseColor("#CD4A58"));
-//
+
+        FloatingActionButton floatingActionButton = findViewById(R.id.fab);
+        floatingActionButton.setColorFilter(Color.argb(255, 255, 255, 255));
+
+        FloatingActionButton floatingActionButton_search = findViewById(R.id.fab_search);
+        floatingActionButton_search.setColorFilter(Color.argb(255, 255, 255, 255));
 //        TabLayout tabLayout =   findViewById(R.id.tab_layout);
 //        TabLayout.Tab tab = tabLayout.getTabAt(6);
 //        tab.select();

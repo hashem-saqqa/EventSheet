@@ -44,9 +44,9 @@
 
             <ImageView
                 android:id="@+id/image2"
-                android:onClick="BACK"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="BACK"
                 android:src="@drawable/group_1744"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

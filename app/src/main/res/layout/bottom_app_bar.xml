@@ -96,7 +96,7 @@
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="#CD4A58"
+        app:backgroundTint="#CD4A58"
         android:src="@drawable/union_5"
         app:layout_anchor="@id/Bottom_app_bar" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

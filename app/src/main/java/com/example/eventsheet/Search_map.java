@@ -29,6 +29,7 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,6 +63,12 @@ public class Search_map extends AppCompatActivity implements OnMapReadyCallback,
         icon3 = findViewById(R.id.icon3);
         setTextViewDrawableColor(icon3,R.color.color_icon);
         icon3.setTextColor(Color.parseColor("#CD4A58"));
+
+        FloatingActionButton floatingActionButton = findViewById(R.id.fab);
+        floatingActionButton.setColorFilter(Color.argb(255, 255, 255, 255));
+
+        FloatingActionButton floatingActionButton_search_map = findViewById(R.id.fab_search_map);
+        floatingActionButton_search_map.setColorFilter(Color.argb(255, 255, 255, 255));
 
     }
 
