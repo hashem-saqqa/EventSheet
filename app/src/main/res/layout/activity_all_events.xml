@@ -36,7 +36,21 @@
             app:mt_placeholderColor="#ffffff"
             app:mt_roundedSearchBarEnabled="true"
             app:mt_searchBarColor="#4FFFFFFF"
-            app:mt_searchIconTint="#ffffff" />
+            app:mt_searchIconTint="#ffffff"
+            />
+<!--        <ImageView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:src="@drawable/icon_settings"-->
+<!--            app:layout_constraintStart_toStartOf="@id/searchBar"-->
+<!--            app:layout_constraintEnd_toEndOf="@id/searchBar"-->
+<!--            app:layout_constraintTop_toTopOf="@id/searchBar"-->
+<!--            app:layout_constraintBottom_toBottomOf="@id/searchBar"-->
+<!--            app:layout_constraintHorizontal_bias="0"-->
+<!--            android:layout_marginLeft="20dp"-->
+<!--            app:layout_constraintVertical_bias="0.45"-->
+<!--            android:onClick="GoTo_search_filter"-->
+<!--            />-->
     </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ScrollView

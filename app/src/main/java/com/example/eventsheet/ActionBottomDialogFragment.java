@@ -40,8 +40,5 @@ public class ActionBottomDialogFragment extends BottomSheetDialogFragment {
         super.setupDialog(dialog, style);
         View view = View.inflate(getContext(), R.layout.bottom_sheet, null);
         dialog.setContentView(view);
-
-
-
     }
 }
