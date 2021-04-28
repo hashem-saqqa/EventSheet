@@ -165,4 +165,8 @@ public class Home extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(),Profile.class);
         startActivityForResult(intent,0);
     }
+    public void GoToHome_icon(View view) {
+        Intent intent = new Intent(getApplicationContext(),Home.class);
+        startActivityForResult(intent,0);
+    }
 }

@@ -3,6 +3,7 @@ package com.example.eventsheet;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
@@ -78,5 +79,21 @@ public class My_Events extends AppCompatActivity {
         Shared_fragment shared_fragment = new Shared_fragment();
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.Created_Joined_fragments, shared_fragment).commit();
+    }
+    public void GoTo_my_events(View view) {
+        Intent intent = new Intent(getApplicationContext(), My_Events.class);
+        startActivityForResult(intent, 0);
+    }
+    public void GoToSearch_icon(View view) {
+        Intent intent = new Intent(getApplicationContext(), Search.class);
+        startActivityForResult(intent, 0);
+    }
+    public void GoToHome_icon(View view) {
+        Intent intent = new Intent(getApplicationContext(),Home.class);
+        startActivityForResult(intent,0);
+    }
+    public void GoTo_Profile(View view) {
+        Intent intent = new Intent(getApplicationContext(),Profile.class);
+        startActivityForResult(intent,0);
     }
 }

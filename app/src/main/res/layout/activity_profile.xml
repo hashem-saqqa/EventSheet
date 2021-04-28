@@ -122,6 +122,7 @@
                 />
 
             <ImageView
+                android:id="@+id/arrow1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/arrow"
@@ -137,16 +138,17 @@
 
             <View
                 android:id="@+id/space_line1"
-                android:layout_width="256dp"
+                android:layout_width="0dp"
                 android:layout_height="0.5dp"
                 android:background="#727C8E"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/personal_data_text"
                 app:layout_constraintHorizontal_bias="1"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@id/arrow1"
                 app:layout_constraintTop_toBottomOf="@id/personal_data_text"
                 app:layout_constraintVertical_bias="0"
-                android:layout_marginTop="20dp" />
+                android:layout_marginTop="20dp"
+                />
             <!--        ***************************************************************-->
             <ImageView
                 android:id="@+id/message_image"
@@ -177,6 +179,7 @@
                 android:layout_marginTop="20dp" />
 
             <ImageView
+                android:id="@+id/arrow2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/arrow"
@@ -190,13 +193,13 @@
 
             <View
                 android:id="@+id/space_line2"
-                android:layout_width="256dp"
+                android:layout_width="0dp"
                 android:layout_height="0.5dp"
                 android:background="#727C8E"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/message_text"
                 app:layout_constraintHorizontal_bias="1"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@id/arrow2"
                 app:layout_constraintTop_toBottomOf="@id/message_text"
                 app:layout_constraintVertical_bias="0"
                 android:layout_marginTop="20dp" />
@@ -231,6 +234,7 @@
                 android:layout_marginTop="20dp" />
 
             <ImageView
+                android:id="@+id/arrow3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/arrow"
@@ -244,13 +248,13 @@
 
             <View
                 android:id="@+id/space_line3"
-                android:layout_width="256dp"
+                android:layout_width="0dp"
                 android:layout_height="0.5dp"
                 android:background="#727C8E"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/personal_data_text"
                 app:layout_constraintHorizontal_bias="1"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@id/arrow3"
                 app:layout_constraintTop_toBottomOf="@id/favorite_text"
                 app:layout_constraintVertical_bias="0"
                 android:layout_marginTop="20dp" />
@@ -286,6 +290,7 @@
                 />
 
             <ImageView
+                android:id="@+id/arrow4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/arrow"
@@ -301,13 +306,13 @@
 
             <View
                 android:id="@+id/space_line4"
-                android:layout_width="256dp"
+                android:layout_width="0dp"
                 android:layout_height="0.5dp"
                 android:background="#727C8E"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/personal_data_text"
                 app:layout_constraintHorizontal_bias="1"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@id/arrow4"
                 app:layout_constraintTop_toBottomOf="@id/aboutus_text"
                 app:layout_constraintVertical_bias="0"
                 android:layout_marginTop="20dp" />
@@ -343,6 +348,7 @@
                 />
 
             <ImageView
+                android:id="@+id/arrow5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/arrow"
@@ -404,6 +410,7 @@
                 />
 
             <ImageView
+                android:id="@+id/arrow6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/arrow"
@@ -419,13 +426,13 @@
 
             <View
                 android:id="@+id/space_line5"
-                android:layout_width="256dp"
+                android:layout_width="0dp"
                 android:layout_height="0.5dp"
                 android:background="#727C8E"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/personal_data_text"
                 app:layout_constraintHorizontal_bias="1"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@id/arrow6"
                 app:layout_constraintTop_toBottomOf="@id/privacy_text"
                 app:layout_constraintVertical_bias="0"
                 android:layout_marginTop="20dp" />
@@ -462,6 +469,7 @@
                 />
 
             <ImageView
+                android:id="@+id/arrow7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/arrow"
@@ -477,13 +485,13 @@
 
             <View
                 android:id="@+id/space_line6"
-                android:layout_width="256dp"
+                android:layout_width="0dp"
                 android:layout_height="0.5dp"
                 android:background="#727C8E"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/personal_data_text"
                 app:layout_constraintHorizontal_bias="1"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@id/arrow7"
                 app:layout_constraintTop_toBottomOf="@id/support_text"
                 app:layout_constraintVertical_bias="0"
                 android:layout_marginTop="20dp" />
@@ -519,6 +527,7 @@
                 />
 
             <ImageView
+                android:id="@+id/arrow8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/arrow"
@@ -534,13 +543,13 @@
 
             <View
                 android:id="@+id/space_line7"
-                android:layout_width="256dp"
+                android:layout_width="0dp"
                 android:layout_height="0.5dp"
                 android:background="#727C8E"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/personal_data_text"
                 app:layout_constraintHorizontal_bias="1"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@id/arrow8"
                 app:layout_constraintTop_toBottomOf="@id/setting_text"
                 app:layout_constraintVertical_bias="0"
                 android:layout_marginTop="20dp" />
@@ -578,6 +587,7 @@
                 />
 
             <ImageView
+                android:id="@+id/arrow9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/arrow"
