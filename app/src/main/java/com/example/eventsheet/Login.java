@@ -45,8 +45,6 @@ public class Login extends AppCompatActivity {
         login_button = findViewById(R.id.loginButton);
         show_pass_btn = findViewById(R.id.show_pass_btn);
 
-        loginpassword = password.getText().toString().trim();
-        loginphone = phone_number.getText().toString().trim();
 
         Auth = FirebaseAuth.getInstance();
     }
@@ -78,18 +76,19 @@ public class Login extends AppCompatActivity {
     }
 
     public void GoToHome(View view) {
+        loginpassword = password.getText().toString().trim();
+        loginphone = phone_number.getText().toString().trim();
 
+        Query query = databaseReference.child("users").orderByChild("phone_number").equalTo(loginphone);
 
-        Query query = databaseReference.child("users").orderByChild("phone_number").equalTo("0592989725");
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                loginemail = snapshot.child("email").getValue(String.class);
-                System.out.println(snapshot);
-//                Toast.makeText(Login.this, "hi hi hi", Toast.LENGTH_SHORT).show();
-//                    Toast.makeText(Login.this, loginemail, Toast.LENGTH_SHORT).show();
-//                    Log.d("TAG", loginemail);
-//                Auth.signInWithEmailAndPassword(loginemail, loginpassword);
+
+                DataSnapshot data = snapshot.getChildren().iterator().next();
+                loginemail = data.child("email").getValue(String.class);
+
+                Auth.signInWithEmailAndPassword(loginemail, loginpassword);
             }
 
             @Override
@@ -97,6 +96,7 @@ public class Login extends AppCompatActivity {
 
             }
         });
+//        Auth.signInWithEmailAndPassword()
 
 //        Intent intent = new Intent(getApplicationContext(), Home.class);
 //        startActivityForResult(intent, 0);
