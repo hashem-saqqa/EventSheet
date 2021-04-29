@@ -584,6 +584,7 @@
                 app:layout_constraintVertical_bias="0.1"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="150dp"
+                android:onClick="SignOut"
                 />
 
             <ImageView
@@ -599,6 +600,7 @@
                 app:layout_constraintVertical_bias="0.1"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="150dp"
+                android:onClick="SignOut"
                 />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

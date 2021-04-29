@@ -12,12 +12,15 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.hbb20.CountryCodePicker;
 
 public class create_new_account extends AppCompatActivity {
     private CountryCodePicker ccp;
     private EditText password;
     ImageView show_pass_btn;
+    private FirebaseAuth firebaseAuth;
+
 
 
     @Override
@@ -47,11 +50,7 @@ public class create_new_account extends AppCompatActivity {
 
             }
         }
-//        if (password.getInputType() == InputType.TYPE_MASK_CLASS){
-//            password.setInputType(129);
-//        }else {
-//            password.setInputType(InputType.TYPE_MASK_CLASS);
-//        }
+
     }
 
 
@@ -60,5 +59,16 @@ public class create_new_account extends AppCompatActivity {
         startActivityForResult(intent,0);
 
     }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (FirebaseAuth.getInstance().getCurrentUser() != null){
+            Intent intent = new Intent(getApplicationContext(),Home.class);
+            startActivityForResult(intent,0);
+        }
+    }
 
+    public void CreateUser(View view) {
+
+    }
 }

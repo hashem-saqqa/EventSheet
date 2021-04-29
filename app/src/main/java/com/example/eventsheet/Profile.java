@@ -13,10 +13,16 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class Profile extends AppCompatActivity {
+
+    private FirebaseUser firebaseUser;
+    private FirebaseAuth firebaseAuth;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -35,6 +41,9 @@ public class Profile extends AppCompatActivity {
         FloatingActionButton floatingActionButton = findViewById(R.id.fab);
         floatingActionButton.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#A3CB38")));
         floatingActionButton.setColorFilter(Color.argb(255, 255, 255, 255));
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -75,20 +84,31 @@ public class Profile extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), Support.class);
         startActivityForResult(intent, 0);
     }
+
     public void GoTo_my_events(View view) {
         Intent intent = new Intent(getApplicationContext(), My_Events.class);
         startActivityForResult(intent, 0);
     }
+
     public void GoToSearch_icon(View view) {
         Intent intent = new Intent(getApplicationContext(), Search.class);
         startActivityForResult(intent, 0);
     }
+
     public void GoToHome_icon(View view) {
-        Intent intent = new Intent(getApplicationContext(),Home.class);
-        startActivityForResult(intent,0);
+        Intent intent = new Intent(getApplicationContext(), Home.class);
+        startActivityForResult(intent, 0);
     }
+
     public void GoTo_Profile(View view) {
-        Intent intent = new Intent(getApplicationContext(),Profile.class);
+        Intent intent = new Intent(getApplicationContext(), Profile.class);
+        startActivityForResult(intent, 0);
+    }
+
+    public void SignOut(View view) {
+        Intent intent = new Intent(getApplicationContext(), Login.class);
         startActivityForResult(intent,0);
+        firebaseAuth.signOut();
+        Toast.makeText(this, "Logout Successful", Toast.LENGTH_SHORT).show();
     }
 }

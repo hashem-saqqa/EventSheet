@@ -14,6 +14,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -78,7 +81,8 @@ public class Login extends AppCompatActivity {
     public void GoToHome(View view) {
         loginpassword = password.getText().toString().trim();
         loginphone = phone_number.getText().toString().trim();
-
+        String CountryCode = countryCodePicker.getSelectedCountryCode().toString().trim();
+        System.out.println(CountryCode);
         Query query = databaseReference.child("users").orderByChild("phone_number").equalTo(loginphone);
 
         query.addValueEventListener(new ValueEventListener() {
@@ -88,7 +92,17 @@ public class Login extends AppCompatActivity {
                 DataSnapshot data = snapshot.getChildren().iterator().next();
                 loginemail = data.child("email").getValue(String.class);
 
-                Auth.signInWithEmailAndPassword(loginemail, loginpassword);
+                Auth.signInWithEmailAndPassword(loginemail, loginpassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            Intent intent = new Intent(getApplicationContext(), Home.class);
+                            startActivityForResult(intent, 0);
+                        } else {
+                            Toast.makeText(Login.this, "login failed", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
             }
 
             @Override
@@ -96,9 +110,5 @@ public class Login extends AppCompatActivity {
 
             }
         });
-//        Auth.signInWithEmailAndPassword()
-
-//        Intent intent = new Intent(getApplicationContext(), Home.class);
-//        startActivityForResult(intent, 0);
     }
 }
