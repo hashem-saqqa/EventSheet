@@ -36,7 +36,7 @@ public class Login extends AppCompatActivity {
     FirebaseAuth Auth;
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 
-    String loginemail, loginphone, loginpassword;
+    String loginemail, loginphone, loginpassword, phoneNumber, CountryCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,34 +81,52 @@ public class Login extends AppCompatActivity {
     public void GoToHome(View view) {
         loginpassword = password.getText().toString().trim();
         loginphone = phone_number.getText().toString().trim();
-        String CountryCode = countryCodePicker.getSelectedCountryCode().toString().trim();
+        CountryCode = countryCodePicker.getSelectedCountryCode();
+        phoneNumber = "+" + CountryCode + loginphone;
+
+        System.out.println("phone" + loginphone);
+        System.out.println("password" + loginpassword);
+        System.out.println("phoneNumber" + phoneNumber);
         System.out.println(CountryCode);
-        Query query = databaseReference.child("users").orderByChild("phone_number").equalTo(loginphone);
 
-        query.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                DataSnapshot data = snapshot.getChildren().iterator().next();
-                loginemail = data.child("email").getValue(String.class);
+        if (!loginphone.equals("") & !loginpassword.equals("")) {
 
-                Auth.signInWithEmailAndPassword(loginemail, loginpassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            Query query = databaseReference.child("users").orderByChild("phone_number").equalTo(phoneNumber);
+
+                query.addValueEventListener(new ValueEventListener() {
                     @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            Intent intent = new Intent(getApplicationContext(), Home.class);
-                            startActivityForResult(intent, 0);
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        System.out.println(snapshot);
+                        if (snapshot.getValue() == null) {
+                            System.out.println("nullllllll ya ro7 omak");
+                            Toast.makeText(Login.this, "enter valid number please", Toast.LENGTH_SHORT).show();
                         } else {
-                            Toast.makeText(Login.this, "login failed", Toast.LENGTH_SHORT).show();
+                            DataSnapshot data = snapshot.getChildren().iterator().next();
+                            loginemail = data.child("email").getValue(String.class);
+
+                            Auth.signInWithEmailAndPassword(loginemail, loginpassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful()) {
+                                        Intent intent = new Intent(getApplicationContext(), Home.class);
+                                        startActivityForResult(intent, 0);
+                                    } else {
+                                        Toast.makeText(Login.this, "login failed", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
                         }
                     }
+
+                        @Override
+                        public void onCancelled (@NonNull DatabaseError error){
+
+                        }
+
                 });
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
+        } else {
+            Toast.makeText(this, "Enter phone number and password ", Toast.LENGTH_SHORT).show();
+        }
     }
 }
