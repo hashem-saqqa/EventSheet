@@ -5,8 +5,11 @@ public class User {
     private String email;
     private String phone;
     private String country;
+    private String photo;
 
-    public User(String name, String email, String phone, String country) {
+
+    public User(String name, String email, String phone, String country, String photo) {
+        this.photo = photo;
         this.name = name;
         this.email = email;
         this.phone = phone;
@@ -43,6 +46,14 @@ public class User {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
 

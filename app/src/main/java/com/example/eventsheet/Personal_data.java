@@ -4,27 +4,21 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
-import android.content.ContentResolver;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.webkit.MimeTypeMap;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.dhaval2404.imagepicker.ImagePicker;
-import com.google.android.gms.auth.api.signin.internal.Storage;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -34,21 +28,25 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
-import com.squareup.picasso.Picasso;
+import com.hbb20.CountryCodePicker;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class Personal_data extends AppCompatActivity {
 
     ImageView profileImage;
+    CountryCodePicker countryCodePicker;
+    EditText usernametext, emailtext, phonenumbertext, countrytext;
+    String username, email, phonenumber, country, phone, countryCode;
     private Uri mImageUri;
 
-    private StorageReference storageReference;
-    private DatabaseReference databaseReference;
-    private StorageReference photoReference;
+    private StorageReference storageReference, photoReference;
+    private DatabaseReference databaseReference, photoPath;
 
-    private String userId, profilePhoto, photoId, photo;
+    private String userId, profilePhoto, photoId, photo, imageurl;
     Task task;
     StorageTask uploadTask;
 
@@ -59,12 +57,21 @@ public class Personal_data extends AppCompatActivity {
         setContentView(R.layout.activity_personal_data);
 
         profileImage = findViewById(R.id.profile_image);
+        usernametext = findViewById(R.id.username_edit);
+        emailtext = findViewById(R.id.email_edit);
+        phonenumbertext = findViewById(R.id.Phone);
+        countrytext = findViewById(R.id.country_edit);
+        countryCodePicker = findViewById(R.id.Picker);
 
         TextView appbar_title = findViewById(R.id.appbar_title);
         appbar_title.setText("تعديل بياناتي");
+
         userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         storageReference = FirebaseStorage.getInstance().getReference("uploads");
-        databaseReference = FirebaseDatabase.getInstance().getReference("users").child(userId).child("photo");
+        databaseReference = FirebaseDatabase.getInstance().getReference("users").child(userId);
+        photoPath = FirebaseDatabase.getInstance().getReference("users").child(userId).child("photo");
+
+        showImage();
     }
 
     public void chooseImage(View view) {
@@ -82,10 +89,19 @@ public class Personal_data extends AppCompatActivity {
             profilePhoto = ImagePicker.Companion.getFilePath(data);
             profileImage.setImageBitmap(BitmapFactory.decodeFile(profilePhoto));
 //            profilePhoto = "file://"+profilePhoto;
-            databaseReference.addValueEventListener(new ValueEventListener() {
+
+            photoPath.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
 
+                    if (snapshot.getValue().equals("")) {
+                        Log.d("upper if", "null case");
+                    } else {
+                        Log.d("upper if", "not null case");
+                        imageurl = snapshot.getChildren().iterator().next().getValue(String.class);
+                        deletePhoto(imageurl);
+                    }
+                    uploadPhoto();
                 }
 
                 @Override
@@ -93,9 +109,6 @@ public class Personal_data extends AppCompatActivity {
 
                 }
             });
-
-            uploadPhoto();
-
 
         }
 
@@ -112,7 +125,6 @@ public class Personal_data extends AppCompatActivity {
 
     private void uploadPhoto() {
         if (profilePhoto != null) {
-            photoReference = storageReference.child(System.currentTimeMillis() + "." + getFileExtension(profilePhoto));
             Log.d("profilePhoto:", profilePhoto);
             Uri file = Uri.fromFile(new File(profilePhoto));
             uploadTask = photoReference.putFile(file).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -124,8 +136,8 @@ public class Personal_data extends AppCompatActivity {
                         @Override
                         public void onSuccess(Uri uri) {
                             photo = uri.toString();
-                            photoId = databaseReference.push().getKey();
-                            databaseReference.child(photoId).setValue(photo);
+                            photoId = photoPath.push().getKey();
+                            photoPath.child(photoId).setValue(photo);
 
                             System.out.println(photo);
                         }
@@ -138,4 +150,53 @@ public class Personal_data extends AppCompatActivity {
         }
     }
 
+    private void deletePhoto(String deletedImageUrl) {
+
+        photoReference = FirebaseStorage.getInstance().getReferenceFromUrl(deletedImageUrl);
+
+        Log.d("photoReference on del", photoReference.getPath());
+
+        photoReference.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                photoPath.removeValue();
+            }
+        });
+    }
+
+    private void showImage() {
+        photoPath.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (!snapshot.getValue().equals("")) {
+                    imageurl = snapshot.getChildren().iterator().next().getValue(String.class);
+                    profileImage.setImageBitmap(BitmapFactory.decodeFile(imageurl));
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    public void updateProfile(View view) {
+        username = usernametext.getText().toString().trim();
+        email = emailtext.getText().toString().trim();
+        phonenumber = phonenumbertext.getText().toString().trim();
+        country = countrytext.getText().toString().trim();
+        countryCode = countryCodePicker.getSelectedCountryCode();
+        phone = "+" + countryCode + phonenumber;
+
+        Map<String, Object> dataUpdated = new HashMap<>();
+        dataUpdated.put("name", username);
+        dataUpdated.put("email", email);
+        dataUpdated.put("country", country);
+        dataUpdated.put("phone_number", phone);
+
+        databaseReference.updateChildren(dataUpdated);
+
+
+    }
 }
