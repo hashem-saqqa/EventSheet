@@ -154,6 +154,7 @@ public class Profile extends AppCompatActivity {
 //                User user = snapshot.getValue(User.class);
 //                name.setText(user.getName());
 //                country.setText(user.getCountry());
+
             }
 
             @Override
