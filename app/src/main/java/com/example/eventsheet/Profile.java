@@ -13,6 +13,7 @@ import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -141,12 +142,18 @@ public class Profile extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 DataSnapshot photoPath = snapshot.child("photo");
                 if (!photoPath.getValue().equals("")) {
+                    Log.d("photoStatus","there is a photo");
                     imageurl = photoPath.getChildren().iterator().next().getValue(String.class);
                     profileImage.setImageBitmap(BitmapFactory.decodeFile(imageurl));
+                }else{
+                    Log.d("photoStatus","there is no photo for this user");
                 }
-                User user = snapshot.getValue(User.class);
-                name.setText(user.getName());
-                country.setText(user.getCountry());
+                Log.d("snapshotForUser",snapshot.toString());
+                name.setText(snapshot.child("name").getValue(String.class));
+                country.setText(snapshot.child("country").getValue(String.class));
+//                User user = snapshot.getValue(User.class);
+//                name.setText(user.getName());
+//                country.setText(user.getCountry());
             }
 
             @Override
