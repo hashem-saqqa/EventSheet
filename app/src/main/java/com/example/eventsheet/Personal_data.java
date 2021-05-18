@@ -29,6 +29,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 import com.hbb20.CountryCodePicker;
+import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.util.HashMap;
@@ -49,6 +50,7 @@ public class Personal_data extends AppCompatActivity {
     private String userId, profilePhoto, photoId, photo, imageurl;
     Task task;
     StorageTask uploadTask;
+
 
 
     @Override
@@ -87,8 +89,9 @@ public class Personal_data extends AppCompatActivity {
         if (resultCode == RESULT_OK & data != null) {
 
             profilePhoto = ImagePicker.Companion.getFilePath(data);
-            profileImage.setImageBitmap(BitmapFactory.decodeFile(profilePhoto));
+//            profileImage.setImageBitmap(BitmapFactory.decodeFile(profilePhoto));
 //            profilePhoto = "file://"+profilePhoto;
+            Picasso.get().load(profilePhoto).into(profileImage);
 
             photoPath.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
@@ -170,7 +173,9 @@ public class Personal_data extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (!snapshot.getValue().equals("")) {
                     imageurl = snapshot.getChildren().iterator().next().getValue(String.class);
-                    profileImage.setImageBitmap(BitmapFactory.decodeFile(imageurl));
+//                    profileImage.setImageBitmap(BitmapFactory.decodeFile(imageurl));
+                    Picasso.get().load(imageurl).into(profileImage);
+
                 }
             }
 

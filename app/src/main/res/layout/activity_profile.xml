@@ -20,16 +20,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/appbar"
         app:layout_constraintVertical_bias="0" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/appbar"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginHorizontal="15dp"
         android:background="#ffffff"
-        >
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appbar">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/profile_constraint"
             android:layout_width="match_parent"
@@ -37,8 +38,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/appbar"
-            >
+            app:layout_constraintTop_toBottomOf="@id/appbar">
 
             <ImageView
                 android:id="@+id/edit_icon"
@@ -53,10 +53,10 @@
                 app:layout_constraintVertical_bias="0.03"
                 app:tint="#000000" />
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profile_image"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="109dp"
+                android:layout_height="109dp"
                 android:src="@drawable/illustrations___make_ad"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -94,20 +94,21 @@
                 android:id="@+id/personal_data_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:src="@drawable/edit_2"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.9"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/location_text"
-                app:layout_constraintVertical_bias="0"
-                android:layout_marginTop="20dp"
-                />
+                app:layout_constraintVertical_bias="0" />
 
             <TextView
                 android:id="@+id/personal_data_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:onClick="GoTo_personal_data"
                 android:text="البيانات الشخصية"
                 android:textColor="#000000"
                 android:textSize="18dp"
@@ -116,57 +117,53 @@
                 app:layout_constraintHorizontal_bias="0.9"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/location_text"
-                app:layout_constraintVertical_bias="0"
-                android:layout_marginTop="20dp"
-                android:onClick="GoTo_personal_data"
-                />
+                app:layout_constraintVertical_bias="0" />
 
             <ImageView
                 android:id="@+id/arrow1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:onClick="GoTo_personal_data"
                 android:src="@drawable/arrow"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/location_text"
-                app:layout_constraintVertical_bias="0"
-                android:layout_marginTop="20dp"
-                android:onClick="GoTo_personal_data"
-                />
+                app:layout_constraintVertical_bias="0" />
 
             <View
                 android:id="@+id/space_line1"
                 android:layout_width="0dp"
                 android:layout_height="0.5dp"
+                android:layout_marginTop="20dp"
                 android:background="#727C8E"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/personal_data_text"
                 app:layout_constraintHorizontal_bias="1"
                 app:layout_constraintStart_toStartOf="@id/arrow1"
                 app:layout_constraintTop_toBottomOf="@id/personal_data_text"
-                app:layout_constraintVertical_bias="0"
-                android:layout_marginTop="20dp"
-                />
+                app:layout_constraintVertical_bias="0" />
             <!--        ***************************************************************-->
             <ImageView
                 android:id="@+id/message_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:src="@drawable/message_circle"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.9"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/space_line1"
-                app:layout_constraintVertical_bias="0"
-                android:layout_marginTop="20dp" />
+                app:layout_constraintVertical_bias="0" />
 
             <TextView
                 android:id="@+id/message_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:text="الرسائل"
                 android:textColor="#000000"
                 android:textSize="18dp"
@@ -175,39 +172,39 @@
                 app:layout_constraintHorizontal_bias="1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/space_line1"
-                app:layout_constraintVertical_bias="0"
-                android:layout_marginTop="20dp" />
+                app:layout_constraintVertical_bias="0" />
 
             <ImageView
                 android:id="@+id/arrow2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:src="@drawable/arrow"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/space_line1"
-                app:layout_constraintVertical_bias="0"
-                android:layout_marginTop="20dp" />
+                app:layout_constraintVertical_bias="0" />
 
             <View
                 android:id="@+id/space_line2"
                 android:layout_width="0dp"
                 android:layout_height="0.5dp"
+                android:layout_marginTop="20dp"
                 android:background="#727C8E"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/message_text"
                 app:layout_constraintHorizontal_bias="1"
                 app:layout_constraintStart_toStartOf="@id/arrow2"
                 app:layout_constraintTop_toBottomOf="@id/message_text"
-                app:layout_constraintVertical_bias="0"
-                android:layout_marginTop="20dp" />
+                app:layout_constraintVertical_bias="0" />
             <!--        ***************************************************************-->
             <ImageView
                 android:id="@+id/favorite_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:src="@drawable/heart"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -215,13 +212,13 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/space_line2"
                 app:layout_constraintVertical_bias="0"
-                android:layout_marginTop="20dp"
                 app:tint="#A3CB38" />
 
             <TextView
                 android:id="@+id/favorite_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:text="المفضلة"
                 android:textColor="#000000"
                 android:textSize="18dp"
@@ -230,52 +227,53 @@
                 app:layout_constraintHorizontal_bias="1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/space_line2"
-                app:layout_constraintVertical_bias="0"
-                android:layout_marginTop="20dp" />
+                app:layout_constraintVertical_bias="0" />
 
             <ImageView
                 android:id="@+id/arrow3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:src="@drawable/arrow"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/space_line2"
-                app:layout_constraintVertical_bias="0"
-                android:layout_marginTop="20dp" />
+                app:layout_constraintVertical_bias="0" />
 
             <View
                 android:id="@+id/space_line3"
                 android:layout_width="0dp"
                 android:layout_height="0.5dp"
+                android:layout_marginTop="20dp"
                 android:background="#727C8E"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/personal_data_text"
                 app:layout_constraintHorizontal_bias="1"
                 app:layout_constraintStart_toStartOf="@id/arrow3"
                 app:layout_constraintTop_toBottomOf="@id/favorite_text"
-                app:layout_constraintVertical_bias="0"
-                android:layout_marginTop="20dp" />
+                app:layout_constraintVertical_bias="0" />
             <!--        ***************************************************************-->
             <ImageView
                 android:id="@+id/aboutus_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:src="@drawable/award"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.9"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/space_line3"
-                app:layout_constraintVertical_bias="0"
-                android:layout_marginTop="20dp" />
+                app:layout_constraintVertical_bias="0" />
 
             <TextView
                 android:id="@+id/aboutus_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:onClick="GoTo_aboutus"
                 android:text="من نحن"
                 android:textColor="#000000"
                 android:textSize="18dp"
@@ -284,56 +282,54 @@
                 app:layout_constraintHorizontal_bias="1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/space_line3"
-                app:layout_constraintVertical_bias="0"
-                android:layout_marginTop="20dp"
-                android:onClick="GoTo_aboutus"
-                />
+                app:layout_constraintVertical_bias="0" />
 
             <ImageView
                 android:id="@+id/arrow4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:onClick="GoTo_aboutus"
                 android:src="@drawable/arrow"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/space_line3"
-                app:layout_constraintVertical_bias="0"
-                android:layout_marginTop="20dp"
-                android:onClick="GoTo_aboutus"
-                />
+                app:layout_constraintVertical_bias="0" />
 
             <View
                 android:id="@+id/space_line4"
                 android:layout_width="0dp"
                 android:layout_height="0.5dp"
+                android:layout_marginTop="20dp"
                 android:background="#727C8E"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/personal_data_text"
                 app:layout_constraintHorizontal_bias="1"
                 app:layout_constraintStart_toStartOf="@id/arrow4"
                 app:layout_constraintTop_toBottomOf="@id/aboutus_text"
-                app:layout_constraintVertical_bias="0"
-                android:layout_marginTop="20dp" />
+                app:layout_constraintVertical_bias="0" />
             <!--        ***************************************************************-->
             <ImageView
                 android:id="@+id/change_password_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:src="@drawable/login__3_"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.9"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/space_line4"
-                app:layout_constraintVertical_bias="0"
-                android:layout_marginTop="20dp" />
+                app:layout_constraintVertical_bias="0" />
 
             <TextView
                 android:id="@+id/change_password_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:onClick="GoTo_change_password"
                 android:text="تغيير كلمة المرور"
                 android:textColor="#000000"
                 android:textSize="18dp"
@@ -342,60 +338,57 @@
                 app:layout_constraintHorizontal_bias="1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/space_line4"
-                app:layout_constraintVertical_bias="0"
-                android:layout_marginTop="20dp"
-                android:onClick="GoTo_change_password"
-                />
+                app:layout_constraintVertical_bias="0" />
 
             <ImageView
                 android:id="@+id/arrow5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:onClick="GoTo_change_password"
                 android:src="@drawable/arrow"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/space_line4"
-                app:layout_constraintVertical_bias="0"
-                android:layout_marginTop="20dp"
-                android:onClick="GoTo_change_password"
-                />
+                app:layout_constraintVertical_bias="0" />
 
             <TextView
                 android:id="@+id/settings_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:text="الإعدادات"
                 android:textColor="#B4B4B4"
                 android:textSize="18dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/change_password_text"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintVertical_bias="0"
-                android:layout_marginTop="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.9"
-                />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/change_password_text"
+                app:layout_constraintVertical_bias="0" />
 
             <!--        ***************************************************************-->
             <ImageView
                 android:id="@+id/privacy_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:src="@drawable/_06_shield"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.9"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/settings_text"
-                app:layout_constraintVertical_bias="0"
-                android:layout_marginTop="20dp" />
+                app:layout_constraintVertical_bias="0" />
 
             <TextView
                 android:id="@+id/privacy_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:onClick="GoTo_privacy"
                 android:text="سياسة الخصوصية"
                 android:textColor="#000000"
                 android:textSize="18dp"
@@ -404,57 +397,54 @@
                 app:layout_constraintHorizontal_bias="1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/settings_text"
-                app:layout_constraintVertical_bias="0"
-                android:layout_marginTop="20dp"
-                android:onClick="GoTo_privacy"
-                />
+                app:layout_constraintVertical_bias="0" />
 
             <ImageView
                 android:id="@+id/arrow6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:onClick="GoTo_privacy"
                 android:src="@drawable/arrow"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/settings_text"
-                app:layout_constraintVertical_bias="0"
-                android:layout_marginTop="20dp"
-                android:onClick="GoTo_privacy"
-                />
+                app:layout_constraintVertical_bias="0" />
 
             <View
                 android:id="@+id/space_line5"
                 android:layout_width="0dp"
                 android:layout_height="0.5dp"
+                android:layout_marginTop="20dp"
                 android:background="#727C8E"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/personal_data_text"
                 app:layout_constraintHorizontal_bias="1"
                 app:layout_constraintStart_toStartOf="@id/arrow6"
                 app:layout_constraintTop_toBottomOf="@id/privacy_text"
-                app:layout_constraintVertical_bias="0"
-                android:layout_marginTop="20dp" />
+                app:layout_constraintVertical_bias="0" />
             <!--        ***************************************************************-->
             <ImageView
                 android:id="@+id/support_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:src="@drawable/support"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.9"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/space_line5"
-                app:layout_constraintVertical_bias="0"
-                android:layout_marginTop="20dp"
-                />
+                app:layout_constraintVertical_bias="0" />
 
             <TextView
                 android:id="@+id/support_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:onClick="GoTo_support"
                 android:text="مركز الخدمة"
                 android:textColor="#000000"
                 android:textSize="18dp"
@@ -463,56 +453,54 @@
                 app:layout_constraintHorizontal_bias="1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/space_line5"
-                app:layout_constraintVertical_bias="0"
-                android:layout_marginTop="20dp"
-                android:onClick="GoTo_support"
-                />
+                app:layout_constraintVertical_bias="0" />
 
             <ImageView
                 android:id="@+id/arrow7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:onClick="GoTo_support"
                 android:src="@drawable/arrow"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/space_line5"
-                app:layout_constraintVertical_bias="0"
-                android:layout_marginTop="20dp"
-                android:onClick="GoTo_support"
-                />
+                app:layout_constraintVertical_bias="0" />
 
             <View
                 android:id="@+id/space_line6"
                 android:layout_width="0dp"
                 android:layout_height="0.5dp"
+                android:layout_marginTop="20dp"
                 android:background="#727C8E"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/personal_data_text"
                 app:layout_constraintHorizontal_bias="1"
                 app:layout_constraintStart_toStartOf="@id/arrow7"
                 app:layout_constraintTop_toBottomOf="@id/support_text"
-                app:layout_constraintVertical_bias="0"
-                android:layout_marginTop="20dp" />
+                app:layout_constraintVertical_bias="0" />
             <!--        ***************************************************************-->
             <ImageView
                 android:id="@+id/setting_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:src="@drawable/settings_2"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.9"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/space_line6"
-                app:layout_constraintVertical_bias="0"
-                android:layout_marginTop="20dp" />
+                app:layout_constraintVertical_bias="0" />
 
             <TextView
                 android:id="@+id/setting_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:onClick="GoTo_settings"
                 android:text="إعدادات التطبيق"
                 android:textColor="#000000"
                 android:textSize="18dp"
@@ -521,58 +509,56 @@
                 app:layout_constraintHorizontal_bias="1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/space_line6"
-                app:layout_constraintVertical_bias="0"
-                android:layout_marginTop="20dp"
-                android:onClick="GoTo_settings"
-                />
+                app:layout_constraintVertical_bias="0" />
 
             <ImageView
                 android:id="@+id/arrow8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:onClick="GoTo_settings"
                 android:src="@drawable/arrow"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/space_line6"
-                app:layout_constraintVertical_bias="0"
-                android:layout_marginTop="20dp"
-                android:onClick="GoTo_settings"
-                />
+                app:layout_constraintVertical_bias="0" />
 
             <View
                 android:id="@+id/space_line7"
                 android:layout_width="0dp"
                 android:layout_height="0.5dp"
+                android:layout_marginTop="20dp"
                 android:background="#727C8E"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/personal_data_text"
                 app:layout_constraintHorizontal_bias="1"
                 app:layout_constraintStart_toStartOf="@id/arrow8"
                 app:layout_constraintTop_toBottomOf="@id/setting_text"
-                app:layout_constraintVertical_bias="0"
-                android:layout_marginTop="20dp" />
+                app:layout_constraintVertical_bias="0" />
             <!--        ***************************************************************-->
             <ImageView
                 android:id="@+id/logout_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="150dp"
                 android:src="@drawable/logout"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.9"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/space_line7"
-                app:layout_constraintVertical_bias="0.1"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="150dp"
-                />
+                app:layout_constraintVertical_bias="0.1" />
 
             <TextView
                 android:id="@+id/logout_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="150dp"
+                android:onClick="SignOut"
                 android:text="تسجيل الخروج"
                 android:textColor="#000000"
                 android:textSize="18dp"
@@ -581,31 +567,25 @@
                 app:layout_constraintHorizontal_bias="1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/space_line7"
-                app:layout_constraintVertical_bias="0.1"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="150dp"
-                android:onClick="SignOut"
-                />
+                app:layout_constraintVertical_bias="0.1" />
 
             <ImageView
                 android:id="@+id/arrow9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="150dp"
+                android:onClick="SignOut"
                 android:src="@drawable/arrow"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/space_line7"
-                app:layout_constraintVertical_bias="0.1"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="150dp"
-                android:onClick="SignOut"
-                />
+                app:layout_constraintVertical_bias="0.1" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
-    <include
-        layout="@layout/bottom_app_bar"
-        />
+
+    <include layout="@layout/bottom_app_bar" />
 </androidx.constraintlayout.widget.ConstraintLayout>

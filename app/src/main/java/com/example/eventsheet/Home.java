@@ -14,11 +14,9 @@ import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -26,7 +24,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class Home extends AppCompatActivity {
@@ -39,10 +40,13 @@ public class Home extends AppCompatActivity {
     Event_adapter event_adapter;
     DatabaseReference databaseReference;
     long eventsNumber;
+    Date date;
+    String currentDate, startDate, endDate, currentDateTest;
+    SimpleDateFormat simpleDateFormat;
 
 
     @RequiresApi(api = Build.VERSION_CODES.M)
-    @SuppressLint("ResourceAsColor")
+    @SuppressLint({"ResourceAsColor", "SimpleDateFormat"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +63,10 @@ public class Home extends AppCompatActivity {
         floatingActionButton.setColorFilter(Color.argb(255, 255, 255, 255));
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
+
+        date = Calendar.getInstance().getTime();
+        simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
+        currentDate = simpleDateFormat.format(date);
 
 
         Create_events_1();
@@ -102,21 +110,44 @@ public class Home extends AppCompatActivity {
 
     public void Create_events_1() {
         mDataset_1 = new ArrayList<>();
-        mDataset_1.add(new Event_model(R.drawable.nopath___copy__79_, "First event", "ksa"
-                , "dont bring animal", "5/ 11/2021"
-                , "6/11/2021", "hasan"));
-        mDataset_1.add(new Event_model(R.drawable.nopath___copy__79_, "second event", "ksa"
-                , "dont bring animal", "5/ 11/2021"
-                , "6/11/2021", "hasan"));
-        mDataset_1.add(new Event_model(R.drawable.nopath___copy__79_, "third event", "ksa"
-                , "dont bring animal", "5/ 11/2021"
-                , "6/11/2021", "hasan"));
+        currentDateTest = "03/05/2020";
 
-        mRecyclerView = findViewById(R.id.recyclerView);
-        mLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        event_adapter = new Event_adapter(mDataset_1);
-        mRecyclerView.setAdapter(event_adapter);
+        databaseReference.child("events").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+
+                    startDate = dataSnapshot.child("eventStartDate").getValue(String.class);
+                    endDate = dataSnapshot.child("eventEndDate").getValue(String.class);
+
+                    if (fromDateToStringToInt(currentDate) - fromDateToStringToInt(startDate) >= 0 &&
+                            fromDateToStringToInt(currentDate) - fromDateToStringToInt(endDate) < 0) {
+
+                        boolean ifResult = fromDateToStringToInt(currentDate) - fromDateToStringToInt(startDate) >= 0 &&
+                                fromDateToStringToInt(currentDate) - fromDateToStringToInt(endDate) < 0;
+
+
+                        mDataset_1.add(new Event_model(R.drawable.nopath___copy__79_,
+                                dataSnapshot.child("eventTitle").getValue(String.class),
+                                dataSnapshot.child("eventLocation").getValue(String.class),
+                                dataSnapshot.child("eventContent").getValue(String.class),
+                                dataSnapshot.child("eventStartDate").getValue(String.class),
+                                dataSnapshot.child("eventEndDate").getValue(String.class),
+                                dataSnapshot.child("eventAuthor").getValue(String.class)));
+                    }
+                }
+                mRecyclerView = findViewById(R.id.recyclerView);
+                mLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
+                mRecyclerView.setLayoutManager(mLayoutManager);
+                event_adapter = new Event_adapter(mDataset_1);
+                mRecyclerView.setAdapter(event_adapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     public void Create_events_2() {
@@ -127,26 +158,19 @@ public class Home extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         mDataset_2 = new ArrayList<>();
                         for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                            Log.d("snapshot:", dataSnapshot.toString());
-                            Log.d("evenTitle:", dataSnapshot.child("eventTitle").getValue(String.class));
-                            Log.d("eventLocation:", dataSnapshot.child("eventLocatoin").getValue(String.class));
-                            Log.d("eventStartDate:", dataSnapshot.child("eventStartDate").getValue(String.class));
-                            Log.d("eventEndDate:", dataSnapshot.child("eventEndDate").getValue(String.class));
-                            eventsNumber = snapshot.getChildrenCount();
+
                             mDataset_2.add(new Event_model(R.drawable.nopath___copy__79_,
                                     dataSnapshot.child("eventTitle").getValue(String.class),
-                                    dataSnapshot.child("eventLocatoin").getValue(String.class),
+                                    dataSnapshot.child("eventLocation").getValue(String.class),
                                     dataSnapshot.child("eventStartDate").getValue(String.class),
                                     dataSnapshot.child("eventEndDate").getValue(String.class)));
                         }
 
-                        Log.d("checkk","he can reach");
                         mRecyclerView = findViewById(R.id.recyclerView_2);
                         mLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
                         mRecyclerView.setLayoutManager(mLayoutManager);
                         Small_event_adapter event_adapter = new Small_event_adapter(mDataset_2);
                         mRecyclerView.setAdapter(event_adapter);
-                        Log.d("endcheckk","check is end");
 
                     }
 
@@ -155,14 +179,6 @@ public class Home extends AppCompatActivity {
 
                     }
                 });
-
-//        mDataset_2.add(new Event_model(R.drawable.nopath___copy__79_, "First event", "ksa"
-//                , "5/ 11/2021", "6/11/2021"));
-//        mDataset_2.add(new Event_model(R.drawable.nopath___copy__79_, "second event", "ksa"
-//                , "5/ 11/2021", "6/11/2021"));
-//        mDataset_2.add(new Event_model(R.drawable.nopath___copy__79_, "third event", "ksa"
-//                , "5/ 11/2021", "6/11/2021"));
-
 
     }
 
@@ -176,7 +192,7 @@ public class Home extends AppCompatActivity {
                             eventsNumber = snapshot.getChildrenCount();
                             mDataset_3.add(new Event_model(R.drawable.nopath___copy__79_,
                                     dataSnapshot.child("eventTitle").getValue(String.class),
-                                    dataSnapshot.child("eventLocatoin").getValue(String.class),
+                                    dataSnapshot.child("eventLocation").getValue(String.class),
                                     dataSnapshot.child("eventStartDate").getValue(String.class),
                                     dataSnapshot.child("eventEndDate").getValue(String.class)));
                         }
@@ -206,7 +222,7 @@ public class Home extends AppCompatActivity {
                             eventsNumber = snapshot.getChildrenCount();
                             mDataset_4.add(new Event_model(R.drawable.nopath___copy__79_,
                                     dataSnapshot.child("eventTitle").getValue(String.class),
-                                    dataSnapshot.child("eventLocatoin").getValue(String.class),
+                                    dataSnapshot.child("eventLocation").getValue(String.class),
                                     dataSnapshot.child("eventStartDate").getValue(String.class),
                                     dataSnapshot.child("eventEndDate").getValue(String.class)));
                         }
@@ -239,5 +255,10 @@ public class Home extends AppCompatActivity {
     public void GoToHome_icon(View view) {
         Intent intent = new Intent(getApplicationContext(), Home.class);
         startActivityForResult(intent, 0);
+    }
+
+    public int fromDateToStringToInt(String theDate) {
+        String formatted = theDate.substring(6) + theDate.substring(3, 5) + theDate.substring(0, 2);
+        return Integer.parseInt(formatted);
     }
 }

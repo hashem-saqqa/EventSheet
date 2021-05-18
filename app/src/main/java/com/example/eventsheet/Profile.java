@@ -29,6 +29,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 public class Profile extends AppCompatActivity {
 
@@ -141,10 +142,14 @@ public class Profile extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 DataSnapshot photoPath = snapshot.child("photo");
+                Log.d("photopath: ",photoPath.toString());
                 if (!photoPath.getValue().equals("")) {
                     Log.d("photoStatus","there is a photo");
                     imageurl = photoPath.getChildren().iterator().next().getValue(String.class);
-                    profileImage.setImageBitmap(BitmapFactory.decodeFile(imageurl));
+                    Log.d("imageurl: ",imageurl);
+//                    profileImage.setImageBitmap(BitmapFactory.decodeFile(imageurl));
+                    Picasso.get().load(imageurl).into(profileImage);
+
                 }else{
                     Log.d("photoStatus","there is no photo for this user");
                 }
