@@ -123,9 +123,6 @@ public class Home extends AppCompatActivity {
                     if (fromDateToStringToInt(currentDate) - fromDateToStringToInt(startDate) >= 0 &&
                             fromDateToStringToInt(currentDate) - fromDateToStringToInt(endDate) < 0) {
 
-                        boolean ifResult = fromDateToStringToInt(currentDate) - fromDateToStringToInt(startDate) >= 0 &&
-                                fromDateToStringToInt(currentDate) - fromDateToStringToInt(endDate) < 0;
-
 
                         mDataset_1.add(new Event_model(R.drawable.nopath___copy__79_,
                                 dataSnapshot.child("eventTitle").getValue(String.class),
