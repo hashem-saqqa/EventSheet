@@ -39,7 +39,6 @@ public class Home extends AppCompatActivity {
     protected LinearLayoutManager mLayoutManager;
     Event_adapter event_adapter;
     DatabaseReference databaseReference;
-    long eventsNumber;
     Date date;
     String currentDate, startDate, endDate, currentDateTest;
     SimpleDateFormat simpleDateFormat;
@@ -91,7 +90,8 @@ public class Home extends AppCompatActivity {
 
     public void Show_all_Events(View view) {
         Intent intent = new Intent(getApplicationContext(), All_Events.class);
-        startActivityForResult(intent, 0);
+        intent.putExtra("requestCode", 0);
+        startActivity(intent);
     }
 
     public void GoToSearch_icon(View view) {
@@ -120,8 +120,8 @@ public class Home extends AppCompatActivity {
                     startDate = dataSnapshot.child("eventStartDate").getValue(String.class);
                     endDate = dataSnapshot.child("eventEndDate").getValue(String.class);
 
-                    if (fromDateToStringToInt(currentDate) - fromDateToStringToInt(startDate) >= 0 &&
-                            fromDateToStringToInt(currentDate) - fromDateToStringToInt(endDate) < 0) {
+                    if (fromDateToStringToInt(currentDateTest) - fromDateToStringToInt(startDate) >= 0 &&
+                            fromDateToStringToInt(currentDateTest) - fromDateToStringToInt(endDate) < 0) {
 
 
                         mDataset_1.add(new Event_model(R.drawable.nopath___copy__79_,
@@ -186,7 +186,6 @@ public class Home extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                            eventsNumber = snapshot.getChildrenCount();
                             mDataset_3.add(new Event_model(R.drawable.nopath___copy__79_,
                                     dataSnapshot.child("eventTitle").getValue(String.class),
                                     dataSnapshot.child("eventLocation").getValue(String.class),
@@ -206,7 +205,6 @@ public class Home extends AppCompatActivity {
                     }
                 });
 
-
     }
 
     public void Create_events_4() {
@@ -216,7 +214,6 @@ public class Home extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                            eventsNumber = snapshot.getChildrenCount();
                             mDataset_4.add(new Event_model(R.drawable.nopath___copy__79_,
                                     dataSnapshot.child("eventTitle").getValue(String.class),
                                     dataSnapshot.child("eventLocation").getValue(String.class),
@@ -257,5 +254,23 @@ public class Home extends AppCompatActivity {
     public int fromDateToStringToInt(String theDate) {
         String formatted = theDate.substring(6) + theDate.substring(3, 5) + theDate.substring(0, 2);
         return Integer.parseInt(formatted);
+    }
+
+    public void Show_all_BigEvents(View view) {
+        Intent intent = new Intent(getApplicationContext(), All_Events.class);
+        intent.putExtra("requestCode", 1);
+        startActivity(intent);
+    }
+
+    public void Show_all_SmallEvents(View view) {
+        Intent intent = new Intent(getApplicationContext(), All_Events.class);
+        intent.putExtra("requestCode", 2);
+        startActivity(intent);
+    }
+
+    public void Show_all_FunEvents(View view) {
+        Intent intent = new Intent(getApplicationContext(), All_Events.class);
+        intent.putExtra("requestCode", 3);
+        startActivity(intent);
     }
 }

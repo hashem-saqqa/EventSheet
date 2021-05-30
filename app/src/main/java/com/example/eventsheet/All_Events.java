@@ -1,9 +1,11 @@
 package com.example.eventsheet;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,19 +16,37 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.mancj.materialsearchbar.MaterialSearchBar;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class All_Events extends AppCompatActivity implements MaterialSearchBar.OnSearchActionListener {
     protected List<Event_model> mDataset_all_event;
+    protected List<Event_model> mDataset_all_BigEvent;
+    protected List<Event_model> mDataset_all_SmallEvent;
+    protected List<Event_model> mDataset_all_FunEvent;
     protected RecyclerView mRecyclerView;
     protected LinearLayoutManager mLayoutManager;
     All_events_adapter all_event_adapter;
 
     private MaterialSearchBar searchBar;
 
+    DatabaseReference databaseReference;
+    String currentDateTest, startDate, endDate, currentDate;
+    Date date;
+    SimpleDateFormat simpleDateFormat;
+    int requestCode;
+
+    @SuppressLint("SimpleDateFormat")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +58,25 @@ public class All_Events extends AppCompatActivity implements MaterialSearchBar.O
         searchBar = findViewById(R.id.searchBar);
         searchBar.setOnSearchActionListener(this);
 
-        Create_events_5();
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+
+        date = Calendar.getInstance().getTime();
+        simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
+        currentDate = simpleDateFormat.format(date);
+
+        requestCode = getIntent().getExtras().getInt("requestCode");
+        if (requestCode == 0) {
+            Create_events_5();
+        } else if (requestCode == 1) {
+            Create_events_6();
+        } else if (requestCode == 2) {
+            Create_events_7();
+        } else if (requestCode == 3) {
+            Create_events_8();
+        } else {
+            Toast.makeText(this, "wrong request Code", Toast.LENGTH_SHORT).show();
+        }
+
 
     }
 
@@ -48,25 +86,126 @@ public class All_Events extends AppCompatActivity implements MaterialSearchBar.O
         startActivityForResult(intent, 0);
     }
 
-    public void Create_events_5() {
+    private void Create_events_5() {
         mDataset_all_event = new ArrayList<>();
-        mDataset_all_event.add(new Event_model(R.drawable.nopath___copy__79_, "First event", "ksa"
-                , "5/ 11/2021", "6/11/2021"));
-        mDataset_all_event.add(new Event_model(R.drawable.nopath___copy__79_, "second event", "ksa"
-                , "5/ 11/2021", "6/11/2021"));
-        mDataset_all_event.add(new Event_model(R.drawable.nopath___copy__79_, "third event", "ksa"
-                , "5/ 11/2021", "6/11/2021"));
-        mDataset_all_event.add(new Event_model(R.drawable.nopath___copy__79_, "fourth event", "ksa"
-                , "5/ 11/2021", "6/11/2021"));
-        mDataset_all_event.add(new Event_model(R.drawable.nopath___copy__79_, "fifth event", "ksa"
-                , "5/ 11/2021", "6/11/2021"));
+        currentDateTest = "03/05/2020";
 
-        mRecyclerView = findViewById(R.id.recyclerView_all_event);
-        mLayoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        all_event_adapter = new All_events_adapter(mDataset_all_event);
-        mRecyclerView.setAdapter(all_event_adapter);
+        databaseReference.child("events").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    startDate = dataSnapshot.child("eventStartDate").getValue(String.class);
+                    endDate = dataSnapshot.child("eventEndDate").getValue(String.class);
 
+                    if (fromDateToStringToInt(currentDateTest) - fromDateToStringToInt(startDate) >= 0 &&
+                            fromDateToStringToInt(currentDateTest) - fromDateToStringToInt(endDate) < 0) {
+
+                        mDataset_all_event.add(new Event_model(R.drawable.nopath___copy__79_,
+                                dataSnapshot.child("eventTitle").getValue(String.class),
+                                dataSnapshot.child("eventLocation").getValue(String.class),
+                                dataSnapshot.child("eventStartDate").getValue(String.class),
+                                dataSnapshot.child("eventEndDate").getValue(String.class)));
+                    }
+                }
+
+                mRecyclerView = findViewById(R.id.recyclerView_all_event);
+                mLayoutManager = new LinearLayoutManager(getApplicationContext());
+                mRecyclerView.setLayoutManager(mLayoutManager);
+                all_event_adapter = new All_events_adapter(mDataset_all_event);
+                mRecyclerView.setAdapter(all_event_adapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+    }
+
+    private void Create_events_6() {
+        databaseReference.child("events").orderByChild("eventSubType").equalTo("فعالية كبرى")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        mDataset_all_BigEvent = new ArrayList<>();
+                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+
+                            mDataset_all_BigEvent.add(new Event_model(R.drawable.nopath___copy__79_,
+                                    dataSnapshot.child("eventTitle").getValue(String.class),
+                                    dataSnapshot.child("eventLocation").getValue(String.class),
+                                    dataSnapshot.child("eventStartDate").getValue(String.class),
+                                    dataSnapshot.child("eventEndDate").getValue(String.class)));
+                        }
+
+                        mRecyclerView = findViewById(R.id.recyclerView_all_event);
+                        mLayoutManager = new LinearLayoutManager(getApplicationContext());
+                        mRecyclerView.setLayoutManager(mLayoutManager);
+                        all_event_adapter = new All_events_adapter(mDataset_all_BigEvent);
+                        mRecyclerView.setAdapter(all_event_adapter);
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+    }
+
+    private void Create_events_7() {
+        mDataset_all_SmallEvent = new ArrayList<>();
+        databaseReference.child("events").orderByChild("eventSubType").equalTo("فعالية صغرى")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                            mDataset_all_SmallEvent.add(new Event_model(R.drawable.nopath___copy__79_,
+                                    dataSnapshot.child("eventTitle").getValue(String.class),
+                                    dataSnapshot.child("eventLocation").getValue(String.class),
+                                    dataSnapshot.child("eventStartDate").getValue(String.class),
+                                    dataSnapshot.child("eventEndDate").getValue(String.class)));
+                        }
+                        mRecyclerView = findViewById(R.id.recyclerView_all_event);
+                        mLayoutManager = new LinearLayoutManager(getApplicationContext());
+                        mRecyclerView.setLayoutManager(mLayoutManager);
+                        all_event_adapter = new All_events_adapter(mDataset_all_SmallEvent);
+                        mRecyclerView.setAdapter(all_event_adapter);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+    }
+
+    private void Create_events_8() {
+        mDataset_all_FunEvent = new ArrayList<>();
+        databaseReference.child("events").orderByChild("eventSubType").equalTo("فعالية ترفيهية")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                            mDataset_all_FunEvent.add(new Event_model(R.drawable.nopath___copy__79_,
+                                    dataSnapshot.child("eventTitle").getValue(String.class),
+                                    dataSnapshot.child("eventLocation").getValue(String.class),
+                                    dataSnapshot.child("eventStartDate").getValue(String.class),
+                                    dataSnapshot.child("eventEndDate").getValue(String.class)));
+                        }
+                        mRecyclerView = findViewById(R.id.recyclerView_all_event);
+                        mLayoutManager = new LinearLayoutManager(getApplicationContext());
+                        mRecyclerView.setLayoutManager(mLayoutManager);
+                        all_event_adapter = new All_events_adapter(mDataset_all_FunEvent);
+                        mRecyclerView.setAdapter(all_event_adapter);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
     }
 
     @Override
@@ -83,23 +222,26 @@ public class All_Events extends AppCompatActivity implements MaterialSearchBar.O
     public void onButtonClicked(int buttonCode) {
         switch (buttonCode) {
             case MaterialSearchBar.BUTTON_NAVIGATION:
-                Log.d("whatever","works");
-                Toast.makeText(this, "whatever hi hi hi hi", Toast.LENGTH_SHORT).show();
                 Search_filter search_filter = new Search_filter();
 //                Window window = search_filter.getWindow();
 //                window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
 //                WindowManager.LayoutParams wlp = window.getAttributes();
 //                wlp.gravity = Gravity.BOTTOM;
-                search_filter.show(getSupportFragmentManager(),"search_filter");
+                search_filter.show(getSupportFragmentManager(), "search_filter");
                 break;
             case MaterialSearchBar.BUTTON_SPEECH:
                 break;
             case MaterialSearchBar.BUTTON_BACK:
-                Log.d("whatever","not works");
+                Log.d("whatever", "not works");
                 Toast.makeText(this, "whatever by by by by", Toast.LENGTH_SHORT).show();
                 searchBar.closeSearch();
                 break;
         }
+    }
+
+    public int fromDateToStringToInt(String theDate) {
+        String formatted = theDate.substring(6) + theDate.substring(3, 5) + theDate.substring(0, 2);
+        return Integer.parseInt(formatted);
     }
 
 }

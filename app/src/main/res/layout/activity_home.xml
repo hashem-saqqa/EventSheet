@@ -113,6 +113,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/linearlayout_1"
                     app:layout_constraintVertical_bias="0.0"
                     android:layout_marginTop="25dp"
+                    android:onClick="Show_all_BigEvents"
                     />
 
                 <LinearLayout
@@ -166,6 +167,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/linearlayout_2"
                     app:layout_constraintVertical_bias="0.0"
                     android:layout_marginTop="25dp"
+                    android:onClick="Show_all_SmallEvents"
                     />
 
                 <LinearLayout
@@ -219,6 +221,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/linearlayout_3"
                     app:layout_constraintVertical_bias="0.0"
                     android:layout_marginTop="25dp"
+                    android:onClick="Show_all_FunEvents"
                     />
 
                 <LinearLayout
