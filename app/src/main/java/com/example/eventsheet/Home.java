@@ -14,6 +14,7 @@ import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -30,7 +31,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-public class Home extends AppCompatActivity {
+public class Home extends AppCompatActivity implements Event_adapter.OnEventListener {
     protected List<Event_model> mDataset_1;
     protected List<Event_model> mDataset_2;
     protected List<Event_model> mDataset_3;
@@ -42,6 +43,8 @@ public class Home extends AppCompatActivity {
     Date date;
     String currentDate, startDate, endDate, currentDateTest;
     SimpleDateFormat simpleDateFormat;
+
+    Event_adapter.OnEventListener mContext = this;
 
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -136,8 +139,9 @@ public class Home extends AppCompatActivity {
                 mRecyclerView = findViewById(R.id.recyclerView);
                 mLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
                 mRecyclerView.setLayoutManager(mLayoutManager);
-                event_adapter = new Event_adapter(mDataset_1);
+                event_adapter = new Event_adapter(mDataset_1, mContext);
                 mRecyclerView.setAdapter(event_adapter);
+
             }
 
             @Override
@@ -271,6 +275,15 @@ public class Home extends AppCompatActivity {
     public void Show_all_FunEvents(View view) {
         Intent intent = new Intent(getApplicationContext(), All_Events.class);
         intent.putExtra("requestCode", 3);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onEventClick(int position) {
+        Log.d("eventClickedName", "onEventClick: "+mDataset_1.get(position).getMain_text());
+
+        Intent intent = new Intent(this,Event_details.class);
+        intent.putExtra("eventClicked",mDataset_1.get(position).getMain_text());
         startActivity(intent);
     }
 }
