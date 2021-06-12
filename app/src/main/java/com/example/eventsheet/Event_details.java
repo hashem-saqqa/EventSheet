@@ -2,6 +2,7 @@ package com.example.eventsheet;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -26,13 +27,13 @@ public class Event_details extends AppCompatActivity implements OnMapReadyCallba
 
     View line;
     DatabaseReference databaseReference;
-    private String clickedEventName;
+    private static String clickedEventName;
     private String eventImage, eventTitle, eventAuthor, eventContent, eventEndDate,
             eventFees, eventLocation, eventRange, eventSpec, eventStartDate, eventSubSpec,
-    eventSubType,eventTime,eventType;
+            eventSubType, eventTime, eventType;
     private ImageView eventImageView;
-    private TextView eventTitleView,eventLocationView,eventContentView,eventStartDateView,
-            eventEndDateView,eventTimeView,eventSubSpecView,eventRangeView,eventSpecView,eventFeesView,
+    private TextView eventTitleView, eventLocationView, eventContentView, eventStartDateView,
+            eventEndDateView, eventTimeView, eventSubSpecView, eventRangeView, eventSpecView, eventFeesView,
             eventAuthorView;
 
 
@@ -51,7 +52,11 @@ public class Event_details extends AppCompatActivity implements OnMapReadyCallba
         assert mapFragment != null;
         mapFragment.getMapAsync(this);
 
-       load_data();
+        clickedEventName = getIntent().getExtras().getString("eventClicked");
+
+        load_data();
+
+        Log.d("getMethod", "onCreate: "+getclickedEventName());
     }
 
     public void add_fragment_1(View view) {
@@ -74,11 +79,9 @@ public class Event_details extends AppCompatActivity implements OnMapReadyCallba
         map.addMarker(new MarkerOptions().position(new LatLng(21.483070, 39.184445)).title("jeddah"));
 
     }
-    public String getclickedEventName(){
-        return clickedEventName;
-    }
-    private void load_data(){
-        clickedEventName = getIntent().getExtras().getString("eventClicked");
+
+
+    private void load_data() {
 
         databaseReference = FirebaseDatabase.getInstance().getReference("events");
 
@@ -87,7 +90,7 @@ public class Event_details extends AppCompatActivity implements OnMapReadyCallba
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         DataSnapshot data = snapshot.getChildren().iterator().next();
-                        eventTitle= clickedEventName;
+                        eventTitle = clickedEventName;
                         eventAuthor = data.child("eventAuthor").getValue(String.class);
                         eventContent = data.child("eventContent").getValue(String.class);
                         eventEndDate = data.child("eventEndDate").getValue(String.class);
@@ -101,7 +104,7 @@ public class Event_details extends AppCompatActivity implements OnMapReadyCallba
                         eventSubType = data.child("eventSubType").getValue(String.class);
                         eventTime = data.child("eventTime").getValue(String.class);
                         eventType = data.child("eventType").getValue(String.class);
-                        
+
                         eventImageView = findViewById(R.id.main_image);
                         eventTitleView = findViewById(R.id.event_title);
                         eventContentView = findViewById(R.id.main_text);
@@ -119,7 +122,9 @@ public class Event_details extends AppCompatActivity implements OnMapReadyCallba
 
                 });
 
+    }
 
-
+    public static String getclickedEventName() {
+        return clickedEventName;
     }
 }

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,49 +34,59 @@ public class Fragment_1 extends Fragment {
         View view = inflater.inflate(R.layout.fragment_1, container, false);
 //        clickedEventName = getIntent().getExtras().getString("eventClicked");
 //        Event_details event_details = new Event_details();
-//        clickedEventName = event_details.getclickedEventName();
-//
-//        databaseReference = FirebaseDatabase.getInstance().getReference("events");
-//
-//        databaseReference.orderByChild("eventTitle").equalTo(clickedEventName)
-//                .addValueEventListener(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+        clickedEventName = Event_details.getclickedEventName();
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("events");
+
+        Log.d("clickedEventNameee", "clickedEventName: " + clickedEventName);
+
+        databaseReference.orderByChild("eventTitle").equalTo(clickedEventName)
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
 //                        DataSnapshot data = snapshot.getChildren().iterator().next();
-//
-//                        eventAuthor = data.child("eventAuthor").getValue(String.class);
-//                        eventEndDate = data.child("eventEndDate").getValue(String.class);
-//                        eventFees = data.child("eventFees").getValue(String.class);
-//                        eventRange = data.child("eventRange").getValue(String.class);
-//                        eventSpec = data.child("eventSpec").getValue(String.class);
-//                        eventStartDate = data.child("eventStartDate").getValue(String.class);
-//                        eventSubSpec = data.child("eventSubSpec").getValue(String.class);
-//                        eventTime = data.child("eventTime").getValue(String.class);
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError error) {
-//
-//                    }
-//                });
-//
-//        eventStartDateView = view.findViewById(R.id.mn_calender_text);
-//        eventEndDateView = view.findViewById(R.id.ela_calender_text);
-//        eventTimeView = view.findViewById(R.id.mn_clock_text);
-//        eventSubSpecView = view.findViewById(R.id.status_second_text);
-//        eventSpecView = view.findViewById(R.id.status_second_text_3);
-//        eventRangeView = view.findViewById(R.id.status_second_text_2);
-//        eventFeesView = view.findViewById(R.id.status_second_text_4);
-//        eventAuthorView = view.findViewById(R.id.person_text);
-//
-//        eventStartDateView.setText(eventStartDate);
-//        eventEndDateView.setText(eventEndDate);
-//        eventTimeView.setText(eventTime);
-//        eventSubSpecView.setText(eventSubSpec);
-//        eventSpecView.setText(eventSpec);
-//        eventRangeView.setText(eventRange);
-//        eventFeesView.setText(eventFees);
-//        eventAuthorView.setText(eventAuthor);
+                        Log.d("mySnapShot", "onDataChange: "+snapshot);
+
+                        for (DataSnapshot data:snapshot.getChildren()) {
+                            Log.d("codeee", "onCreateView: first code");
+                            eventAuthor = data.child("eventAuthor").getValue(String.class);
+                            eventEndDate = data.child("eventEndDate").getValue(String.class);
+                            eventFees = data.child("eventFees").getValue(String.class);
+                            eventRange = data.child("eventRange").getValue(String.class);
+                            eventSpec = data.child("eventSpec").getValue(String.class);
+                            eventStartDate = data.child("eventStartDate").getValue(String.class);
+                            eventSubSpec = data.child("eventSubSpec").getValue(String.class);
+                            eventTime = data.child("eventTime").getValue(String.class);
+                        }
+
+                        Log.d("codeee", "onCreateView: second code");
+
+                        eventStartDateView = getView().findViewById(R.id.mn_calender_text);
+                        eventEndDateView = getView().findViewById(R.id.ela_calender_text);
+                        eventTimeView = getView().findViewById(R.id.mn_clock_text);
+                        eventSubSpecView = getView().findViewById(R.id.status_second_text);
+                        eventSpecView = getView().findViewById(R.id.status_second_text_3);
+                        eventRangeView = getView().findViewById(R.id.status_second_text_2);
+                        eventFeesView = getView().findViewById(R.id.status_second_text_4);
+                        eventAuthorView = getView().findViewById(R.id.person_text);
+
+                        eventStartDateView.setText(eventStartDate);
+                        eventEndDateView.setText(eventEndDate);
+                        eventTimeView.setText(eventTime);
+                        eventSubSpecView.setText(eventSubSpec);
+                        eventSpecView.setText(eventSpec);
+                        eventRangeView.setText(eventRange);
+                        eventFeesView.setText(eventFees);
+                        eventAuthorView.setText(eventAuthor);
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
         return view;
     }
 }
