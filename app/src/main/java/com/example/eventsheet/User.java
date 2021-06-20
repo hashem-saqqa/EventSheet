@@ -16,7 +16,7 @@ public class User {
 //        this.country = country;
 //    }
 
-    public User(String country, String name, String photo, String phone, String email) {
+    public  User(String country, String name, String photo, String phone, String email) {
         this.photo = photo;
         this.name = name;
         this.email = email;

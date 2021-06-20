@@ -42,6 +42,7 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
         password = findViewById(R.id.Password);
         phone_number = findViewById(R.id.Phone);
         countryCodePicker = findViewById(R.id.Picker);
