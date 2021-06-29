@@ -31,9 +31,7 @@ import java.util.List;
 
 public class All_Events extends AppCompatActivity implements MaterialSearchBar.OnSearchActionListener {
     protected List<Event_model> mDataset_all_event;
-    protected List<Event_model> mDataset_all_BigEvent;
-    protected List<Event_model> mDataset_all_SmallEvent;
-    protected List<Event_model> mDataset_all_FunEvent;
+    protected List<Event_model> mDataset_searched;
     protected RecyclerView mRecyclerView;
     protected LinearLayoutManager mLayoutManager;
     All_events_adapter all_event_adapter;
@@ -53,7 +51,6 @@ public class All_Events extends AppCompatActivity implements MaterialSearchBar.O
         setContentView(R.layout.activity_all_events);
 
         TextView appbar_title = findViewById(R.id.appbar_title);
-        appbar_title.setText("فعاليات صغرى");
 
         searchBar = findViewById(R.id.searchBar);
         searchBar.setOnSearchActionListener(this);
@@ -67,12 +64,16 @@ public class All_Events extends AppCompatActivity implements MaterialSearchBar.O
         requestCode = getIntent().getExtras().getInt("requestCode");
         if (requestCode == 0) {
             Create_events_5();
+            appbar_title.setText("فعاليات قائمة الان");
         } else if (requestCode == 1) {
             Create_events_6();
+            appbar_title.setText("فعاليات كبرى");
         } else if (requestCode == 2) {
             Create_events_7();
+            appbar_title.setText("فعاليات صغرى");
         } else if (requestCode == 3) {
             Create_events_8();
+            appbar_title.setText("فعاليات ترفيهية");
         } else {
             Toast.makeText(this, "wrong request Code", Toast.LENGTH_SHORT).show();
         }
@@ -129,10 +130,10 @@ public class All_Events extends AppCompatActivity implements MaterialSearchBar.O
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        mDataset_all_BigEvent = new ArrayList<>();
+                        mDataset_all_event = new ArrayList<>();
                         for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
 
-                            mDataset_all_BigEvent.add(new Event_model(R.drawable.nopath___copy__79_,
+                            mDataset_all_event.add(new Event_model(R.drawable.nopath___copy__79_,
                                     dataSnapshot.child("eventTitle").getValue(String.class),
                                     dataSnapshot.child("eventLocation").getValue(String.class),
                                     dataSnapshot.child("eventStartDate").getValue(String.class),
@@ -142,7 +143,7 @@ public class All_Events extends AppCompatActivity implements MaterialSearchBar.O
                         mRecyclerView = findViewById(R.id.recyclerView_all_event);
                         mLayoutManager = new LinearLayoutManager(getApplicationContext());
                         mRecyclerView.setLayoutManager(mLayoutManager);
-                        all_event_adapter = new All_events_adapter(mDataset_all_BigEvent);
+                        all_event_adapter = new All_events_adapter(mDataset_all_event);
                         mRecyclerView.setAdapter(all_event_adapter);
 
                     }
@@ -155,13 +156,13 @@ public class All_Events extends AppCompatActivity implements MaterialSearchBar.O
     }
 
     private void Create_events_7() {
-        mDataset_all_SmallEvent = new ArrayList<>();
+        mDataset_all_event = new ArrayList<>();
         databaseReference.child("events").orderByChild("eventSubType").equalTo("فعالية صغرى")
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                            mDataset_all_SmallEvent.add(new Event_model(R.drawable.nopath___copy__79_,
+                            mDataset_all_event.add(new Event_model(R.drawable.nopath___copy__79_,
                                     dataSnapshot.child("eventTitle").getValue(String.class),
                                     dataSnapshot.child("eventLocation").getValue(String.class),
                                     dataSnapshot.child("eventStartDate").getValue(String.class),
@@ -170,7 +171,7 @@ public class All_Events extends AppCompatActivity implements MaterialSearchBar.O
                         mRecyclerView = findViewById(R.id.recyclerView_all_event);
                         mLayoutManager = new LinearLayoutManager(getApplicationContext());
                         mRecyclerView.setLayoutManager(mLayoutManager);
-                        all_event_adapter = new All_events_adapter(mDataset_all_SmallEvent);
+                        all_event_adapter = new All_events_adapter(mDataset_all_event);
                         mRecyclerView.setAdapter(all_event_adapter);
                     }
 
@@ -182,13 +183,13 @@ public class All_Events extends AppCompatActivity implements MaterialSearchBar.O
     }
 
     private void Create_events_8() {
-        mDataset_all_FunEvent = new ArrayList<>();
+        mDataset_all_event = new ArrayList<>();
         databaseReference.child("events").orderByChild("eventSubType").equalTo("فعالية ترفيهية")
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                            mDataset_all_FunEvent.add(new Event_model(R.drawable.nopath___copy__79_,
+                            mDataset_all_event.add(new Event_model(R.drawable.nopath___copy__79_,
                                     dataSnapshot.child("eventTitle").getValue(String.class),
                                     dataSnapshot.child("eventLocation").getValue(String.class),
                                     dataSnapshot.child("eventStartDate").getValue(String.class),
@@ -197,7 +198,7 @@ public class All_Events extends AppCompatActivity implements MaterialSearchBar.O
                         mRecyclerView = findViewById(R.id.recyclerView_all_event);
                         mLayoutManager = new LinearLayoutManager(getApplicationContext());
                         mRecyclerView.setLayoutManager(mLayoutManager);
-                        all_event_adapter = new All_events_adapter(mDataset_all_FunEvent);
+                        all_event_adapter = new All_events_adapter(mDataset_all_event);
                         mRecyclerView.setAdapter(all_event_adapter);
                     }
 
@@ -215,6 +216,50 @@ public class All_Events extends AppCompatActivity implements MaterialSearchBar.O
 
     @Override
     public void onSearchConfirmed(CharSequence text) {
+        Log.d(" the Search text", "onDataChange: " + text.toString());
+        mDataset_searched = new ArrayList<>();
+
+        for (Event_model eventModel : mDataset_all_event) {
+
+            Log.d("the event ", "onSearchConfirmed: " + eventModel);
+            Log.d("the event name", "onSearchConfirmed: " + eventModel.getMain_text());
+            Log.d("the if statement", "onSearchConfirmed: " + eventModel.getMain_text().equals(text.toString()));
+
+            if (text.toString().equals( eventModel.getMain_text())) {
+                mDataset_searched.add(eventModel);
+            }
+        }
+        Log.d("search results", "onSearchConfirmed: " + mDataset_searched);
+
+        mRecyclerView = findViewById(R.id.recyclerView_all_event);
+        mLayoutManager = new LinearLayoutManager(getApplicationContext());
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        all_event_adapter = new All_events_adapter(mDataset_searched);
+        mRecyclerView.setAdapter(all_event_adapter);
+
+//        databaseReference.orderByValue().equalTo(text.toString()).addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                Log.d(" the Search results", "onDataChange: "+snapshot);
+//                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+//                    mDataset_searched.add(new Event_model(R.drawable.nopath___copy__79_,
+//                            dataSnapshot.child("eventTitle").getValue(String.class),
+//                            dataSnapshot.child("eventLocation").getValue(String.class),
+//                            dataSnapshot.child("eventStartDate").getValue(String.class),
+//                            dataSnapshot.child("eventEndDate").getValue(String.class)));
+//                }
+//                mRecyclerView = findViewById(R.id.recyclerView_all_event);
+//                mLayoutManager = new LinearLayoutManager(getApplicationContext());
+//                mRecyclerView.setLayoutManager(mLayoutManager);
+//                all_event_adapter = new All_events_adapter(mDataset_searched);
+//                mRecyclerView.setAdapter(all_event_adapter);
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
 
     }
 
