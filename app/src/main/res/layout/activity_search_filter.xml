@@ -64,7 +64,9 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/title_label" />
+                app:layout_constraintTop_toTopOf="@id/title_label"
+                android:background="#ffffff"
+                />
 
             <ImageView
                 android:id="@+id/done_icon"
