@@ -19,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -47,11 +48,13 @@ public class Search_filter extends BottomSheetDialogFragment {
     final Calendar myCalendar2 = Calendar.getInstance();
 
     View view;
-    List<String> eventSpecArray;
+//    List<String> eventSpecArray;
 
     EditText from_date;
     EditText to_date;
-    ImageView closeDialog;
+    ImageView closeDialog, applyFilter;
+
+    String Country, eventType, eventSubType, eventRange, eventSpec, eventSubSpec, eventFees;
 
     DatabaseReference databaseReference;
 
@@ -68,6 +71,7 @@ public class Search_filter extends BottomSheetDialogFragment {
         from_date = view.findViewById(R.id.from_date);
         to_date = view.findViewById(R.id.to_date);
         closeDialog = view.findViewById(R.id.cancel_icon);
+        applyFilter = view.findViewById(R.id.done_icon);
 
         final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
             @Override
@@ -108,6 +112,35 @@ public class Search_filter extends BottomSheetDialogFragment {
             }
         });
 
+        applyFilter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot data : snapshot.getChildren()) {
+                            if (data.child("eventLocation").getValue(String.class).equals(Country) &
+                                    data.child("eventType").getValue(String.class).equals(eventType) &
+                                    data.child("eventSubType").getValue(String.class).equals(eventSubType) &
+                                    data.child("eventRange").getValue(String.class).equals(eventRange) &
+                                    data.child("eventSpec").getValue(String.class).equals(eventSpec) &
+                                    data.child("eventSubSpec").getValue(String.class).equals(eventSubSpec) &
+                                    data.child("eventFees").getValue(String.class).equals(eventFees)) {
+
+                                Log.d("searchFilterResult", "onDataChange: " + data);
+                            }
+
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+            }
+        });
+
         databaseReference = FirebaseDatabase.getInstance().getReference("events");
         fillTheSpinner();
     }
@@ -121,7 +154,7 @@ public class Search_filter extends BottomSheetDialogFragment {
             }
         }
 
-        Spinner countrySpinner = view.findViewById(R.id.country_spinner);
+        final Spinner countrySpinner = view.findViewById(R.id.country_spinner);
         final ArrayAdapter<String> countryAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, countriesArray) {
             @Override
             public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -135,7 +168,21 @@ public class Search_filter extends BottomSheetDialogFragment {
         };
         countryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         countrySpinner.setAdapter(countryAdapter);
-        countrySpinner.setSelection(0);
+//        countrySpinner.setSelection(0);
+        countrySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (!countrySpinner.getSelectedItem().toString().equals("الدولة")) {
+                    Country = countrySpinner.getSelectedItem().toString();
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
 //*******************************************************************************
         List<String> eventTypeArray = new ArrayList<>();
@@ -147,7 +194,7 @@ public class Search_filter extends BottomSheetDialogFragment {
         eventTypeArray.add(0, "نوع  الغعالية ");
 
 
-        ArrayAdapter<String> eventTypeAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_dropdown_item, eventTypeArray) {
+        final ArrayAdapter<String> eventTypeAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_dropdown_item, eventTypeArray) {
             @Override
             public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
                 View view = super.getDropDownView(position, convertView, parent);
@@ -160,9 +207,21 @@ public class Search_filter extends BottomSheetDialogFragment {
         };
 
         eventTypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        Spinner eventType = (Spinner) view.findViewById(R.id.event_type_spinner);
-        eventType.setAdapter(eventTypeAdapter);
-        eventType.setSelection(0);
+        final Spinner eventTypeSpinner = (Spinner) view.findViewById(R.id.event_type_spinner);
+        eventTypeSpinner.setAdapter(eventTypeAdapter);
+        eventTypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (!eventTypeSpinner.getSelectedItem().toString().equals("نوع الفعالية")) {
+                    eventType = eventTypeSpinner.getSelectedItem().toString();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 //*******************************************************************************
         List<String> eventSubTypeArray = new ArrayList<>();
         eventSubTypeArray.add("فعالية كبرى");
@@ -184,9 +243,22 @@ public class Search_filter extends BottomSheetDialogFragment {
         };
 
         eventSubTypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        Spinner eventSubType = view.findViewById(R.id.event_type_sub_spinner);
-        eventSubType.setAdapter(eventSubTypeAdapter);
-        eventSubType.setSelection(0);
+        final Spinner eventSubTypeSpinner = view.findViewById(R.id.event_type_sub_spinner);
+        eventSubTypeSpinner.setAdapter(eventSubTypeAdapter);
+        eventSubTypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (!eventSubTypeSpinner.getSelectedItem().toString().equals("نوع الفعالية الفرعي")) {
+                    eventSubType = eventSubTypeSpinner.getSelectedItem().toString();
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         //*******************************************************************************
         List<String> eventRangeArray = new ArrayList<>();
@@ -195,7 +267,7 @@ public class Search_filter extends BottomSheetDialogFragment {
         eventRangeArray.add(0, "نطاق الفعالية");
 
 
-        ArrayAdapter<String> eventRangeAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_dropdown_item, eventRangeArray) {
+        final ArrayAdapter<String> eventRangeAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_dropdown_item, eventRangeArray) {
             @Override
             public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
                 View view = super.getDropDownView(position, convertView, parent);
@@ -208,16 +280,29 @@ public class Search_filter extends BottomSheetDialogFragment {
         };
 
         eventRangeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        Spinner eventRange = view.findViewById(R.id.event_range_spinner);
-        eventRange.setAdapter(eventRangeAdapter);
-        eventRange.setSelection(0);
+        final Spinner eventRangeSpinner = view.findViewById(R.id.event_range_spinner);
+        eventRangeSpinner.setAdapter(eventRangeAdapter);
+        eventRangeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                if (!eventRangeSpinner.getSelectedItem().toString().equals("نطاق الفعالية")) {
+                    eventRange = eventRangeSpinner.getSelectedItem().toString();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
         //*******************************************************************************
-        eventSpecArray = new ArrayList<>();
+        final List<String> eventSpecArray = new ArrayList<>();
+        eventSpecArray.add(0, "تخصص الفعالية");
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Log.d("the orderByKey", "onDataChange: " + snapshot);
-                eventSpecArray.add(0, "تخصص الفعالية");
 
                 for (DataSnapshot data : snapshot.getChildren()) {
                     if (!eventSpecArray.contains(data.child("eventSpec").getValue(String.class))) {
@@ -225,7 +310,7 @@ public class Search_filter extends BottomSheetDialogFragment {
                     }
                 }
 
-                ArrayAdapter<String> eventSpecAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_dropdown_item, eventSpecArray) {
+                final ArrayAdapter<String> eventSpecAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_dropdown_item, eventSpecArray) {
                     @Override
                     public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
                         View view = super.getDropDownView(position, convertView, parent);
@@ -238,9 +323,23 @@ public class Search_filter extends BottomSheetDialogFragment {
                 };
 
                 eventSpecAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                Spinner eventSpec = view.findViewById(R.id.event_spec_spinner);
-                eventSpec.setAdapter(eventSpecAdapter);
-                eventSpec.setSelection(0);
+                Spinner eventSpecSpinner = view.findViewById(R.id.event_spec_spinner);
+                eventSpecSpinner.setAdapter(eventSpecAdapter);
+                eventSpecSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                        if (!eventRangeSpinner.getSelectedItem().toString().equals("تخصص الفعالية")) {
+                            eventSpec = eventRangeSpinner.getSelectedItem().toString();
+
+                        }
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                });
 
             }
 
@@ -256,7 +355,7 @@ public class Search_filter extends BottomSheetDialogFragment {
         eventSubSpecArray.add(0, "تخصص الفعالية الفرعي");
 
 
-        ArrayAdapter<String> eventSubSpecAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_dropdown_item, eventSubSpecArray) {
+        final ArrayAdapter<String> eventSubSpecAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_dropdown_item, eventSubSpecArray) {
             @Override
             public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
                 View view = super.getDropDownView(position, convertView, parent);
@@ -269,9 +368,23 @@ public class Search_filter extends BottomSheetDialogFragment {
         };
 
         eventSubSpecAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        Spinner eventSubSpec = view.findViewById(R.id.event_spec_sub_spinner);
-        eventSubSpec.setAdapter(eventSubSpecAdapter);
-        eventSubSpec.setSelection(0);
+        final Spinner eventSubSpecSpinner = view.findViewById(R.id.event_spec_sub_spinner);
+        eventSubSpecSpinner.setAdapter(eventSubSpecAdapter);
+        eventSubSpecSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                if (!eventSubSpecSpinner.getSelectedItem().toString().equals("تخصص الفعالية الفرعي")) {
+                    eventSubSpec = eventSubSpecSpinner.getSelectedItem().toString();
+
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
 
         //*******************************************************************************
@@ -294,9 +407,22 @@ public class Search_filter extends BottomSheetDialogFragment {
         };
 
         eventFeesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        Spinner eventFees = view.findViewById(R.id.fees_spinner);
-        eventFees.setAdapter(eventFeesAdapter);
-        eventFees.setSelection(0);
+        final Spinner eventFeesSpinner = view.findViewById(R.id.fees_spinner);
+        eventFeesSpinner.setAdapter(eventFeesAdapter);
+        eventFeesSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                if (!eventFees.equals("الرسوم")) {
+                    eventFees = eventFeesSpinner.getSelectedItem().toString();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
 
     }
