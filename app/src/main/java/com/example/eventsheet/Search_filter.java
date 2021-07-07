@@ -129,7 +129,6 @@ public class Search_filter extends BottomSheetDialogFragment {
 
                                 Log.d("searchFilterResult", "onDataChange: " + data);
                             }
-
                         }
                     }
 
