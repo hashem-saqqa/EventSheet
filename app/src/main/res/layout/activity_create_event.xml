@@ -229,6 +229,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/line6"
                 app:layout_constraintVertical_bias="0" />
+
             <EditText
                 android:id="@+id/to_date"
                 android:layout_width="150dp"
@@ -246,22 +247,73 @@
                 app:layout_constraintTop_toBottomOf="@id/line6"
                 app:layout_constraintVertical_bias="0" />
 
+            <EditText
+                android:id="@+id/eventTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="30dp"
+                android:hint="عنوان الفعالية"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/from_date"
+                app:layout_constraintVertical_bias="0" />
+
+            <EditText
+                android:id="@+id/eventAuthor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="30dp"
+                android:hint="مؤوسس الفعالية"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/eventTitle"
+                app:layout_constraintVertical_bias="0" />
+
+            <EditText
+                android:id="@+id/eventContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="30dp"
+                android:hint="محتوى الفعالية"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/eventAuthor"
+                app:layout_constraintVertical_bias="0" />
+
+            <EditText
+                android:id="@+id/eventTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="30dp"
+                android:hint="وقت الفعالية"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/eventContent"
+                app:layout_constraintVertical_bias="0" />
+
             <Button
                 android:id="@+id/createEventsButton"
                 android:layout_width="250dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="30dp"
                 android:background="#BADC58"
+                android:onClick="CreateEvent"
                 android:text="إضافة الفعالية"
                 android:textColor="#ffffff"
                 android:textSize="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/from_date"
-                app:layout_constraintVertical_bias="0"
-                android:onClick="CreateEvent"
-                />
+                app:layout_constraintTop_toBottomOf="@id/eventTime"
+                app:layout_constraintVertical_bias="0" />
 
             <View
                 android:id="@+id/scroll_bar"
@@ -296,8 +348,9 @@
                 android:id="@+id/feesSwitch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
                 android:layout_marginLeft="20dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="50dp"
                 android:checked="false"
                 android:thumb="@drawable/thumb_selector"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -306,9 +359,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/scroll_bar"
                 app:layout_constraintVertical_bias="0"
-                app:track="@drawable/track_selector"
-                android:layout_marginBottom="50dp"
-                />
+                app:track="@drawable/track_selector" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

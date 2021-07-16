@@ -34,11 +34,12 @@ import java.util.Locale;
 
 public class CreateEvent extends AppCompatActivity {
 
-    String Country, eventType, eventSubType, eventRange, eventSpec, eventSubSpec, eventFees,startDate,endDate;
+    String Country, eventType, eventSubType, eventRange, eventSpec, eventSubSpec, eventFees, startDate, endDate,
+            eventTitle, eventAuthor, eventContent, eventTime;
     SwitchCompat switchCompat;
-    EditText from_date;
-    EditText to_date;
+    EditText from_date, to_date, eventTitleText, eventAuthorText, eventContentText, eventTimeText;
     DatabaseReference databaseReference;
+    int eventsCount = 0;
 
     final Calendar myCalendar = Calendar.getInstance();
     final Calendar myCalendar2 = Calendar.getInstance();
@@ -55,6 +56,10 @@ public class CreateEvent extends AppCompatActivity {
         databaseReference = FirebaseDatabase.getInstance().getReference();
         from_date = findViewById(R.id.from_date);
         to_date = findViewById(R.id.to_date);
+        eventTitleText = findViewById(R.id.eventTitle);
+        eventAuthorText = findViewById(R.id.eventAuthor);
+        eventContentText = findViewById(R.id.eventContent);
+        eventTimeText = findViewById(R.id.eventTime);
 
         final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
             @Override
@@ -322,19 +327,41 @@ public class CreateEvent extends AppCompatActivity {
         }
         startDate = from_date.getText().toString();
         endDate = to_date.getText().toString();
+        eventTitle = eventTitleText.getText().toString();
+        eventAuthor = eventAuthorText.getText().toString();
+        eventContent = eventContentText.getText().toString();
+        eventTime = eventTimeText.getText().toString();
 
-        databaseReference.child("events").child("event1").child("eventLocation").setValue(Country);
-        databaseReference.child("events").child("event1").child("eventType").setValue(eventType);
-        databaseReference.child("events").child("event1").child("eventSubType").setValue(eventSubType);
-        databaseReference.child("events").child("event1").child("eventSpec").setValue(eventSpec);
-        databaseReference.child("events").child("event1").child("eventSubSpec").setValue(eventSubSpec);
-        databaseReference.child("events").child("event1").child("eventRange").setValue(eventRange);
-        databaseReference.child("events").child("event1").child("eventFees").setValue(eventFees);
-        databaseReference.child("events").child("event1").child("eventStartDate").setValue(startDate);
-        databaseReference.child("events").child("event1").child("eventEndDate").setValue(endDate);
+        databaseReference.child("events").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot data : snapshot.getChildren()) {
+                    eventsCount++;
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        databaseReference.child("events").child("event"+(eventsCount+1)).child("eventLocation").setValue(Country);
+        databaseReference.child("events").child("event"+(eventsCount+1)).child("eventType").setValue(eventType);
+        databaseReference.child("events").child("event"+(eventsCount+1)).child("eventSubType").setValue(eventSubType);
+        databaseReference.child("events").child("event"+(eventsCount+1)).child("eventSpec").setValue(eventSpec);
+        databaseReference.child("events").child("event"+(eventsCount+1)).child("eventSubSpec").setValue(eventSubSpec);
+        databaseReference.child("events").child("event"+(eventsCount+1)).child("eventRange").setValue(eventRange);
+        databaseReference.child("events").child("event"+(eventsCount+1)).child("eventFees").setValue(eventFees);
+        databaseReference.child("events").child("event"+(eventsCount+1)).child("eventStartDate").setValue(startDate);
+        databaseReference.child("events").child("event"+(eventsCount+1)).child("eventEndDate").setValue(endDate);
+        databaseReference.child("events").child("event"+(eventsCount+1)).child("eventTitle").setValue(eventTitle);
+        databaseReference.child("events").child("event"+(eventsCount+1)).child("eventAuthor").setValue(eventAuthor);
+        databaseReference.child("events").child("event"+(eventsCount+1)).child("eventContent").setValue(eventContent);
+        databaseReference.child("events").child("event"+(eventsCount+1)).child("eventTime").setValue(eventTime);
 
         databaseReference.child("createdEvents").child(FirebaseAuth.getInstance().getCurrentUser()
-                .getUid()).child("event1").setValue("0");
+                .getUid()).child("event"+(eventsCount+1)).setValue("1");
     }
 
     private void updateLabelFromDate() {
