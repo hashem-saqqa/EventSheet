@@ -11,9 +11,17 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,30 +33,82 @@ public class Created_Fragment extends Fragment {
     protected RecyclerView mRecyclerView;
     protected LinearLayoutManager mLayoutManager;
     My_created_events_adapter my_created_events_adapter;
+    String myCreatedEventStatus;
+
+    DatabaseReference databaseReference;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        databaseReference = FirebaseDatabase.getInstance().getReference();
         return inflater.inflate(R.layout.fragment_created_, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         Create_events();
     }
 
     public void Create_events() {
         mDataset_my_created = new ArrayList<>();
-        mDataset_my_created.add(new Event_model(R.drawable.nopath___copy__79_, "First event", "ksa",
-                "5/ 11/2021", "6/11/2021", "قيد المراجعة"));
-        mDataset_my_created.add(new Event_model(R.drawable.nopath___copy__79_, "second event", "ksa",
-                "5/ 11/2021", "6/11/2021", "قيد المراجعة"));
-        mDataset_my_created.add(new Event_model(R.drawable.nopath___copy__79_, "third event", "ksa",
-                "5/ 11/2021", "6/11/2021", "قيد المراجعة"));
-        mDataset_my_created.add(new Event_model(R.drawable.nopath___copy__79_, "fourth event", "ksa",
-                "5/ 11/2021", "6/11/2021", "قيد المراجعة"));
+//        mDataset_my_created.add(new Event_model(R.drawable.nopath___copy__79_, "First event", "ksa",
+//                "5/ 11/2021", "6/11/2021", "قيد المراجعة"));
+//        mDataset_my_created.add(new Event_model(R.drawable.nopath___copy__79_, "second event", "ksa",
+//                "5/ 11/2021", "6/11/2021", "قيد المراجعة"));
+//        mDataset_my_created.add(new Event_model(R.drawable.nopath___copy__79_, "third event", "ksa",
+//                "5/ 11/2021", "6/11/2021", "قيد المراجعة"));
+//        mDataset_my_created.add(new Event_model(R.drawable.nopath___copy__79_, "fourth event", "ksa",
+//                "5/ 11/2021", "6/11/2021", "قيد المراجعة"));
 
+        databaseReference.child("createdEvents").orderByKey().equalTo(FirebaseAuth.getInstance().getCurrentUser()
+                .getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot data : snapshot.getChildren()) {
+
+                    Log.d("data1", "onDataChange: "+data);
+                    Log.d("snapshot1", "onDataChange: "+snapshot);
+
+                    myCreatedEventStatus = data.getChildren().iterator().next().getValue(String.class);
+
+                    databaseReference.child("events").orderByKey().equalTo(data.getValue(String.class))
+                            .addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    for(DataSnapshot data2 : snapshot.getChildren()){
+
+                                        Log.d("data1", "onDataChange: "+data2);
+                                        Log.d("snapshot1", "onDataChange: "+snapshot);
+
+                                        mDataset_my_created.add(new Event_model(
+                                                R.drawable.nopath___copy__79_,
+                                                data2.child("eventTitle").getValue(String.class),
+                                                data2.child("eventLocation").getValue(String.class),
+                                                data2.child("eventStartDate").getValue(String.class),
+                                                data2.child("eventEndDate").getValue(String.class),
+                                                myCreatedEventStatus
+                                                ));
+
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         mRecyclerView = getView().findViewById(R.id.recyclerView_created);
         mLayoutManager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(mLayoutManager);

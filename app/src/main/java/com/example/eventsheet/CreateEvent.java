@@ -359,6 +359,7 @@ public class CreateEvent extends AppCompatActivity {
         databaseReference.child("events").child("event"+(eventsCount+1)).child("eventAuthor").setValue(eventAuthor);
         databaseReference.child("events").child("event"+(eventsCount+1)).child("eventContent").setValue(eventContent);
         databaseReference.child("events").child("event"+(eventsCount+1)).child("eventTime").setValue(eventTime);
+        databaseReference.child("events").child("event"+(eventsCount+1)).child("eventImage").setValue("");
 
         databaseReference.child("createdEvents").child(FirebaseAuth.getInstance().getCurrentUser()
                 .getUid()).child("event"+(eventsCount+1)).setValue("1");
