@@ -3,11 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.eventsheet">
 
+    <uses-sdk tools:overrideLibrary="com.github.dhaval2404.imagepicker" />
+
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
-
-    <uses-sdk tools:overrideLibrary="com.github.dhaval2404.imagepicker" />
 
     <application
         android:allowBackup="true"
@@ -17,7 +17,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Add_event"></activity>
+        <activity android:name=".CreateEvent"></activity>
+        <activity android:name=".Add_event" />
         <activity android:name=".Search_filter" />
         <activity android:name=".Support" />
         <activity android:name=".About_us" />
@@ -49,6 +50,7 @@
         <activity android:name=".Splach">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

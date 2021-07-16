@@ -8,21 +8,21 @@ public class User {
     private String photo;
 
 
-//    public User(String name, String email, String phone, String country, String photo) {
-//        this.photo = photo;
-//        this.name = name;
-//        this.email = email;
-//        this.phone = phone;
-//        this.country = country;
-//    }
-
-    public  User(String country, String name, String photo, String phone, String email) {
+    public User(String name, String email, String phone, String country, String photo) {
         this.photo = photo;
         this.name = name;
         this.email = email;
         this.phone = phone;
         this.country = country;
     }
+
+//    public  User(String country, String name, String photo, String phone, String email) {
+//        this.photo = photo;
+//        this.name = name;
+//        this.email = email;
+//        this.phone = phone;
+//        this.country = country;
+//    }
 
     public String getName() {
         return name;

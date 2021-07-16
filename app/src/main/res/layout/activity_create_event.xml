@@ -4,18 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
-    tools:context=".Search_filter">
+    tools:context=".CreateEvent">
+
+    <include
+        android:id="@+id/appbar"
+        layout="@layout/appbar" />
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:background="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appbar"
         app:layout_constraintVertical_bias="0.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -25,62 +28,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-
-            <View
-                android:id="@+id/scroll_bar"
-                android:layout_width="48dp"
-                android:layout_height="4dp"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/rounded_corners"
-                android:backgroundTint="#B1ADAD"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0" />
-
-            <TextView
-                android:id="@+id/title_label"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:text="تصفية البحث"
-                android:textColor="#3F4339"
-                android:textSize="21dp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/scroll_bar"
-                app:layout_constraintVertical_bias="0" />
-
-            <ImageView
-                android:id="@+id/cancel_icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
-                android:src="@drawable/group_1330"
-                app:layout_constraintBottom_toBottomOf="@id/title_label"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/title_label"
-                android:background="#ffffff"
-                />
-
-            <ImageView
-                android:id="@+id/done_icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:src="@drawable/shape"
-                app:layout_constraintBottom_toBottomOf="@id/title_label"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/title_label"
-                android:background="#ffffff"
-                />
 
             <Spinner
                 android:id="@+id/country_spinner"
@@ -96,7 +43,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/title_label"
+                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0" />
 
             <View
@@ -202,44 +149,6 @@
                 app:layout_constraintTop_toBottomOf="@id/event_range_spinner"
                 app:layout_constraintVertical_bias="0" />
 
-            <EditText
-                android:id="@+id/from_date"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:layout_marginRight="20dp"
-                android:clickable="false"
-                android:cursorVisible="false"
-                android:drawableLeft="@drawable/component_34__1"
-                android:drawableTint="#888888"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
-                android:gravity="center"
-                android:hint="من"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/line4"
-                app:layout_constraintVertical_bias="0" />
-
-            <EditText
-                android:id="@+id/to_date"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="40dp"
-                android:drawableLeft="@drawable/component_34__1"
-                android:drawableTint="#888888"
-                android:gravity="center"
-                android:hint="الى"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/line4"
-                app:layout_constraintVertical_bias="0" />
-
             <Spinner
                 android:id="@+id/event_spec_spinner"
                 android:layout_width="match_parent"
@@ -254,7 +163,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/from_date"
+                app:layout_constraintTop_toBottomOf="@id/line4"
                 app:layout_constraintVertical_bias="0" />
 
             <View
@@ -300,36 +209,110 @@
                 app:layout_constraintTop_toBottomOf="@id/event_spec_sub_spinner"
                 app:layout_constraintVertical_bias="0" />
 
-            <Spinner
-                android:id="@+id/fees_spinner"
-                android:layout_width="match_parent"
+            <EditText
+                android:id="@+id/from_date"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="40dp"
-                android:background="@drawable/spinner_style"
-                android:entries="@array/numbers"
-                android:layoutDirection="rtl"
-                android:spinnerMode="dropdown"
-                android:textDirection="rtl"
+                android:layout_marginRight="20dp"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:drawableLeft="@drawable/component_34__1"
+                android:drawableTint="#888888"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:gravity="center"
+                android:hint="من"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/line6"
+                app:layout_constraintVertical_bias="0" />
+            <EditText
+                android:id="@+id/to_date"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="40dp"
+                android:drawableLeft="@drawable/component_34__1"
+                android:drawableTint="#888888"
+                android:gravity="center"
+                android:hint="الى"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/line6"
                 app:layout_constraintVertical_bias="0" />
 
-            <View
-                android:id="@+id/line7"
-                android:layout_width="match_parent"
-                android:layout_height="0.8dp"
-                android:layout_marginHorizontal="20dp"
-                android:layout_marginTop="15dp"
-                android:background="#888888"
+            <Button
+                android:id="@+id/createEventsButton"
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="30dp"
+                android:background="#BADC58"
+                android:text="إضافة الفعالية"
+                android:textColor="#ffffff"
+                android:textSize="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/fees_spinner"
+                app:layout_constraintTop_toBottomOf="@id/from_date"
+                app:layout_constraintVertical_bias="0"
+                android:onClick="CreateEvent"
+                />
+
+            <View
+                android:id="@+id/scroll_bar"
+                android:layout_width="140dp"
+                android:layout_height="5dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/rounded_corners"
+                android:backgroundTint="#000000"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/createEventsButton"
+                app:layout_constraintStart_toStartOf="@id/createEventsButton"
+                app:layout_constraintTop_toBottomOf="@id/createEventsButton"
                 app:layout_constraintVertical_bias="0" />
 
+            <TextView
+                android:id="@+id/fees_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="20dp"
+                android:text="الفعالية برسوم"
+                android:textColor="#000000"
+                android:textSize="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/scroll_bar"
+                app:layout_constraintVertical_bias="0" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/feesSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="20dp"
+                android:checked="false"
+                android:thumb="@drawable/thumb_selector"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/fees_text"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/scroll_bar"
+                app:layout_constraintVertical_bias="0"
+                app:track="@drawable/track_selector"
+                android:layout_marginBottom="50dp"
+                />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </ScrollView>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

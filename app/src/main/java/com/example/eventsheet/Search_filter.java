@@ -26,6 +26,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.firebase.database.DataSnapshot;
@@ -54,7 +55,7 @@ public class Search_filter extends BottomSheetDialogFragment {
     EditText to_date;
     ImageView closeDialog, applyFilter;
 
-    String Country, eventType, eventSubType, eventRange, eventSpec, eventSubSpec, eventFees;
+    String Country = "", eventType = "", eventSubType = "", eventRange = "", eventSpec = "", eventSubSpec = "", eventFees = "", startDate = "", endDate = "";
 
     DatabaseReference databaseReference;
 
@@ -115,19 +116,79 @@ public class Search_filter extends BottomSheetDialogFragment {
         applyFilter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                startDate = from_date.getText().toString();
+                endDate = to_date.getText().toString();
                 databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         for (DataSnapshot data : snapshot.getChildren()) {
-                            if (data.child("eventLocation").getValue(String.class).equals(Country) &
-                                    data.child("eventType").getValue(String.class).equals(eventType) &
-                                    data.child("eventSubType").getValue(String.class).equals(eventSubType) &
-                                    data.child("eventRange").getValue(String.class).equals(eventRange) &
-                                    data.child("eventSpec").getValue(String.class).equals(eventSpec) &
-                                    data.child("eventSubSpec").getValue(String.class).equals(eventSubSpec) &
-                                    data.child("eventFees").getValue(String.class).equals(eventFees)) {
+                            if (!Country.equals("") & !eventType.equals("") & !eventSubType.equals("") & !eventRange.equals("") &
+                                !eventSpec.equals("") & !eventSubSpec.equals("") & !eventFees.equals("") & !startDate.equals("")
+                                    & !endDate.equals("")) {
 
-                                Log.d("searchFilterResult", "onDataChange: " + data);
+                                if (data.child("eventLocation").getValue(String.class).equals(Country) &
+                                        data.child("eventType").getValue(String.class).equals(eventType) &
+                                        data.child("eventSubType").getValue(String.class).equals(eventSubType) &
+                                        data.child("eventRange").getValue(String.class).equals(eventRange) &
+                                        data.child("eventSpec").getValue(String.class).equals(eventSpec) &
+                                        data.child("eventSubSpec").getValue(String.class).equals(eventSubSpec) &
+                                        data.child("eventFees").getValue(String.class).equals(eventFees)&
+                                        data.child("eventStartDate").getValue(String.class).equals(startDate)&
+                                        data.child("eventEndDate").getValue(String.class).equals(endDate)
+                                ) {
+
+                                    Log.d("searchFilterResult", "onDataChange: " + data);
+                                }
+                            } else if (!Country.equals("") & !eventType.equals("") & !eventSubType.equals("") & !eventRange.equals("") &
+                                    !eventSpec.equals("") & !eventSubSpec.equals("")) {
+                                if (data.child("eventLocation").getValue(String.class).equals(Country) &
+                                        data.child("eventType").getValue(String.class).equals(eventType) &
+                                        data.child("eventSubType").getValue(String.class).equals(eventSubType) &
+                                        data.child("eventRange").getValue(String.class).equals(eventRange) &
+                                        data.child("eventSpec").getValue(String.class).equals(eventSpec) &
+                                        data.child("eventSubSpec").getValue(String.class).equals(eventSubSpec)) {
+
+                                    Log.d("searchFilterResult", "onDataChange: " + data);
+                                }
+                            } else if (!Country.equals("") & !eventType.equals("") & !eventSubType.equals("") & !eventRange.equals("") &
+                                    !eventSpec.equals("")) {
+                                if (data.child("eventLocation").getValue(String.class).equals(Country) &
+                                        data.child("eventType").getValue(String.class).equals(eventType) &
+                                        data.child("eventSubType").getValue(String.class).equals(eventSubType) &
+                                        data.child("eventRange").getValue(String.class).equals(eventRange) &
+                                        data.child("eventSpec").getValue(String.class).equals(eventSpec)) {
+
+                                    Log.d("searchFilterResult", "onDataChange: " + data);
+                                }
+                            } else if (!Country.equals("") & !eventType.equals("") & !eventSubType.equals("") & !eventRange.equals("")) {
+                                if (data.child("eventLocation").getValue(String.class).equals(Country) &
+                                        data.child("eventType").getValue(String.class).equals(eventType) &
+                                        data.child("eventSubType").getValue(String.class).equals(eventSubType) &
+                                        data.child("eventRange").getValue(String.class).equals(eventRange)) {
+
+                                    Log.d("searchFilterResult", "onDataChange: " + data);
+                                }
+                            } else if (!Country.equals("") & !eventType.equals("") & !eventSubType.equals("")) {
+                                if (data.child("eventLocation").getValue(String.class).equals(Country) &
+                                        data.child("eventType").getValue(String.class).equals(eventType) &
+                                        data.child("eventSubType").getValue(String.class).equals(eventSubType)) {
+
+                                    Log.d("searchFilterResult", "onDataChange: " + data);
+                                }
+                            } else if (!Country.equals("") & !eventType.equals("")) {
+                                if (data.child("eventLocation").getValue(String.class).equals(Country) &
+                                        data.child("eventType").getValue(String.class).equals(eventType)) {
+
+                                    Log.d("searchFilterResult", "onDataChange: " + data);
+                                }
+                            } else if (!Country.equals("")) {
+
+                                if (data.child("eventLocation").getValue(String.class).equals(Country)) {
+
+                                    Log.d("searchFilterResult", "onDataChange: " + data);
+                                }
+                            } else {
+                                Toast.makeText(getContext(), "select filter pls", Toast.LENGTH_SHORT).show();
                             }
                         }
                     }
@@ -141,6 +202,7 @@ public class Search_filter extends BottomSheetDialogFragment {
         });
 
         databaseReference = FirebaseDatabase.getInstance().getReference("events");
+
         fillTheSpinner();
     }
 
@@ -412,7 +474,7 @@ public class Search_filter extends BottomSheetDialogFragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                if (!eventFees.equals("الرسوم")) {
+                if (!eventFeesSpinner.getSelectedItem().toString().equals("الرسوم")) {
                     eventFees = eventFeesSpinner.getSelectedItem().toString();
                 }
             }

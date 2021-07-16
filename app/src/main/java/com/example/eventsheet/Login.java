@@ -93,7 +93,7 @@ public class Login extends AppCompatActivity {
 
         if (!loginphone.equals("") & !loginpassword.equals("")) {
 
-            Query query = databaseReference.child("users").orderByChild("phone_number").equalTo(phoneNumber);
+            Query query = databaseReference.child("users").orderByChild("phone").equalTo(phoneNumber);
 
                 query.addValueEventListener(new ValueEventListener() {
                     @Override
