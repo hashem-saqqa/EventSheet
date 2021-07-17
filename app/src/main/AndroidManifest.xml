@@ -18,7 +18,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".CreateEvent"></activity>
-        <activity android:name=".Add_event" />
         <activity android:name=".Search_filter" />
         <activity android:name=".Support" />
         <activity android:name=".About_us" />

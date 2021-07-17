@@ -115,7 +115,7 @@ public class Home extends AppCompatActivity implements Event_adapter.OnEventList
         mDataset_1 = new ArrayList<>();
         currentDateTest = "03/05/2020";
 
-        databaseReference.child("events").addValueEventListener(new ValueEventListener() {
+        databaseReference.child("events").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
@@ -126,7 +126,6 @@ public class Home extends AppCompatActivity implements Event_adapter.OnEventList
                     if (fromDateToStringToInt(currentDateTest) - fromDateToStringToInt(startDate) >= 0 &&
                             fromDateToStringToInt(currentDateTest) - fromDateToStringToInt(endDate) < 0) {
 
-
                         mDataset_1.add(new Event_model(R.drawable.nopath___copy__79_,
                                 dataSnapshot.child("eventTitle").getValue(String.class),
                                 dataSnapshot.child("eventLocation").getValue(String.class),
@@ -134,6 +133,7 @@ public class Home extends AppCompatActivity implements Event_adapter.OnEventList
                                 dataSnapshot.child("eventStartDate").getValue(String.class),
                                 dataSnapshot.child("eventEndDate").getValue(String.class),
                                 dataSnapshot.child("eventAuthor").getValue(String.class)));
+
                     }
                 }
                 mRecyclerView = findViewById(R.id.recyclerView);
@@ -280,10 +280,15 @@ public class Home extends AppCompatActivity implements Event_adapter.OnEventList
 
     @Override
     public void onEventClick(int position) {
-        Log.d("eventClickedName", "onEventClick: "+mDataset_1.get(position).getMain_text());
+        Log.d("eventClickedName", "onEventClick: " + mDataset_1.get(position).getMain_text());
 
-        Intent intent = new Intent(this,Event_details.class);
-        intent.putExtra("eventClicked",mDataset_1.get(position).getMain_text());
+        Intent intent = new Intent(this, Event_details.class);
+        intent.putExtra("eventClicked", mDataset_1.get(position).getMain_text());
+        startActivity(intent);
+    }
+
+    public void GoTo_CreateEvents(View view) {
+        Intent intent = new Intent(getApplicationContext(), CreateEvent.class);
         startActivity(intent);
     }
 }

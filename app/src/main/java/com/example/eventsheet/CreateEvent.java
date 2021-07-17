@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -34,12 +36,13 @@ import java.util.Locale;
 
 public class CreateEvent extends AppCompatActivity {
 
-    String Country, eventType, eventSubType, eventRange, eventSpec, eventSubSpec, eventFees, startDate, endDate,
+    String Country, eventType, eventSubType, eventRange, eventSpec, eventSubSpec, eventFees = "مجانية", startDate, endDate,
             eventTitle, eventAuthor, eventContent, eventTime;
+    @SuppressLint("UseSwitchCompatOrMaterialCode")
     SwitchCompat switchCompat;
     EditText from_date, to_date, eventTitleText, eventAuthorText, eventContentText, eventTimeText;
     DatabaseReference databaseReference;
-    int eventsCount = 0;
+    int eventsCount;
 
     final Calendar myCalendar = Calendar.getInstance();
     final Calendar myCalendar2 = Calendar.getInstance();
@@ -52,7 +55,8 @@ public class CreateEvent extends AppCompatActivity {
         TextView appbar_title = findViewById(R.id.appbar_title);
         appbar_title.setText("إضافة فعالية");
 
-        switchCompat = findViewById(R.id.fees_switch);
+        switchCompat =  findViewById(R.id.feesSwitch);
+
         databaseReference = FirebaseDatabase.getInstance().getReference();
         from_date = findViewById(R.id.from_date);
         to_date = findViewById(R.id.to_date);
@@ -82,14 +86,14 @@ public class CreateEvent extends AppCompatActivity {
         from_date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new DatePickerDialog(getApplicationContext(), date, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                new DatePickerDialog(CreateEvent.this, date, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
         to_date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new DatePickerDialog(getApplicationContext(), date2, myCalendar2.get(Calendar.YEAR), myCalendar2.get(Calendar.MONTH),
+                new DatePickerDialog(CreateEvent.this, date2, myCalendar2.get(Calendar.YEAR), myCalendar2.get(Calendar.MONTH),
                         myCalendar2.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
@@ -137,12 +141,12 @@ public class CreateEvent extends AppCompatActivity {
         });
 //        ***********************************************************************************************
         List<String> eventTypeArray = new ArrayList<>();
-        eventTypeArray.add("ندوات");
-        eventTypeArray.add("دورات");
-        eventTypeArray.add("مؤتمرات");
-        eventTypeArray.add("فعاليات");
-        eventTypeArray.add("مبادرات");
-        eventTypeArray.add(0, "نوع  الغعالية ");
+        eventTypeArray.add("ندوة");
+        eventTypeArray.add("دورة");
+        eventTypeArray.add("مؤتمر");
+        eventTypeArray.add("فعالية");
+        eventTypeArray.add("مبادرة");
+        eventTypeArray.add(0, "نوع الغعالية");
 
 
         final ArrayAdapter<String> eventTypeAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, eventTypeArray) {
@@ -163,7 +167,7 @@ public class CreateEvent extends AppCompatActivity {
         eventTypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (!eventTypeSpinner.getSelectedItem().toString().equals("نوع الفعالية")) {
+                if (!eventTypeSpinner.getSelectedItem().toString().equals("نوع الغعالية")) {
                     eventType = eventTypeSpinner.getSelectedItem().toString();
                 }
             }
@@ -262,14 +266,14 @@ public class CreateEvent extends AppCompatActivity {
             }
         };
         eventSpecAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        Spinner eventSpecSpinner = findViewById(R.id.event_spec_spinner);
+        final Spinner eventSpecSpinner = findViewById(R.id.event_spec_spinner);
         eventSpecSpinner.setAdapter(eventSpecAdapter);
         eventSpecSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                if (!eventRangeSpinner.getSelectedItem().toString().equals("تخصص الفعالية")) {
-                    eventSpec = eventRangeSpinner.getSelectedItem().toString();
+                if (!eventSpecSpinner.getSelectedItem().toString().equals("تخصص الفعالية")) {
+                    eventSpec = eventSpecSpinner.getSelectedItem().toString();
 
                 }
             }
@@ -319,61 +323,65 @@ public class CreateEvent extends AppCompatActivity {
         });
     }
 
-    public void CreateEvent(View view) {
-        if (switchCompat.isChecked()) {
-            eventFees = "مدفوعة";
-        } else {
-            eventFees = "مجانية";
-        }
-        startDate = from_date.getText().toString();
-        endDate = to_date.getText().toString();
-        eventTitle = eventTitleText.getText().toString();
-        eventAuthor = eventAuthorText.getText().toString();
-        eventContent = eventContentText.getText().toString();
-        eventTime = eventTimeText.getText().toString();
+    public void createEvent(View view) {
+            if (switchCompat.isChecked()) {
+                eventFees = "مدفوعة";
+            } else {
+                eventFees = "مجانية";
+            }
 
-        databaseReference.child("events").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot data : snapshot.getChildren()) {
-                    eventsCount++;
+            eventsCount = 0;
+            startDate = from_date.getText().toString();
+            endDate = to_date.getText().toString();
+            eventTitle = eventTitleText.getText().toString();
+            eventAuthor = eventAuthorText.getText().toString();
+            eventContent = eventContentText.getText().toString();
+            eventTime = eventTimeText.getText().toString();
+
+            databaseReference.child("events").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    for (DataSnapshot data : snapshot.getChildren()) {
+                        eventsCount++;
+                    }
+
+                    databaseReference.child("events").child("event" + (eventsCount + 1)).child("eventLocation").setValue(Country);
+                    databaseReference.child("events").child("event" + (eventsCount + 1)).child("eventType").setValue(eventType);
+                    databaseReference.child("events").child("event" + (eventsCount + 1)).child("eventSubType").setValue(eventSubType);
+                    databaseReference.child("events").child("event" + (eventsCount + 1)).child("eventSpec").setValue(eventSpec);
+                    databaseReference.child("events").child("event" + (eventsCount + 1)).child("eventSubSpec").setValue(eventSubSpec);
+                    databaseReference.child("events").child("event" + (eventsCount + 1)).child("eventRange").setValue(eventRange);
+                    databaseReference.child("events").child("event" + (eventsCount + 1)).child("eventFees").setValue(eventFees);
+                    databaseReference.child("events").child("event" + (eventsCount + 1)).child("eventStartDate").setValue(startDate);
+                    databaseReference.child("events").child("event" + (eventsCount + 1)).child("eventEndDate").setValue(endDate);
+                    databaseReference.child("events").child("event" + (eventsCount + 1)).child("eventTitle").setValue(eventTitle);
+                    databaseReference.child("events").child("event" + (eventsCount + 1)).child("eventAuthor").setValue(eventAuthor);
+                    databaseReference.child("events").child("event" + (eventsCount + 1)).child("eventContent").setValue(eventContent);
+                    databaseReference.child("events").child("event" + (eventsCount + 1)).child("eventTime").setValue(eventTime);
+                    databaseReference.child("events").child("event" + (eventsCount + 1)).child("eventImage").setValue("");
+
+                    databaseReference.child("createdEvents").child(FirebaseAuth.getInstance().getCurrentUser()
+                            .getUid()).child("event" + (eventsCount + 1)).setValue("1");
                 }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
 
-            }
-        });
+                }
+            });
 
-        databaseReference.child("events").child("event"+(eventsCount+1)).child("eventLocation").setValue(Country);
-        databaseReference.child("events").child("event"+(eventsCount+1)).child("eventType").setValue(eventType);
-        databaseReference.child("events").child("event"+(eventsCount+1)).child("eventSubType").setValue(eventSubType);
-        databaseReference.child("events").child("event"+(eventsCount+1)).child("eventSpec").setValue(eventSpec);
-        databaseReference.child("events").child("event"+(eventsCount+1)).child("eventSubSpec").setValue(eventSubSpec);
-        databaseReference.child("events").child("event"+(eventsCount+1)).child("eventRange").setValue(eventRange);
-        databaseReference.child("events").child("event"+(eventsCount+1)).child("eventFees").setValue(eventFees);
-        databaseReference.child("events").child("event"+(eventsCount+1)).child("eventStartDate").setValue(startDate);
-        databaseReference.child("events").child("event"+(eventsCount+1)).child("eventEndDate").setValue(endDate);
-        databaseReference.child("events").child("event"+(eventsCount+1)).child("eventTitle").setValue(eventTitle);
-        databaseReference.child("events").child("event"+(eventsCount+1)).child("eventAuthor").setValue(eventAuthor);
-        databaseReference.child("events").child("event"+(eventsCount+1)).child("eventContent").setValue(eventContent);
-        databaseReference.child("events").child("event"+(eventsCount+1)).child("eventTime").setValue(eventTime);
-        databaseReference.child("events").child("event"+(eventsCount+1)).child("eventImage").setValue("");
+        }
 
-        databaseReference.child("createdEvents").child(FirebaseAuth.getInstance().getCurrentUser()
-                .getUid()).child("event"+(eventsCount+1)).setValue("1");
+        private void updateLabelFromDate () {
+            String myFormat = "MM/dd/yy"; //In which you need put here
+            SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+            from_date.setText(sdf.format(myCalendar.getTime()));
+        }
+
+        private void updateLabelToDate () {
+            String myFormat = "MM/dd/yy"; //In which you need put here
+            SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+            to_date.setText(sdf.format(myCalendar2.getTime()));
+        }
+
     }
-
-    private void updateLabelFromDate() {
-        String myFormat = "MM/dd/yy"; //In which you need put here
-        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
-        from_date.setText(sdf.format(myCalendar.getTime()));
-    }
-
-    private void updateLabelToDate() {
-        String myFormat = "MM/dd/yy"; //In which you need put here
-        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
-        to_date.setText(sdf.format(myCalendar2.getTime()));
-    }
-}

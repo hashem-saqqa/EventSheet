@@ -122,76 +122,57 @@ public class Search_filter extends BottomSheetDialogFragment {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         for (DataSnapshot data : snapshot.getChildren()) {
-                            if (!Country.equals("") & !eventType.equals("") & !eventSubType.equals("") & !eventRange.equals("") &
-                                !eventSpec.equals("") & !eventSubSpec.equals("") & !eventFees.equals("") & !startDate.equals("")
-                                    & !endDate.equals("")) {
 
-                                if (data.child("eventLocation").getValue(String.class).equals(Country) &
-                                        data.child("eventType").getValue(String.class).equals(eventType) &
-                                        data.child("eventSubType").getValue(String.class).equals(eventSubType) &
-                                        data.child("eventRange").getValue(String.class).equals(eventRange) &
-                                        data.child("eventSpec").getValue(String.class).equals(eventSpec) &
-                                        data.child("eventSubSpec").getValue(String.class).equals(eventSubSpec) &
-                                        data.child("eventFees").getValue(String.class).equals(eventFees)&
-                                        data.child("eventStartDate").getValue(String.class).equals(startDate)&
-                                        data.child("eventEndDate").getValue(String.class).equals(endDate)
-                                ) {
-
-                                    Log.d("searchFilterResult", "onDataChange: " + data);
-                                }
-                            } else if (!Country.equals("") & !eventType.equals("") & !eventSubType.equals("") & !eventRange.equals("") &
-                                    !eventSpec.equals("") & !eventSubSpec.equals("")) {
-                                if (data.child("eventLocation").getValue(String.class).equals(Country) &
-                                        data.child("eventType").getValue(String.class).equals(eventType) &
-                                        data.child("eventSubType").getValue(String.class).equals(eventSubType) &
-                                        data.child("eventRange").getValue(String.class).equals(eventRange) &
-                                        data.child("eventSpec").getValue(String.class).equals(eventSpec) &
-                                        data.child("eventSubSpec").getValue(String.class).equals(eventSubSpec)) {
-
-                                    Log.d("searchFilterResult", "onDataChange: " + data);
-                                }
-                            } else if (!Country.equals("") & !eventType.equals("") & !eventSubType.equals("") & !eventRange.equals("") &
-                                    !eventSpec.equals("")) {
-                                if (data.child("eventLocation").getValue(String.class).equals(Country) &
-                                        data.child("eventType").getValue(String.class).equals(eventType) &
-                                        data.child("eventSubType").getValue(String.class).equals(eventSubType) &
-                                        data.child("eventRange").getValue(String.class).equals(eventRange) &
-                                        data.child("eventSpec").getValue(String.class).equals(eventSpec)) {
-
-                                    Log.d("searchFilterResult", "onDataChange: " + data);
-                                }
-                            } else if (!Country.equals("") & !eventType.equals("") & !eventSubType.equals("") & !eventRange.equals("")) {
-                                if (data.child("eventLocation").getValue(String.class).equals(Country) &
-                                        data.child("eventType").getValue(String.class).equals(eventType) &
-                                        data.child("eventSubType").getValue(String.class).equals(eventSubType) &
-                                        data.child("eventRange").getValue(String.class).equals(eventRange)) {
-
-                                    Log.d("searchFilterResult", "onDataChange: " + data);
-                                }
-                            } else if (!Country.equals("") & !eventType.equals("") & !eventSubType.equals("")) {
-                                if (data.child("eventLocation").getValue(String.class).equals(Country) &
-                                        data.child("eventType").getValue(String.class).equals(eventType) &
-                                        data.child("eventSubType").getValue(String.class).equals(eventSubType)) {
-
-                                    Log.d("searchFilterResult", "onDataChange: " + data);
-                                }
-                            } else if (!Country.equals("") & !eventType.equals("")) {
-                                if (data.child("eventLocation").getValue(String.class).equals(Country) &
-                                        data.child("eventType").getValue(String.class).equals(eventType)) {
-
-                                    Log.d("searchFilterResult", "onDataChange: " + data);
-                                }
-                            } else if (!Country.equals("")) {
-
+                            if (!Country.equals("") & !Country.equals("الدولة")) {
                                 if (data.child("eventLocation").getValue(String.class).equals(Country)) {
-
-                                    Log.d("searchFilterResult", "onDataChange: " + data);
+                                } else {
+                                    continue;
                                 }
-                            } else {
-                                Toast.makeText(getContext(), "select filter pls", Toast.LENGTH_SHORT).show();
                             }
+                            if (!eventType.equals("") & !eventType.equals("نوع الغعالية")) {
+                                if (data.child("eventType").getValue(String.class).equals(eventType)) {
+                                } else {
+                                    continue;
+                                }
+                            }
+
+                            if (!eventSubType.equals("")&!eventSubType.equals("نوع الفعالية الفرعي")) {
+                                if (data.child("eventSubType").getValue(String.class).equals(eventSubType)) {
+                                } else {
+                                    continue;
+                                }
+                            }
+                            if (!eventRange.equals("")&!eventRange.equals("نطاق الفعالية")) {
+                                if (data.child("eventRange").getValue(String.class).equals(eventRange)) {
+                                } else {
+                                    continue;
+                                }
+                            }
+                            if (!eventSpec.equals("")&!eventSpec.equals("تخصص الفعالية")) {
+                                if (data.child("eventSpec").getValue(String.class).equals(eventSpec)) {
+                                } else {
+                                    continue;
+                                }
+                            }
+                            if (!eventSubSpec.equals("")&!eventSubSpec.equals("تخصص الفعالية الفرعي")) {
+                                if (data.child("eventSubSpec").getValue(String.class).equals(eventSubSpec)) {
+                                } else {
+                                    continue;
+                                }
+                            }
+                            if (!eventFees.equals("")&!eventFees.equals("الرسوم")) {
+                                if (data.child("eventFees").getValue(String.class).equals(eventFees)) {
+                                    Log.d("searchFilterResult", "onDataChange: " + data);
+                                } else {
+                                    continue;
+                                }
+                            }
+
+                            Log.d("searchFilterResult", "onDataChange: " + data);
+
                         }
                     }
+
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
@@ -233,9 +214,9 @@ public class Search_filter extends BottomSheetDialogFragment {
         countrySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (!countrySpinner.getSelectedItem().toString().equals("الدولة")) {
-                    Country = countrySpinner.getSelectedItem().toString();
-                }
+//                if (!countrySpinner.getSelectedItem().toString().equals("الدولة")) {
+                Country = countrySpinner.getSelectedItem().toString();
+//                }
 
             }
 
@@ -247,12 +228,12 @@ public class Search_filter extends BottomSheetDialogFragment {
 
 //*******************************************************************************
         List<String> eventTypeArray = new ArrayList<>();
-        eventTypeArray.add("ندوات");
-        eventTypeArray.add("دورات");
-        eventTypeArray.add("مؤتمرات");
-        eventTypeArray.add("فعاليات");
-        eventTypeArray.add("مبادرات");
-        eventTypeArray.add(0, "نوع  الغعالية ");
+        eventTypeArray.add("ندوة");
+        eventTypeArray.add("دورة");
+        eventTypeArray.add("مؤتمر");
+        eventTypeArray.add("فعالية");
+        eventTypeArray.add("مبادرة");
+        eventTypeArray.add(0, "نوع الغعالية");
 
 
         final ArrayAdapter<String> eventTypeAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_dropdown_item, eventTypeArray) {
@@ -273,9 +254,9 @@ public class Search_filter extends BottomSheetDialogFragment {
         eventTypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (!eventTypeSpinner.getSelectedItem().toString().equals("نوع الفعالية")) {
-                    eventType = eventTypeSpinner.getSelectedItem().toString();
-                }
+//                if (!eventTypeSpinner.getSelectedItem().toString().equals("نوع الفعالية")) {
+                eventType = eventTypeSpinner.getSelectedItem().toString();
+//                }
             }
 
             @Override
@@ -309,9 +290,9 @@ public class Search_filter extends BottomSheetDialogFragment {
         eventSubTypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (!eventSubTypeSpinner.getSelectedItem().toString().equals("نوع الفعالية الفرعي")) {
-                    eventSubType = eventSubTypeSpinner.getSelectedItem().toString();
-                }
+//                if (!eventSubTypeSpinner.getSelectedItem().toString().equals("نوع الفعالية الفرعي")) {
+                eventSubType = eventSubTypeSpinner.getSelectedItem().toString();
+//                }
 
             }
 
@@ -347,9 +328,9 @@ public class Search_filter extends BottomSheetDialogFragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                if (!eventRangeSpinner.getSelectedItem().toString().equals("نطاق الفعالية")) {
-                    eventRange = eventRangeSpinner.getSelectedItem().toString();
-                }
+//                if (!eventRangeSpinner.getSelectedItem().toString().equals("نطاق الفعالية")) {
+                eventRange = eventRangeSpinner.getSelectedItem().toString();
+//                }
             }
 
             @Override
@@ -366,9 +347,9 @@ public class Search_filter extends BottomSheetDialogFragment {
                 Log.d("the orderByKey", "onDataChange: " + snapshot);
 
                 for (DataSnapshot data : snapshot.getChildren()) {
-                    if (!eventSpecArray.contains(data.child("eventSpec").getValue(String.class))) {
-                        eventSpecArray.add(data.child("eventSpec").getValue(String.class));
-                    }
+//                    if (!eventSpecArray.contains(data.child("eventSpec").getValue(String.class))) {
+                    eventSpecArray.add(data.child("eventSpec").getValue(String.class));
+//                    }
                 }
 
                 final ArrayAdapter<String> eventSpecAdapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_dropdown_item, eventSpecArray) {
@@ -384,16 +365,15 @@ public class Search_filter extends BottomSheetDialogFragment {
                 };
 
                 eventSpecAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                Spinner eventSpecSpinner = view.findViewById(R.id.event_spec_spinner);
+                final Spinner eventSpecSpinner = view.findViewById(R.id.event_spec_spinner);
                 eventSpecSpinner.setAdapter(eventSpecAdapter);
                 eventSpecSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                        if (!eventRangeSpinner.getSelectedItem().toString().equals("تخصص الفعالية")) {
-                            eventSpec = eventRangeSpinner.getSelectedItem().toString();
-
-                        }
+//                        if (!eventSpecSpinner.getSelectedItem().toString().equals("تخصص الفعالية")) {
+                        eventSpec = eventSpecSpinner.getSelectedItem().toString();
+//                        }
                     }
 
                     @Override
@@ -435,10 +415,9 @@ public class Search_filter extends BottomSheetDialogFragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                if (!eventSubSpecSpinner.getSelectedItem().toString().equals("تخصص الفعالية الفرعي")) {
-                    eventSubSpec = eventSubSpecSpinner.getSelectedItem().toString();
-
-                }
+//                if (!eventSubSpecSpinner.getSelectedItem().toString().equals("تخصص الفعالية الفرعي")) {
+                eventSubSpec = eventSubSpecSpinner.getSelectedItem().toString();
+//                }
             }
 
             @Override
@@ -474,9 +453,9 @@ public class Search_filter extends BottomSheetDialogFragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                if (!eventFeesSpinner.getSelectedItem().toString().equals("الرسوم")) {
-                    eventFees = eventFeesSpinner.getSelectedItem().toString();
-                }
+//                if (!eventFeesSpinner.getSelectedItem().toString().equals("الرسوم")) {
+                eventFees = eventFeesSpinner.getSelectedItem().toString();
+//                }
             }
 
             @Override

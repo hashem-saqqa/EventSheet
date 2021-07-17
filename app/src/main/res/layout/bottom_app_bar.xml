@@ -98,5 +98,7 @@
         android:layout_height="wrap_content"
         app:backgroundTint="#CD4A58"
         android:src="@drawable/union_5"
-        app:layout_anchor="@id/Bottom_app_bar" />
+        app:layout_anchor="@id/Bottom_app_bar"
+        android:onClick="GoTo_CreateEvents"
+        />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

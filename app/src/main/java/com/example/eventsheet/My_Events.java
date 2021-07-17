@@ -96,4 +96,8 @@ public class My_Events extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(),Profile.class);
         startActivityForResult(intent,0);
     }
+    public void GoTo_CreateEvents(View view) {
+        Intent intent = new Intent(getApplicationContext(),CreateEvent.class);
+        startActivity(intent);
+    }
 }

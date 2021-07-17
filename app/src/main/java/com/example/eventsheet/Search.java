@@ -316,6 +316,10 @@ public class Search extends AppCompatActivity implements MaterialSearchBar.OnSea
         Intent intent = new Intent(getApplicationContext(), Profile.class);
         startActivityForResult(intent, 0);
     }
+    public void GoTo_CreateEvents(View view) {
+        Intent intent = new Intent(getApplicationContext(),CreateEvent.class);
+        startActivity(intent);
+    }
 
     public void GoToSearch_icon(View view) {
         Intent intent = new Intent(getApplicationContext(), Search.class);
