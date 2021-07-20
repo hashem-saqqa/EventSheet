@@ -68,19 +68,22 @@ public class Created_Fragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot data : snapshot.getChildren()) {
 
-                    Log.d("data1", "onDataChange: "+data);
-                    Log.d("snapshot1", "onDataChange: "+snapshot);
+                    Log.d("data1", "onDataChange: " + data);
+                    Log.d("snapshot1", "onDataChange: " + snapshot);
 
                     myCreatedEventStatus = data.getChildren().iterator().next().getValue(String.class);
+                    Log.d("myCreatedEventStatus", "onDataChange: " + myCreatedEventStatus);
+                    Log.d("eventId", "onDataChange: " + data.getChildren().iterator().next().getKey());
 
-                    databaseReference.child("events").orderByKey().equalTo(data.getValue(String.class))
+
+                    databaseReference.child("events").orderByKey().equalTo(data.getChildren().iterator().next().getKey())
                             .addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                    for(DataSnapshot data2 : snapshot.getChildren()){
+                                    for (DataSnapshot data2 : snapshot.getChildren()) {
 
-                                        Log.d("data1", "onDataChange: "+data2);
-                                        Log.d("snapshot1", "onDataChange: "+snapshot);
+                                        Log.d("data2", "onDataChange: " + data2);
+                                        Log.d("snapshot2", "onDataChange: " + snapshot);
 
                                         mDataset_my_created.add(new Event_model(
                                                 R.drawable.nopath___copy__79_,
@@ -89,9 +92,15 @@ public class Created_Fragment extends Fragment {
                                                 data2.child("eventStartDate").getValue(String.class),
                                                 data2.child("eventEndDate").getValue(String.class),
                                                 myCreatedEventStatus
-                                                ));
+                                        ));
 
                                     }
+                                    mRecyclerView = getView().findViewById(R.id.recyclerView_created);
+                                    mLayoutManager = new LinearLayoutManager(getContext());
+                                    mRecyclerView.setLayoutManager(mLayoutManager);
+                                    my_created_events_adapter = new My_created_events_adapter(mDataset_my_created);
+                                    new ItemTouchHelper(itemSimpleCallback).attachToRecyclerView(mRecyclerView);
+                                    mRecyclerView.setAdapter(my_created_events_adapter);
                                 }
 
                                 @Override
@@ -109,14 +118,12 @@ public class Created_Fragment extends Fragment {
 
             }
         });
-        mRecyclerView = getView().findViewById(R.id.recyclerView_created);
-        mLayoutManager = new LinearLayoutManager(getContext());
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        my_created_events_adapter = new My_created_events_adapter(mDataset_my_created);
-        new ItemTouchHelper(itemSimpleCallback).attachToRecyclerView(mRecyclerView);
-        mRecyclerView.setAdapter(my_created_events_adapter);
-
-
+//        mRecyclerView = getView().findViewById(R.id.recyclerView_created);
+//        mLayoutManager = new LinearLayoutManager(getContext());
+//        mRecyclerView.setLayoutManager(mLayoutManager);
+//        my_created_events_adapter = new My_created_events_adapter(mDataset_my_created);
+//        new ItemTouchHelper(itemSimpleCallback).attachToRecyclerView(mRecyclerView);
+//        mRecyclerView.setAdapter(my_created_events_adapter);
     }
 
     ItemTouchHelper.SimpleCallback itemSimpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {

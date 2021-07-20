@@ -42,7 +42,12 @@ public class My_created_events_adapter  extends RecyclerView.Adapter<My_created_
         holder.Location_text.setText(model.getLocation_text());
         holder.start_date_text.setText(model.getStart_date_text());
         holder.End_date_text.setText(model.getEnd_date_text());
-        holder.My_event_status.setText(model.getMy_created_event_status());
+        if (model.getMy_created_event_status().equals("1")) {
+            holder.My_event_status.setText("تم النشر");
+        }else {
+            holder.My_event_status.setText("قيد المراجعة");
+        }
+
     }
 
     @Override
