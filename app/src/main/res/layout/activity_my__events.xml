@@ -8,56 +8,59 @@
 
     <include
         android:id="@+id/appbar"
-        layout="@layout/appbar"
-        />
+        layout="@layout/appbar" />
+
     <LinearLayout
         android:id="@+id/Created_Joined_Layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/appbar"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:background="#ffffff"
-        android:paddingBottom="1dp"
         android:paddingTop="1dp"
-        app:layout_constraintVertical_bias="0"
-        >
+        android:paddingBottom="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appbar"
+        app:layout_constraintVertical_bias="0">
+
         <TextView
             android:id="@+id/JoinedEventText"
             android:layout_width="0dp"
             android:layout_height="47dp"
+            android:layout_marginRight="1dp"
             android:layout_weight="1"
-            android:text="فعالياتي المشترك بها"
             android:background="#BADC58"
-            android:textColor="#ffffff"
-            android:textSize="17dp"
-            android:textStyle="bold"
             android:gravity="center"
             android:onClick="joined_events_text"
-            />
+            android:text="فعالياتي المشترك بها"
+            android:textColor="#ffffff"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+
         <TextView
 
             android:id="@+id/CreatedEventText"
             android:layout_width="0dp"
             android:layout_height="47dp"
+            android:layout_marginLeft="1dp"
             android:layout_weight="1"
-            android:text="فعالياتي التي أنشأتها"
-            android:textColor="#BADC58"
-            android:textSize="17dp"
-            android:textStyle="bold"
+            android:background="#BADC58"
             android:gravity="center"
             android:onClick="created_events_text"
-            />
+            android:text="فعالياتي التي أنشأتها"
+            android:textColor="#ffffff"
+            android:textSize="17dp"
+            android:textStyle="bold" />
     </LinearLayout>
+
     <FrameLayout
         android:id="@+id/Created_Joined_fragments"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/Created_Joined_Layout"
         app:layout_constraintBottom_toBottomOf="parent"
-        />
-<include layout="@layout/bottom_app_bar" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Created_Joined_Layout" />
+
+    <include layout="@layout/bottom_app_bar" />
 </androidx.constraintlayout.widget.ConstraintLayout>

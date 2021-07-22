@@ -95,6 +95,9 @@ public class Created_Fragment extends Fragment {
                                         ));
 
                                     }
+                                    if (mDataset_my_created.isEmpty()){
+
+                                    }
                                     mRecyclerView = getView().findViewById(R.id.recyclerView_created);
                                     mLayoutManager = new LinearLayoutManager(getContext());
                                     mRecyclerView.setLayoutManager(mLayoutManager);
