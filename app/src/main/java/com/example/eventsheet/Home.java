@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -19,6 +20,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -31,7 +33,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-public class Home extends AppCompatActivity implements Event_adapter.OnEventListener {
+public class Home extends AppCompatActivity  {
     protected List<Event_model> mDataset_1;
     protected List<Event_model> mDataset_2;
     protected List<Event_model> mDataset_3;
@@ -44,7 +46,8 @@ public class Home extends AppCompatActivity implements Event_adapter.OnEventList
     String currentDate, startDate, endDate, currentDateTest;
     SimpleDateFormat simpleDateFormat;
 
-    Event_adapter.OnEventListener mContext = this;
+//    Event_adapter.OnEventListener mContext = (Event_adapter.OnEventListener) this;
+    Context context;
 
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -53,6 +56,8 @@ public class Home extends AppCompatActivity implements Event_adapter.OnEventList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        context = this;
 
         getSupportActionBar().hide();
 
@@ -126,7 +131,8 @@ public class Home extends AppCompatActivity implements Event_adapter.OnEventList
                     if (fromDateToStringToInt(currentDateTest) - fromDateToStringToInt(startDate) >= 0 &&
                             fromDateToStringToInt(currentDateTest) - fromDateToStringToInt(endDate) < 0) {
 
-                        mDataset_1.add(new Event_model(R.drawable.nopath___copy__79_,
+                        mDataset_1.add(new Event_model(dataSnapshot.getKey(),
+                                R.drawable.nopath___copy__79_,
                                 dataSnapshot.child("eventTitle").getValue(String.class),
                                 dataSnapshot.child("eventLocation").getValue(String.class),
                                 dataSnapshot.child("eventContent").getValue(String.class),
@@ -139,7 +145,7 @@ public class Home extends AppCompatActivity implements Event_adapter.OnEventList
                 mRecyclerView = findViewById(R.id.recyclerView);
                 mLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
                 mRecyclerView.setLayoutManager(mLayoutManager);
-                event_adapter = new Event_adapter(mDataset_1, mContext);
+                event_adapter = new Event_adapter(context, mDataset_1);
                 mRecyclerView.setAdapter(event_adapter);
 
             }
@@ -160,7 +166,8 @@ public class Home extends AppCompatActivity implements Event_adapter.OnEventList
                         mDataset_2 = new ArrayList<>();
                         for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
 
-                            mDataset_2.add(new Event_model(R.drawable.nopath___copy__79_,
+                            mDataset_2.add(new Event_model(dataSnapshot.getKey(),
+                                    R.drawable.nopath___copy__79_,
                                     dataSnapshot.child("eventTitle").getValue(String.class),
                                     dataSnapshot.child("eventLocation").getValue(String.class),
                                     dataSnapshot.child("eventStartDate").getValue(String.class),
@@ -170,7 +177,7 @@ public class Home extends AppCompatActivity implements Event_adapter.OnEventList
                         mRecyclerView = findViewById(R.id.recyclerView_2);
                         mLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
                         mRecyclerView.setLayoutManager(mLayoutManager);
-                        Small_event_adapter event_adapter = new Small_event_adapter(mDataset_2);
+                        Small_event_adapter event_adapter = new Small_event_adapter(context,mDataset_2);
                         mRecyclerView.setAdapter(event_adapter);
 
                     }
@@ -190,7 +197,8 @@ public class Home extends AppCompatActivity implements Event_adapter.OnEventList
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                            mDataset_3.add(new Event_model(R.drawable.nopath___copy__79_,
+                            mDataset_3.add(new Event_model(dataSnapshot.getKey(),
+                                    R.drawable.nopath___copy__79_,
                                     dataSnapshot.child("eventTitle").getValue(String.class),
                                     dataSnapshot.child("eventLocation").getValue(String.class),
                                     dataSnapshot.child("eventStartDate").getValue(String.class),
@@ -199,7 +207,7 @@ public class Home extends AppCompatActivity implements Event_adapter.OnEventList
                         mRecyclerView = findViewById(R.id.recyclerView_3);
                         mLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
                         mRecyclerView.setLayoutManager(mLayoutManager);
-                        Small_event_adapter event_adapter = new Small_event_adapter(mDataset_3);
+                        Small_event_adapter event_adapter = new Small_event_adapter(context,mDataset_3);
                         mRecyclerView.setAdapter(event_adapter);
                     }
 
@@ -218,7 +226,8 @@ public class Home extends AppCompatActivity implements Event_adapter.OnEventList
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                            mDataset_4.add(new Event_model(R.drawable.nopath___copy__79_,
+                            mDataset_4.add(new Event_model(dataSnapshot.getKey(),
+                                    R.drawable.nopath___copy__79_,
                                     dataSnapshot.child("eventTitle").getValue(String.class),
                                     dataSnapshot.child("eventLocation").getValue(String.class),
                                     dataSnapshot.child("eventStartDate").getValue(String.class),
@@ -227,7 +236,7 @@ public class Home extends AppCompatActivity implements Event_adapter.OnEventList
                         mRecyclerView = findViewById(R.id.recyclerView_4);
                         mLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
                         mRecyclerView.setLayoutManager(mLayoutManager);
-                        Small_event_adapter event_adapter = new Small_event_adapter(mDataset_4);
+                        Small_event_adapter event_adapter = new Small_event_adapter(context,mDataset_4);
                         mRecyclerView.setAdapter(event_adapter);
                     }
 
@@ -278,17 +287,22 @@ public class Home extends AppCompatActivity implements Event_adapter.OnEventList
         startActivity(intent);
     }
 
-    @Override
-    public void onEventClick(int position) {
-        Log.d("eventClickedName", "onEventClick: " + mDataset_1.get(position).getMain_text());
-
-        Intent intent = new Intent(this, Event_details.class);
-        intent.putExtra("eventClicked", mDataset_1.get(position).getMain_text());
-        startActivity(intent);
-    }
+//    @Override
+//    public void onEventClick(int position) {
+//        Log.d("eventClickedName", "onEventClick: " + mDataset_1.get(position).getEventId());
+//
+//        Intent intent = new Intent(this, Event_details.class);
+//        intent.putExtra("eventClicked", mDataset_1.get(position).getEventId());
+//        startActivity(intent);
+//    }
 
     public void GoTo_CreateEvents(View view) {
         Intent intent = new Intent(getApplicationContext(), CreateEvent.class);
         startActivity(intent);
     }
+
+//    public void ShareEvent(View view) {
+//        databaseReference.child("createdEvents").child(FirebaseAuth.getInstance().getCurrentUser()
+//                .getUid()).child("event" + (eventsCount + 1)).setValue("1");
+//    }
 }

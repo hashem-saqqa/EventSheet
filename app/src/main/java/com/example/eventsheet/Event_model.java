@@ -9,8 +9,9 @@ public class Event_model {
     private String End_date_text;
     private String Auther_text;
     private String My_created_event_status;
+    private String EventId;
 
-    public Event_model(int image, String main_text, String location_text,
+    public Event_model(String eventId, int image, String main_text, String location_text,
                        String detail_text, String start_date_text,
                        String end_date_text, String auther_text) {
         Image = image;
@@ -20,15 +21,18 @@ public class Event_model {
         Start_date_text = start_date_text;
         End_date_text = end_date_text;
         Auther_text = auther_text;
+        EventId = eventId;
     }
 
-    public Event_model(int image, String main_text, String location_text,
+    public Event_model(String eventId,int image, String main_text, String location_text,
                        String start_date_text, String end_date_text) {
         Image = image;
         Main_text = main_text;
         Location_text = location_text;
         Start_date_text = start_date_text;
         End_date_text = end_date_text;
+        EventId = eventId;
+
     }
 
     public Event_model(int image, String main_text, String location_text) {
@@ -117,6 +121,14 @@ public class Event_model {
 
     public void setMy_created_event_status(String my_created_event_status) {
         My_created_event_status = my_created_event_status;
+    }
+
+    public String getEventId() {
+        return EventId;
+    }
+
+    public void setEventId(String eventId) {
+        EventId = eventId;
     }
 }
 

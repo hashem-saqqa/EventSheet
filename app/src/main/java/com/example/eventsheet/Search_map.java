@@ -95,7 +95,6 @@ public class Search_map extends AppCompatActivity implements OnMapReadyCallback,
             WindowManager.LayoutParams wlp = window.getAttributes();
             wlp.gravity = Gravity.BOTTOM;
             contacts_dialog.show();
-            Toast.makeText(this, "hi hi hi", Toast.LENGTH_SHORT).show();
 
 //            dialog_constraint_basic.setVisibility(View.VISIBLE);
 //            dialog_constraint.setVisibility(View.VISIBLE);
@@ -108,7 +107,6 @@ public class Search_map extends AppCompatActivity implements OnMapReadyCallback,
             WindowManager.LayoutParams wlp = window.getAttributes();
             wlp.gravity = Gravity.BOTTOM;
             contacts_dialog.show();
-            Toast.makeText(this, "bye bye bye", Toast.LENGTH_SHORT).show();
 
         }
         return false;

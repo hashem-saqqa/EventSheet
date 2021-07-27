@@ -1,10 +1,8 @@
 package com.example.eventsheet;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -27,7 +25,7 @@ public class Event_details extends AppCompatActivity implements OnMapReadyCallba
 
     View line;
     DatabaseReference databaseReference;
-    private static String clickedEventName;
+    private static String clickedEventId;
     private String eventImage, eventTitle, eventAuthor, eventContent, eventEndDate,
             eventFees, eventLocation, eventRange, eventSpec, eventStartDate, eventSubSpec,
             eventSubType, eventTime, eventType;
@@ -52,7 +50,7 @@ public class Event_details extends AppCompatActivity implements OnMapReadyCallba
         assert mapFragment != null;
         mapFragment.getMapAsync(this);
 
-        clickedEventName = getIntent().getExtras().getString("eventClicked");
+        clickedEventId = getIntent().getExtras().getString("eventClicked");
 
         load_data();
 
@@ -84,13 +82,15 @@ public class Event_details extends AppCompatActivity implements OnMapReadyCallba
     private void load_data() {
 
         databaseReference = FirebaseDatabase.getInstance().getReference("events");
+        Log.d("the click id", " : "+clickedEventId);
 
-        databaseReference.orderByChild("eventTitle").equalTo(clickedEventName)
+        databaseReference.orderByKey().equalTo(clickedEventId)
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        Log.d("data from the click", "onDataChange: " + snapshot);
                         DataSnapshot data = snapshot.getChildren().iterator().next();
-                        eventTitle = clickedEventName;
+                        eventTitle = data.child("eventTitle").getValue(String.class);
                         eventAuthor = data.child("eventAuthor").getValue(String.class);
                         eventContent = data.child("eventContent").getValue(String.class);
                         eventEndDate = data.child("eventEndDate").getValue(String.class);
@@ -108,7 +108,8 @@ public class Event_details extends AppCompatActivity implements OnMapReadyCallba
                         eventImageView = findViewById(R.id.main_image);
                         eventTitleView = findViewById(R.id.event_title);
                         eventContentView = findViewById(R.id.main_text);
-                        eventLocationView = findViewById(R.id.location_text);
+                        eventLocationView = findViewById//                        eventAuthorView = findViewById(R.id.)
+                                (R.id.location_text);
 
                         eventTitleView.setText(eventTitle);
                         eventContentView.setText(eventContent);
@@ -125,6 +126,6 @@ public class Event_details extends AppCompatActivity implements OnMapReadyCallba
     }
 
     public static String getclickedEventName() {
-        return clickedEventName;
+        return clickedEventId;
     }
 }

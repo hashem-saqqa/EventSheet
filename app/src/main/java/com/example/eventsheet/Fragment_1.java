@@ -21,7 +21,7 @@ public class Fragment_1 extends Fragment {
 
     DatabaseReference databaseReference;
 
-    private String clickedEventName;
+    private String clickedEventId;
     private String eventAuthor, eventEndDate, eventFees, eventRange, eventSpec, eventStartDate,
             eventSubSpec, eventTime;
 
@@ -34,13 +34,13 @@ public class Fragment_1 extends Fragment {
         View view = inflater.inflate(R.layout.fragment_1, container, false);
 //        clickedEventName = getIntent().getExtras().getString("eventClicked");
 //        Event_details event_details = new Event_details();
-        clickedEventName = Event_details.getclickedEventName();
+        clickedEventId = Event_details.getclickedEventName();
 
         databaseReference = FirebaseDatabase.getInstance().getReference("events");
 
-        Log.d("clickedEventNameee", "clickedEventName: " + clickedEventName);
+        Log.d("clickedEventNameee", "clickedEventName: " + clickedEventId);
 
-        databaseReference.orderByChild("eventTitle").equalTo(clickedEventName)
+        databaseReference.orderByKey().equalTo(clickedEventId)
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {

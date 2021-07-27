@@ -26,10 +26,10 @@ public class Fragment_2 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        String clickedEventName = Event_details.getclickedEventName();
+        String clickedEventId = Event_details.getclickedEventName();
 
         databaseReference = FirebaseDatabase.getInstance().getReference("events");
-        databaseReference.orderByChild("eventTitle").equalTo(clickedEventName)
+        databaseReference.orderByKey().equalTo(clickedEventId)
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
