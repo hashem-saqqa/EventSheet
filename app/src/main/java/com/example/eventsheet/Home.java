@@ -70,6 +70,7 @@ public class Home extends AppCompatActivity  {
         floatingActionButton.setColorFilter(Color.argb(255, 255, 255, 255));
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
+//        databaseReference.keepSynced(true);
 
         date = Calendar.getInstance().getTime();
         simpleDateFormat = new SimpleDateFormat("yyyyMMdd");

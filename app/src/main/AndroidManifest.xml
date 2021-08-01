@@ -16,7 +16,9 @@
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/app_logo"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:name=".EventSheet"
+        >
         <activity android:name=".CreateEvent"></activity>
         <activity android:name=".Search_filter" />
         <activity android:name=".Support" />

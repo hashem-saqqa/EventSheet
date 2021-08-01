@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
@@ -47,6 +49,11 @@ import java.util.TreeSet;
 public class Search_filter extends BottomSheetDialogFragment {
     final Calendar myCalendar = Calendar.getInstance();
     final Calendar myCalendar2 = Calendar.getInstance();
+    protected List<Event_model> mDataset_filtered;
+    protected RecyclerView mRecyclerView;
+    protected LinearLayoutManager mLayoutManager;
+    All_events_adapter all_event_adapter;
+
 
     View view;
 //    List<String> eventSpecArray;
@@ -136,31 +143,31 @@ public class Search_filter extends BottomSheetDialogFragment {
                                 }
                             }
 
-                            if (!eventSubType.equals("")&!eventSubType.equals("نوع الفعالية الفرعي")) {
+                            if (!eventSubType.equals("") & !eventSubType.equals("نوع الفعالية الفرعي")) {
                                 if (data.child("eventSubType").getValue(String.class).equals(eventSubType)) {
                                 } else {
                                     continue;
                                 }
                             }
-                            if (!eventRange.equals("")&!eventRange.equals("نطاق الفعالية")) {
+                            if (!eventRange.equals("") & !eventRange.equals("نطاق الفعالية")) {
                                 if (data.child("eventRange").getValue(String.class).equals(eventRange)) {
                                 } else {
                                     continue;
                                 }
                             }
-                            if (!eventSpec.equals("")&!eventSpec.equals("تخصص الفعالية")) {
+                            if (!eventSpec.equals("") & !eventSpec.equals("تخصص الفعالية")) {
                                 if (data.child("eventSpec").getValue(String.class).equals(eventSpec)) {
                                 } else {
                                     continue;
                                 }
                             }
-                            if (!eventSubSpec.equals("")&!eventSubSpec.equals("تخصص الفعالية الفرعي")) {
+                            if (!eventSubSpec.equals("") & !eventSubSpec.equals("تخصص الفعالية الفرعي")) {
                                 if (data.child("eventSubSpec").getValue(String.class).equals(eventSubSpec)) {
                                 } else {
                                     continue;
                                 }
                             }
-                            if (!eventFees.equals("")&!eventFees.equals("الرسوم")) {
+                            if (!eventFees.equals("") & !eventFees.equals("الرسوم")) {
                                 if (data.child("eventFees").getValue(String.class).equals(eventFees)) {
                                     Log.d("searchFilterResult", "onDataChange: " + data);
                                 } else {
@@ -169,8 +176,21 @@ public class Search_filter extends BottomSheetDialogFragment {
                             }
 
                             Log.d("searchFilterResult", "onDataChange: " + data);
+                            mDataset_filtered = new ArrayList<>();
+
+                            mDataset_filtered.add(new Event_model(data.getKey(), R.drawable.nopath___copy__79_,
+                                    data.child("eventTitle").getValue(String.class),
+                                    data.child("eventLocation").getValue(String.class),
+                                    data.child("eventStartDate").getValue(String.class),
+                                    data.child("eventEndDate").getValue(String.class)));
 
                         }
+
+//                        mRecyclerView = view.findViewById(R.id.recyclerView_all_event);
+//                        mLayoutManager = new LinearLayoutManager(getApplicationContext());
+//                        mRecyclerView.setLayoutManager(mLayoutManager);
+//                        all_event_adapter = new All_events_adapter(mDataset_searched);
+//                        mRecyclerView.setAdapter(all_event_adapter);
                     }
 
 
