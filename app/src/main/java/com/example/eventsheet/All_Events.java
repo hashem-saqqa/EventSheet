@@ -13,6 +13,8 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -77,7 +79,6 @@ public class All_Events extends AppCompatActivity implements MaterialSearchBar.O
         } else {
             Toast.makeText(this, "wrong request Code", Toast.LENGTH_SHORT).show();
         }
-
 
     }
 
@@ -275,7 +276,9 @@ public class All_Events extends AppCompatActivity implements MaterialSearchBar.O
 //                window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
 //                WindowManager.LayoutParams wlp = window.getAttributes();
 //                wlp.gravity = Gravity.BOTTOM;
+
                 search_filter.show(getSupportFragmentManager(), "search_filter");
+
                 break;
             case MaterialSearchBar.BUTTON_SPEECH:
                 break;
@@ -285,6 +288,7 @@ public class All_Events extends AppCompatActivity implements MaterialSearchBar.O
                 searchBar.closeSearch();
                 break;
         }
+
     }
 
     public int fromDateToStringToInt(String theDate) {

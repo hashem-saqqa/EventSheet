@@ -11,6 +11,7 @@ import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -176,21 +177,22 @@ public class Search_filter extends BottomSheetDialogFragment {
                             }
 
                             Log.d("searchFilterResult", "onDataChange: " + data);
-                            mDataset_filtered = new ArrayList<>();
 
+                            mDataset_filtered = new ArrayList<>();
                             mDataset_filtered.add(new Event_model(data.getKey(), R.drawable.nopath___copy__79_,
                                     data.child("eventTitle").getValue(String.class),
                                     data.child("eventLocation").getValue(String.class),
                                     data.child("eventStartDate").getValue(String.class),
                                     data.child("eventEndDate").getValue(String.class)));
-
+//
                         }
 
-//                        mRecyclerView = view.findViewById(R.id.recyclerView_all_event);
-//                        mLayoutManager = new LinearLayoutManager(getApplicationContext());
-//                        mRecyclerView.setLayoutManager(mLayoutManager);
-//                        all_event_adapter = new All_events_adapter(mDataset_searched);
-//                        mRecyclerView.setAdapter(all_event_adapter);
+                        mRecyclerView = getActivity().findViewById(R.id.recyclerView_all_event);
+                        mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
+                        mRecyclerView.setLayoutManager(mLayoutManager);
+                        all_event_adapter = new All_events_adapter(mDataset_filtered);
+                        mRecyclerView.setAdapter(all_event_adapter);
+
                     }
 
 
