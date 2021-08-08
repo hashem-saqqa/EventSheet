@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -30,6 +31,11 @@ public class Shared_fragment extends Fragment {
     protected LinearLayoutManager mLayoutManager;
     All_event_Map_adapter shared_adapter;
 
+    int i = 0;
+    int j = 0;
+
+    TextView showAllAttend, showAllAttendShared;
+
     String mySharedEventStatus;
 
     DatabaseReference databaseReference;
@@ -46,12 +52,128 @@ public class Shared_fragment extends Fragment {
         databaseReference = FirebaseDatabase.getInstance().getReference();
         databaseReference.keepSynced(true);
         Create_events_attend();
-//        Create_events_attend_shared();
+        Create_events_attend_shared();
+        showAllAttend = view.findViewById(R.id.view_all_attend);
+        showAllAttendShared = view.findViewById(R.id.view_all_attend_shared);
+        textOnClick();
+    }
+
+
+    private void textOnClick() {
+        showAllAttend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mDataset_attend = new ArrayList<>();
+                mDataset_attend_shared = new ArrayList<>();
+
+                databaseReference.child("sharedEvents").orderByKey().equalTo(FirebaseAuth.getInstance().getCurrentUser()
+                        .getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                        DataSnapshot dataSnapshot = snapshot.getChildren().iterator().next();
+
+                        for (DataSnapshot data : dataSnapshot.getChildren()) {
+
+                            mySharedEventStatus = data.getValue(String.class);
+
+                            if (mySharedEventStatus.equals("0")) {
+
+                                databaseReference.child("events").orderByKey().equalTo(data.getKey())
+                                        .addListenerForSingleValueEvent(new ValueEventListener() {
+                                            @Override
+                                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                                                for (DataSnapshot data2 : snapshot.getChildren()) {
+
+                                                    mDataset_attend.add(new Event_model(R.drawable.nopath___copy__79_,
+                                                            data2.child("eventTitle").getValue(String.class),
+                                                            data2.child("eventLocation").getValue(String.class)));
+                                                }
+
+                                                mRecyclerView = getView().findViewById(R.id.recyclerView_attend);
+                                                mLayoutManager = new LinearLayoutManager(getContext());
+                                                mRecyclerView.setLayoutManager(mLayoutManager);
+                                                shared_adapter = new All_event_Map_adapter(mDataset_attend);
+                                                mRecyclerView.setAdapter(shared_adapter);
+
+                                            }
+
+                                            @Override
+                                            public void onCancelled(@NonNull DatabaseError error) {
+
+                                            }
+                                        });
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+            }
+        });
+        showAllAttendShared.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                databaseReference.child("sharedEvents").orderByKey().equalTo(FirebaseAuth.getInstance().getCurrentUser()
+                        .getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                        DataSnapshot dataSnapshot = snapshot.getChildren().iterator().next();
+
+                        for (DataSnapshot data : dataSnapshot.getChildren()) {
+
+                            mySharedEventStatus = data.getValue(String.class);
+
+                            if (mySharedEventStatus.equals("1")) {
+
+                                databaseReference.child("events").orderByKey().equalTo(data.getKey())
+                                        .addListenerForSingleValueEvent(new ValueEventListener() {
+                                            @Override
+                                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                                                for (DataSnapshot data2 : snapshot.getChildren()) {
+
+                                                    mDataset_attend_shared.add(new Event_model(R.drawable.nopath___copy__79_,
+                                                            data2.child("eventTitle").getValue(String.class),
+                                                            data2.child("eventLocation").getValue(String.class)));
+                                                }
+
+                                                mRecyclerView = getView().findViewById(R.id.recyclerView_attend_shared);
+                                                mLayoutManager = new LinearLayoutManager(getContext());
+                                                mRecyclerView.setLayoutManager(mLayoutManager);
+                                                shared_adapter = new All_event_Map_adapter(mDataset_attend_shared);
+                                                mRecyclerView.setAdapter(shared_adapter);
+                                            }
+
+                                            @Override
+                                            public void onCancelled(@NonNull DatabaseError error) {
+
+                                            }
+                                        });
+
+                            }
+
+                        }
+
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+            }
+        });
     }
 
     public void Create_events_attend() {
         mDataset_attend = new ArrayList<>();
-        mDataset_attend_shared = new ArrayList<>();
 
         databaseReference.child("sharedEvents").orderByKey().equalTo(FirebaseAuth.getInstance().getCurrentUser()
                 .getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -61,15 +183,12 @@ public class Shared_fragment extends Fragment {
                 DataSnapshot dataSnapshot = snapshot.getChildren().iterator().next();
 
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
-                    Log.d("TAGGG snapshot", "onDataChange: "+snapshot);
-                    Log.d("TAGGG dataSnapShot", "onDataChange: "+dataSnapshot);
-                    Log.d("TAGGG data", "onDataChange: "+data);
 
                     mySharedEventStatus = data.getValue(String.class);
 
                     if (mySharedEventStatus.equals("0")) {
 
-                        databaseReference.child("events").orderByKey().equalTo(data.getKey()).limitToFirst(3)
+                        databaseReference.child("events").orderByKey().equalTo(data.getKey())
                                 .addListenerForSingleValueEvent(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -79,11 +198,17 @@ public class Shared_fragment extends Fragment {
                                             mDataset_attend.add(new Event_model(R.drawable.nopath___copy__79_,
                                                     data2.child("eventTitle").getValue(String.class),
                                                     data2.child("eventLocation").getValue(String.class)));
+                                            Log.d("testt", "onDataChange: " + mDataset_attend.size());
                                         }
 
+                                        Log.d("finalTestt", "onDataChange: " + mDataset_attend.size());
+                                        if (i < 3) {
+                                            i++;
+                                        }
                                         mRecyclerView = getView().findViewById(R.id.recyclerView_attend);
                                         mLayoutManager = new LinearLayoutManager(getContext());
                                         mRecyclerView.setLayoutManager(mLayoutManager);
+                                        mDataset_attend = mDataset_attend.subList(0, i);
                                         shared_adapter = new All_event_Map_adapter(mDataset_attend);
                                         mRecyclerView.setAdapter(shared_adapter);
 
@@ -96,9 +221,37 @@ public class Shared_fragment extends Fragment {
                                 });
 
                     }
-                    else if (mySharedEventStatus.equals("1")) {
 
-                        databaseReference.child("events").orderByKey().equalTo(data.getKey()).limitToFirst(3)
+                }
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+    }
+
+    private void Create_events_attend_shared() {
+        mDataset_attend_shared = new ArrayList<>();
+
+        databaseReference.child("sharedEvents").orderByKey().equalTo(FirebaseAuth.getInstance().getCurrentUser()
+                .getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                DataSnapshot dataSnapshot = snapshot.getChildren().iterator().next();
+
+                for (DataSnapshot data : dataSnapshot.getChildren()) {
+
+                    mySharedEventStatus = data.getValue(String.class);
+
+                    if (mySharedEventStatus.equals("1")) {
+
+                        databaseReference.child("events").orderByKey().equalTo(data.getKey())
                                 .addListenerForSingleValueEvent(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -109,10 +262,13 @@ public class Shared_fragment extends Fragment {
                                                     data2.child("eventTitle").getValue(String.class),
                                                     data2.child("eventLocation").getValue(String.class)));
                                         }
-
+                                        if (j < 3) {
+                                            j++;
+                                        }
                                         mRecyclerView = getView().findViewById(R.id.recyclerView_attend_shared);
                                         mLayoutManager = new LinearLayoutManager(getContext());
                                         mRecyclerView.setLayoutManager(mLayoutManager);
+                                        mDataset_attend_shared = mDataset_attend_shared.subList(0, j);
                                         shared_adapter = new All_event_Map_adapter(mDataset_attend_shared);
                                         mRecyclerView.setAdapter(shared_adapter);
                                     }
@@ -135,28 +291,5 @@ public class Shared_fragment extends Fragment {
 
             }
         });
-//        mDataset_attend.add(new Event_model(R.drawable.nopath___copy__79_, "First event", "ksa",
-//                "5/ 11/2021", "6/11/2021", "قيد المراجعة"));
-//        mDataset_attend.add(new Event_model(R.drawable.nopath___copy__79_, "second event", "ksa",
-//                "5/ 11/2021", "6/11/2021", "قيد المراجعة"));
-    }
-
-    public void Create_events_attend_shared() {
-//        mDataset_attend_shared = new ArrayList<>();
-//        mDataset_attend_shared.add(new Event_model(R.drawable.nopath___copy__79_, "First event", "ksa",
-//                "5/ 11/2021", "6/11/2021", "قيد المراجعة"));
-//        mDataset_attend_shared.add(new Event_model(R.drawable.nopath___copy__79_, "second event", "ksa",
-//                "5/ 11/2021", "6/11/2021", "قيد المراجعة"));
-//        mDataset_attend_shared.add(new Event_model(R.drawable.nopath___copy__79_, "third event", "ksa",
-//                "5/ 11/2021", "6/11/2021", "قيد المراجعة"));
-//        mDataset_attend_shared.add(new Event_model(R.drawable.nopath___copy__79_, "fourth event", "ksa",
-//                "5/ 11/2021", "6/11/2021", "قيد المراجعة"));
-//
-//        mRecyclerView = getView().findViewById(R.id.recyclerView_attend_shared);
-//        mLayoutManager = new LinearLayoutManager(getContext());
-//        mRecyclerView.setLayoutManager(mLayoutManager);
-//        shared_adapter = new All_event_Map_adapter(mDataset_attend_shared);
-//        mRecyclerView.setAdapter(shared_adapter);
-
     }
 }
