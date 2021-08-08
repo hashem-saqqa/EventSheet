@@ -121,7 +121,7 @@ public class Home extends AppCompatActivity  {
         mDataset_1 = new ArrayList<>();
         currentDateTest = "03/05/2020";
 
-        databaseReference.child("events").addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReference.child("events").orderByChild("eventStartDate").limitToFirst(3).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
@@ -160,7 +160,7 @@ public class Home extends AppCompatActivity  {
 
     public void Create_events_2() {
 
-        databaseReference.child("events").orderByChild("eventSubType").equalTo("فعالية كبرى")
+        databaseReference.child("events").orderByChild("eventSubType").equalTo("فعالية كبرى").limitToFirst(3)
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -193,7 +193,7 @@ public class Home extends AppCompatActivity  {
 
     public void Create_events_3() {
         mDataset_3 = new ArrayList<>();
-        databaseReference.child("events").orderByChild("eventSubType").equalTo("فعالية صغرى")
+        databaseReference.child("events").orderByChild("eventSubType").equalTo("فعالية صغرى").limitToFirst(3)
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -222,7 +222,7 @@ public class Home extends AppCompatActivity  {
 
     public void Create_events_4() {
         mDataset_4 = new ArrayList<>();
-        databaseReference.child("events").orderByChild("eventSubType").equalTo("فعالية ترفيهية")
+        databaseReference.child("events").orderByChild("eventSubType").equalTo("فعالية ترفيهية").limitToFirst(3)
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {

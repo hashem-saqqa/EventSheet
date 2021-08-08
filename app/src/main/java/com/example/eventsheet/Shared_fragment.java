@@ -69,7 +69,7 @@ public class Shared_fragment extends Fragment {
 
                     if (mySharedEventStatus.equals("0")) {
 
-                        databaseReference.child("events").orderByKey().equalTo(data.getKey())
+                        databaseReference.child("events").orderByKey().equalTo(data.getKey()).limitToFirst(3)
                                 .addListenerForSingleValueEvent(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -98,7 +98,7 @@ public class Shared_fragment extends Fragment {
                     }
                     else if (mySharedEventStatus.equals("1")) {
 
-                        databaseReference.child("events").orderByKey().equalTo(data.getKey())
+                        databaseReference.child("events").orderByKey().equalTo(data.getKey()).limitToFirst(3)
                                 .addListenerForSingleValueEvent(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot snapshot) {

@@ -71,12 +71,12 @@ public class Login extends AppCompatActivity {
 
     public void BACK(View view) {
         Intent myIntent = new Intent(getApplicationContext(), create_new_account.class);
-        startActivityForResult(myIntent, 0);
+        startActivity(myIntent);
     }
 
     public void GotoResetPassword(View view) {
         Intent intent = new Intent(getApplicationContext(), ResetPassword.class);
-        startActivityForResult(intent, 0);
+        startActivity(intent);
     }
 
     public void GoToHome(View view) {
@@ -111,7 +111,7 @@ public class Login extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
                                         Intent intent = new Intent(getApplicationContext(), Home.class);
-                                        startActivityForResult(intent, 0);
+                                        startActivity(intent);
                                     } else {
                                         Toast.makeText(Login.this, "login failed", Toast.LENGTH_SHORT).show();
                                     }
