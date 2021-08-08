@@ -124,6 +124,7 @@ public class Search_filter extends BottomSheetDialogFragment {
         applyFilter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mDataset_filtered = new ArrayList<>();
                 startDate = from_date.getText().toString();
                 endDate = to_date.getText().toString();
                 databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -178,7 +179,6 @@ public class Search_filter extends BottomSheetDialogFragment {
 
                             Log.d("searchFilterResult", "onDataChange: " + data);
 
-                            mDataset_filtered = new ArrayList<>();
                             mDataset_filtered.add(new Event_model(data.getKey(), R.drawable.nopath___copy__79_,
                                     data.child("eventTitle").getValue(String.class),
                                     data.child("eventLocation").getValue(String.class),

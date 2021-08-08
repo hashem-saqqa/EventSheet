@@ -34,6 +34,8 @@ public class Created_Fragment extends Fragment {
     protected LinearLayoutManager mLayoutManager;
     My_created_events_adapter my_created_events_adapter;
     String myCreatedEventStatus;
+//    protected List<String> createdEvents = new ArrayList<>();
+
 
     DatabaseReference databaseReference;
 
@@ -53,30 +55,23 @@ public class Created_Fragment extends Fragment {
 
     public void Create_events() {
         mDataset_my_created = new ArrayList<>();
-//        mDataset_my_created.add(new Event_model(R.drawable.nopath___copy__79_, "First event", "ksa",
-//                "5/ 11/2021", "6/11/2021", "قيد المراجعة"));
-//        mDataset_my_created.add(new Event_model(R.drawable.nopath___copy__79_, "second event", "ksa",
-//                "5/ 11/2021", "6/11/2021", "قيد المراجعة"));
-//        mDataset_my_created.add(new Event_model(R.drawable.nopath___copy__79_, "third event", "ksa",
-//                "5/ 11/2021", "6/11/2021", "قيد المراجعة"));
-//        mDataset_my_created.add(new Event_model(R.drawable.nopath___copy__79_, "fourth event", "ksa",
-//                "5/ 11/2021", "6/11/2021", "قيد المراجعة"));
 
         databaseReference.child("createdEvents").orderByKey().equalTo(FirebaseAuth.getInstance().getCurrentUser()
                 .getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot data : snapshot.getChildren()) {
 
-                    Log.d("data1", "onDataChange: " + data);
-                    Log.d("snapshot1", "onDataChange: " + snapshot);
+                DataSnapshot dataSnapshot = snapshot.getChildren().iterator().next();
 
-                    myCreatedEventStatus = data.getChildren().iterator().next().getValue(String.class);
-                    Log.d("myCreatedEventStatus", "onDataChange: " + myCreatedEventStatus);
-                    Log.d("eventId", "onDataChange: " + data.getChildren().iterator().next().getKey());
+                for (DataSnapshot data : dataSnapshot.getChildren()) {
+                    Log.d("TAGGGGG snapshot", "onDataChange: "+snapshot);
+                    Log.d("TAGGGGG data", "onDataChange: "+data);
 
+                    myCreatedEventStatus = data.getValue(String.class);
 
-                    databaseReference.child("events").orderByKey().equalTo(data.getChildren().iterator().next().getKey())
+//                    createdEvents.add(data.getKey());
+
+                    databaseReference.child("events").orderByKey().equalTo(data.getKey())
                             .addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -95,15 +90,16 @@ public class Created_Fragment extends Fragment {
                                         ));
 
                                     }
-                                    if (mDataset_my_created.isEmpty()){
-
-                                    }
                                     mRecyclerView = getView().findViewById(R.id.recyclerView_created);
                                     mLayoutManager = new LinearLayoutManager(getContext());
                                     mRecyclerView.setLayoutManager(mLayoutManager);
                                     my_created_events_adapter = new My_created_events_adapter(mDataset_my_created);
                                     new ItemTouchHelper(itemSimpleCallback).attachToRecyclerView(mRecyclerView);
                                     mRecyclerView.setAdapter(my_created_events_adapter);
+//                                    if (mDataset_my_created.isEmpty()){
+//
+//                                    }
+
                                 }
 
                                 @Override
@@ -114,6 +110,7 @@ public class Created_Fragment extends Fragment {
 
                 }
 
+
             }
 
             @Override
@@ -121,12 +118,7 @@ public class Created_Fragment extends Fragment {
 
             }
         });
-//        mRecyclerView = getView().findViewById(R.id.recyclerView_created);
-//        mLayoutManager = new LinearLayoutManager(getContext());
-//        mRecyclerView.setLayoutManager(mLayoutManager);
-//        my_created_events_adapter = new My_created_events_adapter(mDataset_my_created);
-//        new ItemTouchHelper(itemSimpleCallback).attachToRecyclerView(mRecyclerView);
-//        mRecyclerView.setAdapter(my_created_events_adapter);
+
     }
 
     ItemTouchHelper.SimpleCallback itemSimpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
