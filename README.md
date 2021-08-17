@@ -1,6 +1,7 @@
 # EventSheet
 ScreenShots
 ![splach screen](https://user-images.githubusercontent.com/47791578/129800270-0fd61c28-d889-482e-befb-43434c4c5463.jpeg)
+<img src="https://user-images.githubusercontent.com/47791578/129800270-0fd61c28-d889-482e-befb-43434c4c5463.jpeg" width="100" height="100">
 ![Home](https://user-images.githubusercontent.com/47791578/129800292-8165f656-fa5b-449d-912e-391041331567.jpeg)
 ![search](https://user-images.githubusercontent.com/47791578/129800812-650828aa-b45d-4abb-812b-72579f392d6e.jpeg)
 ![my events](https://user-images.githubusercontent.com/47791578/129800816-c61314b3-3bcf-4e5b-b89c-61d0ab6a2c14.jpeg)
