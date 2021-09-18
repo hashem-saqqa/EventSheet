@@ -199,7 +199,6 @@ public class Personal_data extends AppCompatActivity {
         dataUpdated.put("country", country);
         dataUpdated.put("phone_number", phone);
 
-
         databaseReference.updateChildren(dataUpdated);
 
 
