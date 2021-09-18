@@ -60,7 +60,7 @@ public class Search_filter extends BottomSheetDialogFragment {
 //    List<String> eventSpecArray;
 
     EditText from_date;
-    EditText to_date;
+        EditText to_date;
     ImageView closeDialog, applyFilter;
 
     String Country = "", eventType = "", eventSubType = "", eventRange = "", eventSpec = "", eventSubSpec = "", eventFees = "", startDate = "", endDate = "";

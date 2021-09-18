@@ -89,7 +89,7 @@ public class create_new_account extends AppCompatActivity {
         super.onStart();
         if (FirebaseAuth.getInstance().getCurrentUser() != null) {
             Intent intent = new Intent(getApplicationContext(), Home.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivityForResult(intent, 0);
         }
     }

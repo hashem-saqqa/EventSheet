@@ -44,7 +44,7 @@ public class Personal_data extends AppCompatActivity {
     String username, email, phonenumber, country, phone, countryCode;
     private Uri mImageUri;
 
-    private StorageReference storageReference, photoReference;
+    private StorageReference photoReference;
     private DatabaseReference databaseReference, photoPath;
 
     private String userId, profilePhoto, photoId, photo, imageurl;
@@ -69,7 +69,6 @@ public class Personal_data extends AppCompatActivity {
         appbar_title.setText("تعديل بياناتي");
 
         userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        storageReference = FirebaseStorage.getInstance().getReference("uploads");
         databaseReference = FirebaseDatabase.getInstance().getReference("users").child(userId);
         photoPath = FirebaseDatabase.getInstance().getReference("users").child(userId).child("photo");
 

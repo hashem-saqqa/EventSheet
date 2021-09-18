@@ -1,4 +1,4 @@
-    package com.example.eventsheet;
+package com.example.eventsheet;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -36,7 +35,7 @@ public class Login extends AppCompatActivity {
     FirebaseAuth Auth;
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 
-    String loginemail, loginphone, loginpassword, phoneNumber, CountryCode;
+    String loginEmail, loginPhone, loginPassword, phoneNumber, CountryCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,52 +79,51 @@ public class Login extends AppCompatActivity {
     }
 
     public void GoToHome(View view) {
-        loginpassword = password.getText().toString().trim();
-        loginphone = phone_number.getText().toString().trim();
+        loginPassword = password.getText().toString().trim();
+        loginPhone = phone_number.getText().toString().trim();
         CountryCode = countryCodePicker.getSelectedCountryCode();
-        phoneNumber = "+" + CountryCode + loginphone;
+        phoneNumber = "+" + CountryCode + loginPhone;
 
-        System.out.println("phone" + loginphone);
-        System.out.println("password" + loginpassword);
+        System.out.println("phone" + loginPhone);
+        System.out.println("password" + loginPassword);
         System.out.println("phoneNumber" + phoneNumber);
         System.out.println(CountryCode);
 
 
-        if (!loginphone.equals("") & !loginpassword.equals("")) {
+        if (!loginPhone.equals("") & !loginPassword.equals("")) {
 
             Query query = databaseReference.child("users").orderByChild("phone").equalTo(phoneNumber);
 
-                query.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        System.out.println(snapshot);
-                        if (snapshot.getValue() == null) {
-                            System.out.println("nullllllll ya ro7 omak");
-                            Toast.makeText(Login.this, "enter valid number please", Toast.LENGTH_SHORT).show();
-                        } else {
-                            DataSnapshot data = snapshot.getChildren().iterator().next();
-                            loginemail = data.child("email").getValue(String.class);
+            query.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    System.out.println(snapshot);
+                    if (snapshot.getValue() == null) {
+                        Toast.makeText(Login.this, "enter valid number please", Toast.LENGTH_SHORT).show();
+                    } else {
+                        DataSnapshot data = snapshot.getChildren().iterator().next();
+                        loginEmail = data.child("email").getValue(String.class);
 
-                            Auth.signInWithEmailAndPassword(loginemail, loginpassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    if (task.isSuccessful()) {
-                                        Intent intent = new Intent(getApplicationContext(), Home.class);
-                                        startActivity(intent);
-                                    } else {
-                                        Toast.makeText(Login.this, "login failed", Toast.LENGTH_SHORT).show();
-                                    }
+                        Auth.signInWithEmailAndPassword(loginEmail, loginPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    Intent intent = new Intent(getApplicationContext(), Home.class);
+                                    startActivity(intent);
+                                } else {
+                                    Toast.makeText(Login.this, "login failed", Toast.LENGTH_SHORT).show();
                                 }
-                            });
-                        }
+                            }
+                        });
                     }
+                }
 
-                        @Override
-                        public void onCancelled (@NonNull DatabaseError error){
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
 
-                        }
+                }
 
-                });
+            });
         } else {
             Toast.makeText(this, "Enter phone number and password ", Toast.LENGTH_SHORT).show();
         }
