@@ -86,15 +86,17 @@ public class Shared_fragment extends Fragment {
 
                                                 for (DataSnapshot data2 : snapshot.getChildren()) {
 
-                                                    mDataset_attend.add(new Event_model(R.drawable.nopath___copy__79_,
+                                                    Event_model event_model = new Event_model(R.drawable.nopath___copy__79_,
                                                             data2.child("eventTitle").getValue(String.class),
-                                                            data2.child("eventLocation").getValue(String.class)));
+                                                            data2.child("eventLocation").getValue(String.class));
+                                                    event_model.setEventId(data2.getKey());
+                                                    mDataset_attend.add(event_model);
                                                 }
 
                                                 mRecyclerView = getView().findViewById(R.id.recyclerView_attend);
                                                 mLayoutManager = new LinearLayoutManager(getContext());
                                                 mRecyclerView.setLayoutManager(mLayoutManager);
-                                                shared_adapter = new All_event_Map_adapter(getActivity(),mDataset_attend);
+                                                shared_adapter = new All_event_Map_adapter(getActivity(), mDataset_attend);
                                                 mRecyclerView.setAdapter(shared_adapter);
 
                                             }
@@ -137,16 +139,17 @@ public class Shared_fragment extends Fragment {
                                             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                                                 for (DataSnapshot data2 : snapshot.getChildren()) {
-
-                                                    mDataset_attend_shared.add(new Event_model(R.drawable.nopath___copy__79_,
+                                                    Event_model event_model = new Event_model(R.drawable.nopath___copy__79_,
                                                             data2.child("eventTitle").getValue(String.class),
-                                                            data2.child("eventLocation").getValue(String.class)));
+                                                            data2.child("eventLocation").getValue(String.class));
+                                                    event_model.setEventId(data2.getKey());
+                                                    mDataset_attend_shared.add(event_model);
                                                 }
 
                                                 mRecyclerView = getView().findViewById(R.id.recyclerView_attend_shared);
                                                 mLayoutManager = new LinearLayoutManager(getContext());
                                                 mRecyclerView.setLayoutManager(mLayoutManager);
-                                                shared_adapter = new All_event_Map_adapter(getActivity(),mDataset_attend_shared);
+                                                shared_adapter = new All_event_Map_adapter(getActivity(), mDataset_attend_shared);
                                                 mRecyclerView.setAdapter(shared_adapter);
                                             }
 
@@ -195,9 +198,12 @@ public class Shared_fragment extends Fragment {
 
                                         for (DataSnapshot data2 : snapshot.getChildren()) {
 
-                                            mDataset_attend.add(new Event_model(R.drawable.nopath___copy__79_,
+                                            Event_model event_model = new Event_model(R.drawable.nopath___copy__79_,
                                                     data2.child("eventTitle").getValue(String.class),
-                                                    data2.child("eventLocation").getValue(String.class)));
+                                                    data2.child("eventLocation").getValue(String.class));
+                                            event_model.setEventId(data2.getKey());
+                                            mDataset_attend.add(event_model);
+
                                             Log.d("testt", "onDataChange: " + mDataset_attend.size());
                                         }
 
@@ -209,7 +215,7 @@ public class Shared_fragment extends Fragment {
                                         mLayoutManager = new LinearLayoutManager(getContext());
                                         mRecyclerView.setLayoutManager(mLayoutManager);
                                         mDataset_attend = mDataset_attend.subList(0, i);
-                                        shared_adapter = new All_event_Map_adapter(getActivity(),mDataset_attend);
+                                        shared_adapter = new All_event_Map_adapter(getActivity(), mDataset_attend);
                                         mRecyclerView.setAdapter(shared_adapter);
 
                                     }
@@ -257,10 +263,11 @@ public class Shared_fragment extends Fragment {
                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                                         for (DataSnapshot data2 : snapshot.getChildren()) {
-
-                                            mDataset_attend_shared.add(new Event_model(R.drawable.nopath___copy__79_,
+                                            Event_model event_model = new Event_model(R.drawable.nopath___copy__79_,
                                                     data2.child("eventTitle").getValue(String.class),
-                                                    data2.child("eventLocation").getValue(String.class)));
+                                                    data2.child("eventLocation").getValue(String.class));
+                                            event_model.setEventId(data2.getKey());
+                                            mDataset_attend_shared.add(event_model);
                                         }
                                         if (j < 3) {
                                             j++;
@@ -269,7 +276,7 @@ public class Shared_fragment extends Fragment {
                                         mLayoutManager = new LinearLayoutManager(getContext());
                                         mRecyclerView.setLayoutManager(mLayoutManager);
                                         mDataset_attend_shared = mDataset_attend_shared.subList(0, j);
-                                        shared_adapter = new All_event_Map_adapter(getActivity(),mDataset_attend_shared);
+                                        shared_adapter = new All_event_Map_adapter(getActivity(), mDataset_attend_shared);
                                         mRecyclerView.setAdapter(shared_adapter);
                                     }
 

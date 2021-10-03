@@ -101,12 +101,13 @@ public class All_Events extends AppCompatActivity implements MaterialSearchBar.O
 
                     if (fromDateToStringToInt(currentDateTest) - fromDateToStringToInt(startDate) >= 0 &&
                             fromDateToStringToInt(currentDateTest) - fromDateToStringToInt(endDate) < 0) {
-
-                        mDataset_all_event.add(new Event_model(dataSnapshot.getKey(), R.drawable.nopath___copy__79_,
+                        Event_model event_model = new Event_model(dataSnapshot.getKey(), R.drawable.nopath___copy__79_,
                                 dataSnapshot.child("eventTitle").getValue(String.class),
                                 dataSnapshot.child("eventLocation").getValue(String.class),
                                 dataSnapshot.child("eventStartDate").getValue(String.class),
-                                dataSnapshot.child("eventEndDate").getValue(String.class)));
+                                dataSnapshot.child("eventEndDate").getValue(String.class));
+                        event_model.setEventId(dataSnapshot.getKey());
+                        mDataset_all_event.add(event_model);
                     }
                 }
 
@@ -133,13 +134,14 @@ public class All_Events extends AppCompatActivity implements MaterialSearchBar.O
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         mDataset_all_event = new ArrayList<>();
                         for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-
-                            mDataset_all_event.add(new Event_model(dataSnapshot.getKey(),
+                            Event_model event_model = new Event_model(dataSnapshot.getKey(),
                                     R.drawable.nopath___copy__79_,
                                     dataSnapshot.child("eventTitle").getValue(String.class),
                                     dataSnapshot.child("eventLocation").getValue(String.class),
                                     dataSnapshot.child("eventStartDate").getValue(String.class),
-                                    dataSnapshot.child("eventEndDate").getValue(String.class)));
+                                    dataSnapshot.child("eventEndDate").getValue(String.class));
+                            event_model.setEventId(dataSnapshot.getKey());
+                            mDataset_all_event.add(event_model);
                         }
 
                         mRecyclerView = findViewById(R.id.recyclerView_all_event);
@@ -164,12 +166,15 @@ public class All_Events extends AppCompatActivity implements MaterialSearchBar.O
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                            mDataset_all_event.add(new Event_model(dataSnapshot.getKey(),
+
+                            Event_model event_model =new Event_model(dataSnapshot.getKey(),
                                     R.drawable.nopath___copy__79_,
                                     dataSnapshot.child("eventTitle").getValue(String.class),
                                     dataSnapshot.child("eventLocation").getValue(String.class),
                                     dataSnapshot.child("eventStartDate").getValue(String.class),
-                                    dataSnapshot.child("eventEndDate").getValue(String.class)));
+                                    dataSnapshot.child("eventEndDate").getValue(String.class));
+                            event_model.setEventId(dataSnapshot.getKey());
+                            mDataset_all_event.add(event_model);
                         }
                         mRecyclerView = findViewById(R.id.recyclerView_all_event);
                         mLayoutManager = new LinearLayoutManager(getApplicationContext());
@@ -192,12 +197,15 @@ public class All_Events extends AppCompatActivity implements MaterialSearchBar.O
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                            mDataset_all_event.add(new Event_model(dataSnapshot.getKey(),
+
+                            Event_model event_model = new Event_model(dataSnapshot.getKey(),
                                     R.drawable.nopath___copy__79_,
                                     dataSnapshot.child("eventTitle").getValue(String.class),
                                     dataSnapshot.child("eventLocation").getValue(String.class),
                                     dataSnapshot.child("eventStartDate").getValue(String.class),
-                                    dataSnapshot.child("eventEndDate").getValue(String.class)));
+                                    dataSnapshot.child("eventEndDate").getValue(String.class));
+                            event_model.setEventId(dataSnapshot.getKey());
+                            mDataset_all_event.add(event_model);
                         }
                         mRecyclerView = findViewById(R.id.recyclerView_all_event);
                         mLayoutManager = new LinearLayoutManager(getApplicationContext());

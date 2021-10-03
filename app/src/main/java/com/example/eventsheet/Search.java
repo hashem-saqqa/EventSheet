@@ -84,15 +84,17 @@ public class Search extends AppCompatActivity implements MaterialSearchBar.OnSea
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                 for (DataSnapshot data : snapshot.getChildren()) {
 
-                                    mDataset_search.add(new Event_model(R.drawable.nopath___copy__79_,
+                                    Event_model event_model = new Event_model(R.drawable.nopath___copy__79_,
                                             data.child("eventTitle").getValue(String.class),
                                             data.child("eventLocation").getValue(String.class)
-                                            , data.child("eventStartDate").getValue(String.class)));
+                                            , data.child("eventStartDate").getValue(String.class));
+                                    event_model.setEventId(data.getKey());
+                                    mDataset_search.add(event_model);
                                 }
                                 mRecyclerView = findViewById(R.id.recyclerView_search);
                                 mLayoutManager = new LinearLayoutManager(getApplicationContext());
                                 mRecyclerView.setLayoutManager(mLayoutManager);
-                                search_adapter = new Search_adapter(Search.this,mDataset_search);
+                                search_adapter = new Search_adapter(Search.this, mDataset_search);
                                 mRecyclerView.setAdapter(search_adapter);
                             }
 
@@ -109,16 +111,17 @@ public class Search extends AppCompatActivity implements MaterialSearchBar.OnSea
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                                         for (DataSnapshot data : snapshot.getChildren()) {
-
-                                            mDataset_search.add(new Event_model(R.drawable.nopath___copy__79_,
+                                            Event_model event_model = new Event_model(R.drawable.nopath___copy__79_,
                                                     data.child("eventTitle").getValue(String.class),
                                                     data.child("eventLocation").getValue(String.class)
-                                                    , data.child("eventStartDate").getValue(String.class)));
+                                                    , data.child("eventStartDate").getValue(String.class));
+                                            event_model.setEventId(data.getKey());
+                                            mDataset_search.add(event_model);
                                         }
                                         mRecyclerView = findViewById(R.id.recyclerView_search);
                                         mLayoutManager = new LinearLayoutManager(getApplicationContext());
                                         mRecyclerView.setLayoutManager(mLayoutManager);
-                                        search_adapter = new Search_adapter(Search.this,mDataset_search);
+                                        search_adapter = new Search_adapter(Search.this, mDataset_search);
                                         mRecyclerView.setAdapter(search_adapter);
                                     }
 
@@ -135,16 +138,17 @@ public class Search extends AppCompatActivity implements MaterialSearchBar.OnSea
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                                         for (DataSnapshot data : snapshot.getChildren()) {
-
-                                            mDataset_search.add(new Event_model(R.drawable.nopath___copy__79_,
+                                            Event_model event_model = new Event_model(R.drawable.nopath___copy__79_,
                                                     data.child("eventTitle").getValue(String.class),
                                                     data.child("eventLocation").getValue(String.class)
-                                                    , data.child("eventStartDate").getValue(String.class)));
+                                                    , data.child("eventStartDate").getValue(String.class));
+                                            event_model.setEventId(data.getKey());
+                                            mDataset_search.add(event_model);
                                         }
                                         mRecyclerView = findViewById(R.id.recyclerView_search);
                                         mLayoutManager = new LinearLayoutManager(getApplicationContext());
                                         mRecyclerView.setLayoutManager(mLayoutManager);
-                                        search_adapter = new Search_adapter(Search.this,mDataset_search);
+                                        search_adapter = new Search_adapter(Search.this, mDataset_search);
                                         mRecyclerView.setAdapter(search_adapter);
                                     }
 
@@ -161,16 +165,17 @@ public class Search extends AppCompatActivity implements MaterialSearchBar.OnSea
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                                         for (DataSnapshot data : snapshot.getChildren()) {
-
-                                            mDataset_search.add(new Event_model(R.drawable.nopath___copy__79_,
+                                            Event_model event_model = new Event_model(R.drawable.nopath___copy__79_,
                                                     data.child("eventTitle").getValue(String.class),
                                                     data.child("eventLocation").getValue(String.class)
-                                                    , data.child("eventStartDate").getValue(String.class)));
+                                                    , data.child("eventStartDate").getValue(String.class));
+                                            event_model.setEventId(data.getKey());
+                                            mDataset_search.add(event_model);
                                         }
                                         mRecyclerView = findViewById(R.id.recyclerView_search);
                                         mLayoutManager = new LinearLayoutManager(getApplicationContext());
                                         mRecyclerView.setLayoutManager(mLayoutManager);
-                                        search_adapter = new Search_adapter(Search.this,mDataset_search);
+                                        search_adapter = new Search_adapter(Search.this, mDataset_search);
                                         mRecyclerView.setAdapter(search_adapter);
                                     }
 
@@ -187,16 +192,17 @@ public class Search extends AppCompatActivity implements MaterialSearchBar.OnSea
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                                         for (DataSnapshot data : snapshot.getChildren()) {
-
-                                            mDataset_search.add(new Event_model(R.drawable.nopath___copy__79_,
+                                            Event_model event_model = new Event_model(R.drawable.nopath___copy__79_,
                                                     data.child("eventTitle").getValue(String.class),
                                                     data.child("eventLocation").getValue(String.class)
-                                                    , data.child("eventStartDate").getValue(String.class)));
+                                                    , data.child("eventStartDate").getValue(String.class));
+                                            event_model.setEventId(data.getKey());
+                                            mDataset_search.add(event_model);
                                         }
                                         mRecyclerView = findViewById(R.id.recyclerView_search);
                                         mLayoutManager = new LinearLayoutManager(getApplicationContext());
                                         mRecyclerView.setLayoutManager(mLayoutManager);
-                                        search_adapter = new Search_adapter(Search.this,mDataset_search);
+                                        search_adapter = new Search_adapter(Search.this, mDataset_search);
                                         mRecyclerView.setAdapter(search_adapter);
                                     }
 
@@ -213,16 +219,17 @@ public class Search extends AppCompatActivity implements MaterialSearchBar.OnSea
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                                         for (DataSnapshot data : snapshot.getChildren()) {
-
-                                            mDataset_search.add(new Event_model(R.drawable.nopath___copy__79_,
+                                            Event_model event_model = new Event_model(R.drawable.nopath___copy__79_,
                                                     data.child("eventTitle").getValue(String.class),
                                                     data.child("eventLocation").getValue(String.class)
-                                                    , data.child("eventStartDate").getValue(String.class)));
+                                                    , data.child("eventStartDate").getValue(String.class));
+                                            event_model.setEventId(data.getKey());
+                                            mDataset_search.add(event_model);
                                         }
                                         mRecyclerView = findViewById(R.id.recyclerView_search);
                                         mLayoutManager = new LinearLayoutManager(getApplicationContext());
                                         mRecyclerView.setLayoutManager(mLayoutManager);
-                                        search_adapter = new Search_adapter(Search.this,mDataset_search);
+                                        search_adapter = new Search_adapter(Search.this, mDataset_search);
                                         mRecyclerView.setAdapter(search_adapter);
                                     }
 
@@ -281,16 +288,17 @@ public class Search extends AppCompatActivity implements MaterialSearchBar.OnSea
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot data : snapshot.getChildren()) {
-
-                    mDataset_search.add(new Event_model(R.drawable.nopath___copy__79_,
+                    Event_model event_model = new Event_model(R.drawable.nopath___copy__79_,
                             data.child("eventTitle").getValue(String.class),
                             data.child("eventLocation").getValue(String.class)
-                            , data.child("eventStartDate").getValue(String.class)));
+                            , data.child("eventStartDate").getValue(String.class));
+                    event_model.setEventId(data.getKey());
+                    mDataset_search.add(event_model);
                 }
                 mRecyclerView = findViewById(R.id.recyclerView_search);
                 mLayoutManager = new LinearLayoutManager(getApplicationContext());
                 mRecyclerView.setLayoutManager(mLayoutManager);
-                search_adapter = new Search_adapter(Search.this,mDataset_search);
+                search_adapter = new Search_adapter(Search.this, mDataset_search);
                 mRecyclerView.setAdapter(search_adapter);
             }
 
@@ -316,8 +324,9 @@ public class Search extends AppCompatActivity implements MaterialSearchBar.OnSea
         Intent intent = new Intent(getApplicationContext(), Profile.class);
         startActivityForResult(intent, 0);
     }
+
     public void GoTo_CreateEvents(View view) {
-        Intent intent = new Intent(getApplicationContext(),CreateEvent.class);
+        Intent intent = new Intent(getApplicationContext(), CreateEvent.class);
         startActivity(intent);
     }
 
@@ -347,7 +356,7 @@ public class Search extends AppCompatActivity implements MaterialSearchBar.OnSea
         mRecyclerView = findViewById(R.id.recyclerView_search);
         mLayoutManager = new LinearLayoutManager(getApplicationContext());
         mRecyclerView.setLayoutManager(mLayoutManager);
-        search_adapter = new Search_adapter(Search.this,mDataset_searched);
+        search_adapter = new Search_adapter(Search.this, mDataset_searched);
         mRecyclerView.setAdapter(search_adapter);
 
     }
