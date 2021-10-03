@@ -46,6 +46,7 @@ public class Profile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
         getSupportActionBar().hide();
 
         profileImage = findViewById(R.id.profile_image);
@@ -171,5 +172,8 @@ public class Profile extends AppCompatActivity {
 
             }
         });
+    }
+    public void BACK(View view) {
+        finish();
     }
 }

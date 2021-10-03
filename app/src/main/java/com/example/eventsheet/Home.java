@@ -17,6 +17,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -45,8 +46,6 @@ public class Home extends AppCompatActivity  {
     Date date;
     String currentDate, startDate, endDate, currentDateTest;
     SimpleDateFormat simpleDateFormat;
-
-//    Event_adapter.OnEventListener mContext = (Event_adapter.OnEventListener) this;
     Context context;
 
 
@@ -61,6 +60,8 @@ public class Home extends AppCompatActivity  {
 
         getSupportActionBar().hide();
 
+        ImageView backIcon = findViewById(R.id.image2);
+        backIcon.setVisibility(View.INVISIBLE);
 
         TextView icon4 = findViewById(R.id.icon4);
         setTextViewDrawableColor(icon4, R.color.color_icon);
@@ -85,11 +86,6 @@ public class Home extends AppCompatActivity  {
 
         Create_events_4();
 
-    }
-
-    public void BACK(View view) {
-        Intent myIntent = new Intent(getApplicationContext(), Login.class);
-        startActivityForResult(myIntent, 0);
     }
 
     public void GoToEvent_details(View view) {

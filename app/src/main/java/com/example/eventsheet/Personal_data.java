@@ -52,7 +52,6 @@ public class Personal_data extends AppCompatActivity {
     StorageTask uploadTask;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -201,6 +200,9 @@ public class Personal_data extends AppCompatActivity {
 
         databaseReference.updateChildren(dataUpdated);
 
+    }
 
+    public void BACK(View view) {
+        finish();
     }
 }

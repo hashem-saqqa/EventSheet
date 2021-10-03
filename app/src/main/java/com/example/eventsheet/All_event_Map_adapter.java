@@ -1,5 +1,7 @@
 package com.example.eventsheet;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,11 +13,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class All_event_Map_adapter extends RecyclerView.Adapter<All_event_Map_adapter.ViewHolder>{
+public class All_event_Map_adapter extends RecyclerView.Adapter<All_event_Map_adapter.ViewHolder> {
     private List<Event_model> DataSet;
+    private Context mContext;
 
-    public All_event_Map_adapter(List<Event_model> dataSet) {
+    public All_event_Map_adapter(Context mContext, List<Event_model> dataSet) {
         DataSet = dataSet;
+        this.mContext = mContext;
     }
 
     @NonNull
@@ -35,11 +39,20 @@ public class All_event_Map_adapter extends RecyclerView.Adapter<All_event_Map_ad
     @Override
     public void onBindViewHolder(@NonNull All_event_Map_adapter.ViewHolder holder, int position) {
 
-        Event_model model = DataSet.get(position);
+        final Event_model model = DataSet.get(position);
 
         holder.Main_image.setImageResource(model.getImage());
         holder.Main_text.setText(model.getMain_text());
         holder.Location_text.setText(model.getLocation_text());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, Event_details.class);
+                intent.putExtra("eventClicked", model.getEventId());
+                mContext.startActivity(intent);
+            }
+        });
 
     }
 
@@ -53,7 +66,6 @@ public class All_event_Map_adapter extends RecyclerView.Adapter<All_event_Map_ad
         private final ImageView Main_image;
         private final TextView Main_text;
         private final TextView Location_text;
-
 
 
         public ViewHolder(@NonNull View itemView) {

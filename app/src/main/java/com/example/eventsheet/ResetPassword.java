@@ -26,8 +26,7 @@ public class ResetPassword extends AppCompatActivity {
     }
 
     public void BACK(View view) {
-        Intent myIntent = new Intent(getApplicationContext(), Login.class);
-        startActivityForResult(myIntent, 0);
+        finish();
     }
 
     public void ShowBottomSheet(View view) {

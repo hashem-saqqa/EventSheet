@@ -11,6 +11,9 @@ public class Event_model {
     private String My_created_event_status;
     private String EventId;
 
+    public Event_model() {
+    }
+
     public Event_model(String eventId, int image, String main_text, String location_text,
                        String detail_text, String start_date_text,
                        String end_date_text, String auther_text) {

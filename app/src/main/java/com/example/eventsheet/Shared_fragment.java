@@ -94,7 +94,7 @@ public class Shared_fragment extends Fragment {
                                                 mRecyclerView = getView().findViewById(R.id.recyclerView_attend);
                                                 mLayoutManager = new LinearLayoutManager(getContext());
                                                 mRecyclerView.setLayoutManager(mLayoutManager);
-                                                shared_adapter = new All_event_Map_adapter(mDataset_attend);
+                                                shared_adapter = new All_event_Map_adapter(getActivity(),mDataset_attend);
                                                 mRecyclerView.setAdapter(shared_adapter);
 
                                             }
@@ -146,7 +146,7 @@ public class Shared_fragment extends Fragment {
                                                 mRecyclerView = getView().findViewById(R.id.recyclerView_attend_shared);
                                                 mLayoutManager = new LinearLayoutManager(getContext());
                                                 mRecyclerView.setLayoutManager(mLayoutManager);
-                                                shared_adapter = new All_event_Map_adapter(mDataset_attend_shared);
+                                                shared_adapter = new All_event_Map_adapter(getActivity(),mDataset_attend_shared);
                                                 mRecyclerView.setAdapter(shared_adapter);
                                             }
 
@@ -209,7 +209,7 @@ public class Shared_fragment extends Fragment {
                                         mLayoutManager = new LinearLayoutManager(getContext());
                                         mRecyclerView.setLayoutManager(mLayoutManager);
                                         mDataset_attend = mDataset_attend.subList(0, i);
-                                        shared_adapter = new All_event_Map_adapter(mDataset_attend);
+                                        shared_adapter = new All_event_Map_adapter(getActivity(),mDataset_attend);
                                         mRecyclerView.setAdapter(shared_adapter);
 
                                     }
@@ -269,7 +269,7 @@ public class Shared_fragment extends Fragment {
                                         mLayoutManager = new LinearLayoutManager(getContext());
                                         mRecyclerView.setLayoutManager(mLayoutManager);
                                         mDataset_attend_shared = mDataset_attend_shared.subList(0, j);
-                                        shared_adapter = new All_event_Map_adapter(mDataset_attend_shared);
+                                        shared_adapter = new All_event_Map_adapter(getActivity(),mDataset_attend_shared);
                                         mRecyclerView.setAdapter(shared_adapter);
                                     }
 

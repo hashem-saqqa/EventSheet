@@ -56,11 +56,6 @@ public class create_new_account extends AppCompatActivity {
 
     }
 
-    public void BACK(View view) {
-        Intent myIntent = new Intent(getApplicationContext(), Splach.class);
-        startActivityForResult(myIntent, 0);
-    }
-
     public void ShowHidePass(View view) {
         if (view.getId() == R.id.show_pass_btn) {
 
@@ -82,16 +77,6 @@ public class create_new_account extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), Login.class);
         startActivityForResult(intent, 0);
 
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
-            Intent intent = new Intent(getApplicationContext(), Home.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivityForResult(intent, 0);
-        }
     }
 
     public void CreateUser(View view) {

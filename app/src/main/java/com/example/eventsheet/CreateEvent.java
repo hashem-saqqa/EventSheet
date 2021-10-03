@@ -55,7 +55,7 @@ public class CreateEvent extends AppCompatActivity {
         TextView appbar_title = findViewById(R.id.appbar_title);
         appbar_title.setText("إضافة فعالية");
 
-        switchCompat =  findViewById(R.id.feesSwitch);
+        switchCompat = findViewById(R.id.feesSwitch);
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
         from_date = findViewById(R.id.from_date);
@@ -324,64 +324,68 @@ public class CreateEvent extends AppCompatActivity {
     }
 
     public void createEvent(View view) {
-            if (switchCompat.isChecked()) {
-                eventFees = "مدفوعة";
-            } else {
-                eventFees = "مجانية";
+        if (switchCompat.isChecked()) {
+            eventFees = "مدفوعة";
+        } else {
+            eventFees = "مجانية";
+        }
+
+        eventsCount = 0;
+        startDate = from_date.getText().toString();
+        endDate = to_date.getText().toString();
+        eventTitle = eventTitleText.getText().toString();
+        eventAuthor = eventAuthorText.getText().toString();
+        eventContent = eventContentText.getText().toString();
+        eventTime = eventTimeText.getText().toString();
+
+        databaseReference.child("events").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot data : snapshot.getChildren()) {
+                    eventsCount++;
+                }
+
+                databaseReference.child("events").child("event" + (eventsCount + 1)).child("eventLocation").setValue(Country);
+                databaseReference.child("events").child("event" + (eventsCount + 1)).child("eventType").setValue(eventType);
+                databaseReference.child("events").child("event" + (eventsCount + 1)).child("eventSubType").setValue(eventSubType);
+                databaseReference.child("events").child("event" + (eventsCount + 1)).child("eventSpec").setValue(eventSpec);
+                databaseReference.child("events").child("event" + (eventsCount + 1)).child("eventSubSpec").setValue(eventSubSpec);
+                databaseReference.child("events").child("event" + (eventsCount + 1)).child("eventRange").setValue(eventRange);
+                databaseReference.child("events").child("event" + (eventsCount + 1)).child("eventFees").setValue(eventFees);
+                databaseReference.child("events").child("event" + (eventsCount + 1)).child("eventStartDate").setValue(startDate);
+                databaseReference.child("events").child("event" + (eventsCount + 1)).child("eventEndDate").setValue(endDate);
+                databaseReference.child("events").child("event" + (eventsCount + 1)).child("eventTitle").setValue(eventTitle);
+                databaseReference.child("events").child("event" + (eventsCount + 1)).child("eventAuthor").setValue(eventAuthor);
+                databaseReference.child("events").child("event" + (eventsCount + 1)).child("eventContent").setValue(eventContent);
+                databaseReference.child("events").child("event" + (eventsCount + 1)).child("eventTime").setValue(eventTime);
+                databaseReference.child("events").child("event" + (eventsCount + 1)).child("eventImage").setValue("");
+
+                databaseReference.child("createdEvents").child(FirebaseAuth.getInstance().getCurrentUser()
+                        .getUid()).child("event" + (eventsCount + 1)).setValue("1");
             }
 
-            eventsCount = 0;
-            startDate = from_date.getText().toString();
-            endDate = to_date.getText().toString();
-            eventTitle = eventTitleText.getText().toString();
-            eventAuthor = eventAuthorText.getText().toString();
-            eventContent = eventContentText.getText().toString();
-            eventTime = eventTimeText.getText().toString();
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
-            databaseReference.child("events").addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    for (DataSnapshot data : snapshot.getChildren()) {
-                        eventsCount++;
-                    }
-
-                    databaseReference.child("events").child("event" + (eventsCount + 1)).child("eventLocation").setValue(Country);
-                    databaseReference.child("events").child("event" + (eventsCount + 1)).child("eventType").setValue(eventType);
-                    databaseReference.child("events").child("event" + (eventsCount + 1)).child("eventSubType").setValue(eventSubType);
-                    databaseReference.child("events").child("event" + (eventsCount + 1)).child("eventSpec").setValue(eventSpec);
-                    databaseReference.child("events").child("event" + (eventsCount + 1)).child("eventSubSpec").setValue(eventSubSpec);
-                    databaseReference.child("events").child("event" + (eventsCount + 1)).child("eventRange").setValue(eventRange);
-                    databaseReference.child("events").child("event" + (eventsCount + 1)).child("eventFees").setValue(eventFees);
-                    databaseReference.child("events").child("event" + (eventsCount + 1)).child("eventStartDate").setValue(startDate);
-                    databaseReference.child("events").child("event" + (eventsCount + 1)).child("eventEndDate").setValue(endDate);
-                    databaseReference.child("events").child("event" + (eventsCount + 1)).child("eventTitle").setValue(eventTitle);
-                    databaseReference.child("events").child("event" + (eventsCount + 1)).child("eventAuthor").setValue(eventAuthor);
-                    databaseReference.child("events").child("event" + (eventsCount + 1)).child("eventContent").setValue(eventContent);
-                    databaseReference.child("events").child("event" + (eventsCount + 1)).child("eventTime").setValue(eventTime);
-                    databaseReference.child("events").child("event" + (eventsCount + 1)).child("eventImage").setValue("");
-
-                    databaseReference.child("createdEvents").child(FirebaseAuth.getInstance().getCurrentUser()
-                            .getUid()).child("event" + (eventsCount + 1)).setValue("1");
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-
-                }
-            });
-
-        }
-
-        private void updateLabelFromDate () {
-            String myFormat = "MM/dd/yy"; //In which you need put here
-            SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
-            from_date.setText(sdf.format(myCalendar.getTime()));
-        }
-
-        private void updateLabelToDate () {
-            String myFormat = "MM/dd/yy"; //In which you need put here
-            SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
-            to_date.setText(sdf.format(myCalendar2.getTime()));
-        }
+            }
+        });
 
     }
+
+    private void updateLabelFromDate() {
+        String myFormat = "MM/dd/yy"; //In which you need put here
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+        from_date.setText(sdf.format(myCalendar.getTime()));
+    }
+
+    private void updateLabelToDate() {
+        String myFormat = "MM/dd/yy"; //In which you need put here
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+        to_date.setText(sdf.format(myCalendar2.getTime()));
+    }
+
+    public void BACK(View view) {
+        finish();
+    }
+
+}

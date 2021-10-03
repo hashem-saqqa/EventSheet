@@ -68,27 +68,17 @@ public class Login extends AppCompatActivity {
         }
     }
 
-    public void BACK(View view) {
-        Intent myIntent = new Intent(getApplicationContext(), create_new_account.class);
-        startActivity(myIntent);
-    }
-
     public void GotoResetPassword(View view) {
         Intent intent = new Intent(getApplicationContext(), ResetPassword.class);
         startActivity(intent);
     }
 
     public void GoToHome(View view) {
+
         loginPassword = password.getText().toString().trim();
         loginPhone = phone_number.getText().toString().trim();
         CountryCode = countryCodePicker.getSelectedCountryCode();
         phoneNumber = "+" + CountryCode + loginPhone;
-
-        System.out.println("phone" + loginPhone);
-        System.out.println("password" + loginPassword);
-        System.out.println("phoneNumber" + phoneNumber);
-        System.out.println(CountryCode);
-
 
         if (!loginPhone.equals("") & !loginPassword.equals("")) {
 
@@ -126,6 +116,21 @@ public class Login extends AppCompatActivity {
             });
         } else {
             Toast.makeText(this, "Enter phone number and password ", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void GoToCreateAccount(View view) {
+        Intent intent = new Intent(Login.this, create_new_account.class);
+        startActivity(intent);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+            Intent intent = new Intent(getApplicationContext(), Home.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivityForResult(intent, 0);
         }
     }
 }

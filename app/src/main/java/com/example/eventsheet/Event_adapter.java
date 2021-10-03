@@ -60,7 +60,7 @@ public class Event_adapter extends RecyclerView.Adapter<Event_adapter.ViewHolder
     public void onBindViewHolder(@NonNull Event_adapter.ViewHolder holder, final int position) {
         databaseReference = FirebaseDatabase.getInstance().getReference();
 
-        Event_model model = DataSet.get(position);
+        final Event_model model = DataSet.get(position);
 
         holder.Main_image.setImageResource(model.getImage());
         holder.Main_text.setText(model.getMain_text());
@@ -74,7 +74,7 @@ public class Event_adapter extends RecyclerView.Adapter<Event_adapter.ViewHolder
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, Event_details.class);
-                intent.putExtra("eventClicked", DataSet.get(position).getEventId());
+                intent.putExtra("eventClicked", model.getEventId());
                 mContext.startActivity(intent);
             }
         });

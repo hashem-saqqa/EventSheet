@@ -113,7 +113,7 @@ public class All_Events extends AppCompatActivity implements MaterialSearchBar.O
                 mRecyclerView = findViewById(R.id.recyclerView_all_event);
                 mLayoutManager = new LinearLayoutManager(getApplicationContext());
                 mRecyclerView.setLayoutManager(mLayoutManager);
-                all_event_adapter = new All_events_adapter(mDataset_all_event);
+                all_event_adapter = new All_events_adapter(All_Events.this, mDataset_all_event);
                 mRecyclerView.setAdapter(all_event_adapter);
             }
 
@@ -145,7 +145,7 @@ public class All_Events extends AppCompatActivity implements MaterialSearchBar.O
                         mRecyclerView = findViewById(R.id.recyclerView_all_event);
                         mLayoutManager = new LinearLayoutManager(getApplicationContext());
                         mRecyclerView.setLayoutManager(mLayoutManager);
-                        all_event_adapter = new All_events_adapter(mDataset_all_event);
+                        all_event_adapter = new All_events_adapter(All_Events.this, mDataset_all_event);
                         mRecyclerView.setAdapter(all_event_adapter);
 
                     }
@@ -174,7 +174,7 @@ public class All_Events extends AppCompatActivity implements MaterialSearchBar.O
                         mRecyclerView = findViewById(R.id.recyclerView_all_event);
                         mLayoutManager = new LinearLayoutManager(getApplicationContext());
                         mRecyclerView.setLayoutManager(mLayoutManager);
-                        all_event_adapter = new All_events_adapter(mDataset_all_event);
+                        all_event_adapter = new All_events_adapter(All_Events.this, mDataset_all_event);
                         mRecyclerView.setAdapter(all_event_adapter);
                     }
 
@@ -202,7 +202,7 @@ public class All_Events extends AppCompatActivity implements MaterialSearchBar.O
                         mRecyclerView = findViewById(R.id.recyclerView_all_event);
                         mLayoutManager = new LinearLayoutManager(getApplicationContext());
                         mRecyclerView.setLayoutManager(mLayoutManager);
-                        all_event_adapter = new All_events_adapter(mDataset_all_event);
+                        all_event_adapter = new All_events_adapter(All_Events.this, mDataset_all_event);
                         mRecyclerView.setAdapter(all_event_adapter);
                     }
 
@@ -238,7 +238,7 @@ public class All_Events extends AppCompatActivity implements MaterialSearchBar.O
         mRecyclerView = findViewById(R.id.recyclerView_all_event);
         mLayoutManager = new LinearLayoutManager(getApplicationContext());
         mRecyclerView.setLayoutManager(mLayoutManager);
-        all_event_adapter = new All_events_adapter(mDataset_searched);
+        all_event_adapter = new All_events_adapter(All_Events.this, mDataset_searched);
         mRecyclerView.setAdapter(all_event_adapter);
 
 //        databaseReference.orderByValue().equalTo(text.toString()).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -296,4 +296,7 @@ public class All_Events extends AppCompatActivity implements MaterialSearchBar.O
         return Integer.parseInt(formatted);
     }
 
+    public void BACK(View view) {
+        finish();
+    }
 }

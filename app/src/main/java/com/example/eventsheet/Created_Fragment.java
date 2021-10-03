@@ -80,20 +80,24 @@ public class Created_Fragment extends Fragment {
                                         Log.d("data2", "onDataChange: " + data2);
                                         Log.d("snapshot2", "onDataChange: " + snapshot);
 
-                                        mDataset_my_created.add(new Event_model(
+                                        Event_model event_model = new Event_model(
                                                 R.drawable.nopath___copy__79_,
                                                 data2.child("eventTitle").getValue(String.class),
                                                 data2.child("eventLocation").getValue(String.class),
                                                 data2.child("eventStartDate").getValue(String.class),
                                                 data2.child("eventEndDate").getValue(String.class),
                                                 myCreatedEventStatus
-                                        ));
+                                        );
+                                        event_model.setEventId(data2.getKey());
+                                        mDataset_my_created.add(event_model);
+
+
 
                                     }
                                     mRecyclerView = getView().findViewById(R.id.recyclerView_created);
                                     mLayoutManager = new LinearLayoutManager(getContext());
                                     mRecyclerView.setLayoutManager(mLayoutManager);
-                                    my_created_events_adapter = new My_created_events_adapter(mDataset_my_created);
+                                    my_created_events_adapter = new My_created_events_adapter(getActivity(),mDataset_my_created);
                                     new ItemTouchHelper(itemSimpleCallback).attachToRecyclerView(mRecyclerView);
                                     mRecyclerView.setAdapter(my_created_events_adapter);
 //                                    if (mDataset_my_created.isEmpty()){

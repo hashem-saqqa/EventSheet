@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
@@ -101,6 +102,7 @@ public class All_event_map extends AppCompatActivity implements OnMapReadyCallba
         }
         return false;
     }
+
     public void Create_events() {
         mDataset_map = new ArrayList<>();
         mDataset_map.add(new Event_model(R.drawable.nopath___copy__79_,
@@ -113,8 +115,12 @@ public class All_event_map extends AppCompatActivity implements OnMapReadyCallba
         mRecyclerView = findViewById(R.id.recyclerView_map);
         mLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        all_event_map_adapter = new All_event_Map_adapter(mDataset_map);
+        all_event_map_adapter = new All_event_Map_adapter(All_event_map.this, mDataset_map);
         mRecyclerView.setAdapter(all_event_map_adapter);
+    }
+
+    public void BACK(View view) {
+        finish();
     }
 
 //    public void hide_Dialog(View view) {
@@ -123,4 +129,5 @@ public class All_event_map extends AppCompatActivity implements OnMapReadyCallba
 //        dialog_constraint_basic.setVisibility(View.GONE);
 //
 //    }
+
 }

@@ -88,7 +88,7 @@ public class Event_details extends AppCompatActivity implements OnMapReadyCallba
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        Log.d("data from the click", "onDataChange: " + snapshot);
+                        Log.d("data from the clic`k", "onDataChange: " + snapshot);
                         DataSnapshot data = snapshot.getChildren().iterator().next();
                         eventTitle = data.child("eventTitle").getValue(String.class);
                         eventAuthor = data.child("eventAuthor").getValue(String.class);

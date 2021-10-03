@@ -92,7 +92,7 @@ public class Search extends AppCompatActivity implements MaterialSearchBar.OnSea
                                 mRecyclerView = findViewById(R.id.recyclerView_search);
                                 mLayoutManager = new LinearLayoutManager(getApplicationContext());
                                 mRecyclerView.setLayoutManager(mLayoutManager);
-                                search_adapter = new Search_adapter(mDataset_search);
+                                search_adapter = new Search_adapter(Search.this,mDataset_search);
                                 mRecyclerView.setAdapter(search_adapter);
                             }
 
@@ -118,7 +118,7 @@ public class Search extends AppCompatActivity implements MaterialSearchBar.OnSea
                                         mRecyclerView = findViewById(R.id.recyclerView_search);
                                         mLayoutManager = new LinearLayoutManager(getApplicationContext());
                                         mRecyclerView.setLayoutManager(mLayoutManager);
-                                        search_adapter = new Search_adapter(mDataset_search);
+                                        search_adapter = new Search_adapter(Search.this,mDataset_search);
                                         mRecyclerView.setAdapter(search_adapter);
                                     }
 
@@ -144,7 +144,7 @@ public class Search extends AppCompatActivity implements MaterialSearchBar.OnSea
                                         mRecyclerView = findViewById(R.id.recyclerView_search);
                                         mLayoutManager = new LinearLayoutManager(getApplicationContext());
                                         mRecyclerView.setLayoutManager(mLayoutManager);
-                                        search_adapter = new Search_adapter(mDataset_search);
+                                        search_adapter = new Search_adapter(Search.this,mDataset_search);
                                         mRecyclerView.setAdapter(search_adapter);
                                     }
 
@@ -170,7 +170,7 @@ public class Search extends AppCompatActivity implements MaterialSearchBar.OnSea
                                         mRecyclerView = findViewById(R.id.recyclerView_search);
                                         mLayoutManager = new LinearLayoutManager(getApplicationContext());
                                         mRecyclerView.setLayoutManager(mLayoutManager);
-                                        search_adapter = new Search_adapter(mDataset_search);
+                                        search_adapter = new Search_adapter(Search.this,mDataset_search);
                                         mRecyclerView.setAdapter(search_adapter);
                                     }
 
@@ -196,7 +196,7 @@ public class Search extends AppCompatActivity implements MaterialSearchBar.OnSea
                                         mRecyclerView = findViewById(R.id.recyclerView_search);
                                         mLayoutManager = new LinearLayoutManager(getApplicationContext());
                                         mRecyclerView.setLayoutManager(mLayoutManager);
-                                        search_adapter = new Search_adapter(mDataset_search);
+                                        search_adapter = new Search_adapter(Search.this,mDataset_search);
                                         mRecyclerView.setAdapter(search_adapter);
                                     }
 
@@ -222,7 +222,7 @@ public class Search extends AppCompatActivity implements MaterialSearchBar.OnSea
                                         mRecyclerView = findViewById(R.id.recyclerView_search);
                                         mLayoutManager = new LinearLayoutManager(getApplicationContext());
                                         mRecyclerView.setLayoutManager(mLayoutManager);
-                                        search_adapter = new Search_adapter(mDataset_search);
+                                        search_adapter = new Search_adapter(Search.this,mDataset_search);
                                         mRecyclerView.setAdapter(search_adapter);
                                     }
 
@@ -290,7 +290,7 @@ public class Search extends AppCompatActivity implements MaterialSearchBar.OnSea
                 mRecyclerView = findViewById(R.id.recyclerView_search);
                 mLayoutManager = new LinearLayoutManager(getApplicationContext());
                 mRecyclerView.setLayoutManager(mLayoutManager);
-                search_adapter = new Search_adapter(mDataset_search);
+                search_adapter = new Search_adapter(Search.this,mDataset_search);
                 mRecyclerView.setAdapter(search_adapter);
             }
 
@@ -347,7 +347,7 @@ public class Search extends AppCompatActivity implements MaterialSearchBar.OnSea
         mRecyclerView = findViewById(R.id.recyclerView_search);
         mLayoutManager = new LinearLayoutManager(getApplicationContext());
         mRecyclerView.setLayoutManager(mLayoutManager);
-        search_adapter = new Search_adapter(mDataset_searched);
+        search_adapter = new Search_adapter(Search.this,mDataset_searched);
         mRecyclerView.setAdapter(search_adapter);
 
     }

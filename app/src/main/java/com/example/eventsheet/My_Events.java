@@ -100,4 +100,7 @@ public class My_Events extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(),CreateEvent.class);
         startActivity(intent);
     }
+    public void BACK(View view) {
+        finish();
+    }
 }

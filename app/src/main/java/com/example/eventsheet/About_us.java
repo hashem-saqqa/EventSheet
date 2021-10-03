@@ -30,4 +30,7 @@ public class About_us extends AppCompatActivity {
         AppBarLayout appbar_layout = findViewById(R.id.appbar_layout);
         appbar_layout.setBackgroundColor(Color.parseColor("#ffffff"));
     }
+    public void BACK(View view) {
+        finish();
+    }
 }

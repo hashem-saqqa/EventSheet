@@ -141,7 +141,7 @@ public class Search_map extends AppCompatActivity implements OnMapReadyCallback,
         mRecyclerView = findViewById(R.id.recyclerView_map);
         mLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        all_event_map_adapter = new All_event_Map_adapter(mDataset_map);
+        all_event_map_adapter = new All_event_Map_adapter(Search_map.this,mDataset_map);
         mRecyclerView.setAdapter(all_event_map_adapter);
     }
 }

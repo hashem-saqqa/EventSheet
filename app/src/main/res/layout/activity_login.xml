@@ -26,19 +26,6 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="BACK"
-                android:src="@drawable/group_174"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.917"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.05"
-                tools:ignore="MissingConstraints" />
-
-            <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -220,7 +207,10 @@
                 app:layout_constraintHorizontal_bias="1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/forgetPasswordtext"
-                app:layout_constraintVertical_bias="0.433" />
+                app:layout_constraintVertical_bias="0.433"
+                android:textColor="#CD4A58"
+                android:onClick="GoToCreateAccount"
+                />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

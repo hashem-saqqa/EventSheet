@@ -1,5 +1,7 @@
 package com.example.eventsheet;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,9 +15,11 @@ import java.util.List;
 
 public class Search_adapter extends RecyclerView.Adapter<Search_adapter.ViewHolder> {
     private List<Event_model> DataSet;
+    Context mContext;
 
-    public Search_adapter(List<Event_model> dataSet) {
+    public Search_adapter(Context mContext, List<Event_model> dataSet) {
         DataSet = dataSet;
+        this.mContext = mContext;
     }
 
     @NonNull
@@ -35,12 +39,21 @@ public class Search_adapter extends RecyclerView.Adapter<Search_adapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull Search_adapter.ViewHolder holder, int position) {
 
-        Event_model model = DataSet.get(position);
+        final Event_model model = DataSet.get(position);
 
         holder.Main_image.setImageResource(model.getImage());
         holder.Main_text.setText(model.getMain_text());
         holder.Location_text.setText(model.getLocation_text());
         holder.Start_date_text.setText(model.getStart_date_text());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, Event_details.class);
+                intent.putExtra("eventClicked", model.getEventId());
+                mContext.startActivity(intent);
+            }
+        });
     }
 
     @Override

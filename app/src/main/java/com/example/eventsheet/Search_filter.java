@@ -190,7 +190,7 @@ public class Search_filter extends BottomSheetDialogFragment {
                         mRecyclerView = getActivity().findViewById(R.id.recyclerView_all_event);
                         mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
                         mRecyclerView.setLayoutManager(mLayoutManager);
-                        all_event_adapter = new All_events_adapter(mDataset_filtered);
+                        all_event_adapter = new All_events_adapter(getActivity(),mDataset_filtered);
                         mRecyclerView.setAdapter(all_event_adapter);
 
                     }

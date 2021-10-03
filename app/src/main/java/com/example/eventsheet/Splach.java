@@ -21,7 +21,7 @@ public class Splach extends AppCompatActivity {
             @Override
             public void run() {
                 Intent i = new Intent(Splach.this,
-                        create_new_account.class);
+                        Login.class);
                 //Intent is used to switch from one activity to another.
 
                 startActivity(i);

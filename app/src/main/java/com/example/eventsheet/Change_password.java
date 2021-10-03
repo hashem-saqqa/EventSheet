@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -29,5 +30,9 @@ public class Change_password extends AppCompatActivity {
         AppBarLayout appbar_layout = findViewById(R.id.appbar_layout);
         appbar_layout.setBackgroundColor(Color.parseColor("#ffffff"));
 
+    }
+
+    public void BACK(View view) {
+        finish();
     }
 }

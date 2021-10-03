@@ -1,5 +1,7 @@
 package com.example.eventsheet;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,11 +13,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class My_created_events_adapter  extends RecyclerView.Adapter<My_created_events_adapter.ViewHolder> {
+public class My_created_events_adapter extends RecyclerView.Adapter<My_created_events_adapter.ViewHolder> {
     private List<Event_model> DataSet;
+    private Context mContext;
 
-    public My_created_events_adapter(List<Event_model> dataSet) {
+    public My_created_events_adapter(Context mContext, List<Event_model> dataSet) {
         DataSet = dataSet;
+        this.mContext = mContext;
     }
 
     @NonNull
@@ -35,7 +39,7 @@ public class My_created_events_adapter  extends RecyclerView.Adapter<My_created_
     @Override
     public void onBindViewHolder(@NonNull My_created_events_adapter.ViewHolder holder, int position) {
 
-        Event_model model = DataSet.get(position);
+        final Event_model model = DataSet.get(position);
 
         holder.Main_image.setImageResource(model.getImage());
         holder.Main_text.setText(model.getMain_text());
@@ -44,9 +48,19 @@ public class My_created_events_adapter  extends RecyclerView.Adapter<My_created_
         holder.End_date_text.setText(model.getEnd_date_text());
         if (model.getMy_created_event_status().equals("1")) {
             holder.My_event_status.setText("تم النشر");
-        }else {
+        } else {
             holder.My_event_status.setText("قيد المراجعة");
         }
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, Event_details.class);
+                intent.putExtra("eventClicked", model.getEventId());
+                mContext.startActivity(intent);
+            }
+        });
+
 
     }
 
@@ -63,8 +77,6 @@ public class My_created_events_adapter  extends RecyclerView.Adapter<My_created_
         private final TextView start_date_text;
         private final TextView End_date_text;
         private final TextView My_event_status;
-
-
 
 
         public ViewHolder(@NonNull View itemView) {
