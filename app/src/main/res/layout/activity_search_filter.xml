@@ -59,28 +59,26 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="20dp"
+                android:background="#ffffff"
                 android:src="@drawable/group_1330"
                 app:layout_constraintBottom_toBottomOf="@id/title_label"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/title_label"
-                android:background="#ffffff"
-                />
+                app:layout_constraintTop_toTopOf="@id/title_label" />
 
             <ImageView
                 android:id="@+id/done_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
+                android:background="#ffffff"
                 android:src="@drawable/shape"
                 app:layout_constraintBottom_toBottomOf="@id/title_label"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/title_label"
-                android:background="#ffffff"
-                />
+                app:layout_constraintTop_toTopOf="@id/title_label" />
 
             <Spinner
                 android:id="@+id/country_spinner"
@@ -91,6 +89,7 @@
                 android:background="@drawable/spinner_style"
                 android:entries="@array/numbers"
                 android:layoutDirection="rtl"
+                android:popupBackground="#fff"
                 android:spinnerMode="dropdown"
                 android:textDirection="rtl"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -121,6 +120,7 @@
                 android:background="@drawable/spinner_style"
                 android:entries="@array/numbers"
                 android:layoutDirection="rtl"
+                android:popupBackground="#fff"
                 android:spinnerMode="dropdown"
                 android:textDirection="rtl"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -151,6 +151,7 @@
                 android:background="@drawable/spinner_style"
                 android:entries="@array/numbers"
                 android:layoutDirection="rtl"
+                android:popupBackground="#fff"
                 android:spinnerMode="dropdown"
                 android:textDirection="rtl"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -181,6 +182,7 @@
                 android:background="@drawable/spinner_style"
                 android:entries="@array/numbers"
                 android:layoutDirection="rtl"
+                android:popupBackground="#fff"
                 android:spinnerMode="dropdown"
                 android:textDirection="rtl"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -221,7 +223,9 @@
                 app:layout_constraintHorizontal_bias="1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/line4"
-                app:layout_constraintVertical_bias="0" />
+                app:layout_constraintVertical_bias="0"
+                android:textColorHint="#888"
+                />
 
             <EditText
                 android:id="@+id/to_date"
@@ -238,7 +242,9 @@
                 app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/line4"
-                app:layout_constraintVertical_bias="0" />
+                app:layout_constraintVertical_bias="0"
+                android:textColorHint="#888"
+                />
 
             <Spinner
                 android:id="@+id/event_spec_spinner"
@@ -249,6 +255,7 @@
                 android:background="@drawable/spinner_style"
                 android:entries="@array/numbers"
                 android:layoutDirection="rtl"
+                android:popupBackground="#fff"
                 android:spinnerMode="dropdown"
                 android:textDirection="rtl"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -279,6 +286,7 @@
                 android:background="@drawable/spinner_style"
                 android:entries="@array/numbers"
                 android:layoutDirection="rtl"
+                android:popupBackground="#fff"
                 android:spinnerMode="dropdown"
                 android:textDirection="rtl"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -309,6 +317,7 @@
                 android:background="@drawable/spinner_style"
                 android:entries="@array/numbers"
                 android:layoutDirection="rtl"
+                android:popupBackground="#fff"
                 android:spinnerMode="dropdown"
                 android:textDirection="rtl"
                 app:layout_constraintBottom_toBottomOf="parent"

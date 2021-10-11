@@ -24,12 +24,14 @@
                 android:id="@+id/main_image"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@drawable/nopath___copy__84_"
+                android:src="@drawable/nopath___copy__79_"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0" />
+                app:layout_constraintVertical_bias="0"
+                android:adjustViewBounds="true"
+                />
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -187,6 +189,7 @@
                     app:layout_constraintVertical_bias="0.2" />
 
                 <TextView
+                    android:id="@+id/share_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="اشتراك"
@@ -197,7 +200,9 @@
                     app:layout_constraintHorizontal_bias="0.95"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/horizontal_line"
-                    app:layout_constraintVertical_bias="0.2" />
+                    app:layout_constraintVertical_bias="0.2"
+                    android:onClick="ShareEvent"
+                    />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -22,20 +22,22 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.mancj.materialsearchbar.MaterialSearchBar;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class All_event_map extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
+public class All_event_map extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener, MaterialSearchBar.OnSearchActionListener {
     Marker marker1;
     Marker marker2;
     protected List<Event_model> mDataset_map;
     protected RecyclerView mRecyclerView;
     protected LinearLayoutManager mLayoutManager;
     All_event_Map_adapter all_event_map_adapter;
+    private MaterialSearchBar searchBar;
+
 
     //    ConstraintLayout dialog_constraint;
-//    ConstraintLayout dialog_constraint_basic;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +50,9 @@ public class All_event_map extends AppCompatActivity implements OnMapReadyCallba
                 (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.MapContainer);
         assert mapFragment != null;
         mapFragment.getMapAsync(this);
+
+        searchBar = findViewById(R.id.searchBar);
+        searchBar.setOnSearchActionListener(this);
 
         Create_events();
 //        dialog_constraint = findViewById(R.id.dialog_constraint);
@@ -121,6 +126,36 @@ public class All_event_map extends AppCompatActivity implements OnMapReadyCallba
 
     public void BACK(View view) {
         finish();
+    }
+
+    @Override
+    public void onSearchStateChanged(boolean enabled) {
+
+    }
+
+    @Override
+    public void onSearchConfirmed(CharSequence text) {
+
+    }
+
+    @Override
+    public void onButtonClicked(int buttonCode) {
+        switch (buttonCode) {
+            case MaterialSearchBar.BUTTON_NAVIGATION:
+
+                Search_filter search_filter = new Search_filter();
+//                Window window = search_filter.getWindow();
+//                window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
+//                WindowManager.LayoutParams wlp = window.getAttributes();
+//                wlp.gravity = Gravity.BOTTOM;
+                search_filter.show(getSupportFragmentManager(), "search_filter");
+                break;
+            case MaterialSearchBar.BUTTON_SPEECH:
+                break;
+            case MaterialSearchBar.BUTTON_BACK:
+                searchBar.closeSearch();
+                break;
+        }
     }
 
 //    public void hide_Dialog(View view) {

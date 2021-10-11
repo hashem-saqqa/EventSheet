@@ -201,6 +201,7 @@ public class Search_filter extends BottomSheetDialogFragment {
 
                     }
                 });
+                dismiss();
             }
         });
 

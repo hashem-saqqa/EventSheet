@@ -27,18 +27,17 @@ import java.util.List;
 
 public class Event_adapter extends RecyclerView.Adapter<Event_adapter.ViewHolder> {
     private List<Event_model> DataSet;
-    private OnEventListener mOnEventListener;
     DatabaseReference databaseReference;
     Context mContext;
     RadioGroup radioGroup;
     RadioButton radioButton1;
     RadioButton radioButton2;
     ImageView confirm;
+    ImageView cancel;
 
 
     public Event_adapter(Context mContext, List<Event_model> dataSet) {
         DataSet = dataSet;
-//        this.mOnEventListener = onEventListener;
         this.mContext = mContext;
     }
 
@@ -50,7 +49,7 @@ public class Event_adapter extends RecyclerView.Adapter<Event_adapter.ViewHolder
         View rootView = inflater.inflate(R.layout.home_basic_event_item, parent, false);
 
         // Return a new holder instance
-        ViewHolder viewHolder = new ViewHolder(rootView, mOnEventListener);
+        ViewHolder viewHolder = new ViewHolder(rootView);
 
         // Return the completed view to render on screen
         return viewHolder;
@@ -84,7 +83,7 @@ public class Event_adapter extends RecyclerView.Adapter<Event_adapter.ViewHolder
         holder.ShareEvent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Dialog SharedDialog = new Dialog(mContext);
+                final Dialog SharedDialog = new Dialog(mContext);
                 SharedDialog.setContentView(R.layout.share_dialog);
                 Window window = SharedDialog.getWindow();
                 window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
@@ -94,6 +93,7 @@ public class Event_adapter extends RecyclerView.Adapter<Event_adapter.ViewHolder
                 radioButton2 = SharedDialog.findViewById(R.id.RadioButton2);
                 radioGroup = SharedDialog.findViewById(R.id.RadioGroup);
                 confirm = SharedDialog.findViewById(R.id.done_icon);
+                cancel = SharedDialog.findViewById(R.id.cancel_icon);
 
                 confirm.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -114,16 +114,22 @@ public class Event_adapter extends RecyclerView.Adapter<Event_adapter.ViewHolder
                                     .getUid()).child((DataSet.get(position).getEventId())).setValue("1");
                             Log.d("selectedId", "onClick: inside the R.id.RadioButton2");
 
-                        }else {
+                        } else {
                             Log.d("selectedId", "onClick: inside the False");
 
                         }
+                        SharedDialog.dismiss();
+                    }
+                });
+
+                cancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        SharedDialog.dismiss();
                     }
                 });
 
                 Log.d("Event Id", "onClick: " + DataSet.get(position).getEventId());
-//                databaseReference.child("sharedEvents").child(FirebaseAuth.getInstance().getCurrentUser()
-//                        .getUid()).child((DataSet.get(position).getEventId())).setValue("1");
             }
         });
     }
@@ -134,7 +140,7 @@ public class Event_adapter extends RecyclerView.Adapter<Event_adapter.ViewHolder
     }
 
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         private final ImageView Main_image;
         private final TextView Main_text;
@@ -145,10 +151,9 @@ public class Event_adapter extends RecyclerView.Adapter<Event_adapter.ViewHolder
         private final TextView Auther_text;
         private final TextView ShareEvent;
 
-        OnEventListener onEventListener;
 
 
-        public ViewHolder(@NonNull View itemView, OnEventListener onEventListener) {
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             Main_image = itemView.findViewById(R.id.HS_Image);
@@ -167,19 +172,8 @@ public class Event_adapter extends RecyclerView.Adapter<Event_adapter.ViewHolder
 
             ShareEvent = itemView.findViewById(R.id.share_text);
 
-            this.onEventListener = onEventListener;
-            itemView.setOnClickListener(this);
-
         }
 
-        @Override
-        public void onClick(View v) {
-            onEventListener.onEventClick(getAdapterPosition());
-        }
-    }
-
-    public interface OnEventListener {
-        void onEventClick(int position);
     }
 
 }

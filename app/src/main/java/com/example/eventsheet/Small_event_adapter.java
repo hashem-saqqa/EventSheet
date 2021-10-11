@@ -27,16 +27,15 @@ import java.util.List;
 public class Small_event_adapter extends RecyclerView.Adapter<Small_event_adapter.ViewHolder> {
     private List<Event_model> DataSet;
     DatabaseReference databaseReference;
-    private OnEventListener mOnEventListener;
     Context mContext;
     RadioGroup radioGroup;
     RadioButton radioButton1;
     RadioButton radioButton2;
     ImageView confirm;
+    ImageView cancel;
 
     public Small_event_adapter(Context mContext, List<Event_model> dataSet) {
         DataSet = dataSet;
-//        this.mOnEventListener = onEventListener;
         this.mContext = mContext;
 
     }
@@ -49,7 +48,7 @@ public class Small_event_adapter extends RecyclerView.Adapter<Small_event_adapte
         View rootView = inflater.inflate(R.layout.home_small_event_item, parent, false);
 
         // Return a new holder instance
-        Small_event_adapter.ViewHolder viewHolder = new Small_event_adapter.ViewHolder(rootView, mOnEventListener);
+        Small_event_adapter.ViewHolder viewHolder = new Small_event_adapter.ViewHolder(rootView);
 
         // Return the completed view to render on screen
         return viewHolder;
@@ -79,7 +78,7 @@ public class Small_event_adapter extends RecyclerView.Adapter<Small_event_adapte
         holder.ShareEvent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Dialog SharedDialog = new Dialog(mContext);
+                final Dialog SharedDialog = new Dialog(mContext);
                 SharedDialog.setContentView(R.layout.share_dialog);
                 Window window = SharedDialog.getWindow();
                 window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
@@ -89,6 +88,7 @@ public class Small_event_adapter extends RecyclerView.Adapter<Small_event_adapte
                 radioButton2 = SharedDialog.findViewById(R.id.RadioButton2);
                 radioGroup = SharedDialog.findViewById(R.id.RadioGroup);
                 confirm = SharedDialog.findViewById(R.id.done_icon);
+                cancel = SharedDialog.findViewById(R.id.cancel_icon);
 
                 confirm.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -113,12 +113,18 @@ public class Small_event_adapter extends RecyclerView.Adapter<Small_event_adapte
                             Log.d("selectedId", "onClick: inside the False");
 
                         }
+                        SharedDialog.dismiss();
+                    }
+                });
+
+                cancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        SharedDialog.dismiss();
                     }
                 });
 
                 Log.d("Event Id", "onClick: " + DataSet.get(position).getEventId());
-//                databaseReference.child("sharedEvents").child(FirebaseAuth.getInstance().getCurrentUser()
-//                        .getUid()).child((DataSet.get(position).getEventId())).setValue("1");
             }
         });
 
@@ -130,7 +136,7 @@ public class Small_event_adapter extends RecyclerView.Adapter<Small_event_adapte
     }
 
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class ViewHolder extends RecyclerView.ViewHolder{
         private final ImageView Main_image;
         private final TextView Main_text;
         private final TextView Location_text;
@@ -138,10 +144,9 @@ public class Small_event_adapter extends RecyclerView.Adapter<Small_event_adapte
         private final TextView End_date_text;
         private final TextView ShareEvent;
 
-        OnEventListener onEventListener;
 
 
-        public ViewHolder(@NonNull View itemView, OnEventListener onEventListener) {
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             ShareEvent = itemView.findViewById(R.id.share_text);
@@ -156,19 +161,10 @@ public class Small_event_adapter extends RecyclerView.Adapter<Small_event_adapte
 
             End_date_text = itemView.findViewById(R.id.ela_calender_text);
 
-            this.onEventListener = onEventListener;
-            itemView.setOnClickListener(this);
 
         }
 
-        @Override
-        public void onClick(View v) {
-            onEventListener.onEventClick(getAdapterPosition());
-        }
     }
 
-    public interface OnEventListener {
-        void onEventClick(int position);
-    }
 
 }

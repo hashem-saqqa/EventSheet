@@ -30,11 +30,12 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.mancj.materialsearchbar.MaterialSearchBar;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Search_map extends AppCompatActivity implements OnMapReadyCallback,GoogleMap.OnMarkerClickListener {
+public class Search_map extends AppCompatActivity implements OnMapReadyCallback,GoogleMap.OnMarkerClickListener, MaterialSearchBar.OnSearchActionListener {
     Marker marker1;
     Marker marker2;
 
@@ -44,6 +45,8 @@ public class Search_map extends AppCompatActivity implements OnMapReadyCallback,
     protected RecyclerView mRecyclerView;
     protected LinearLayoutManager mLayoutManager;
     All_event_Map_adapter all_event_map_adapter;
+    private MaterialSearchBar searchBar;
+
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -57,6 +60,9 @@ public class Search_map extends AppCompatActivity implements OnMapReadyCallback,
                 (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.MapContainer);
         assert mapFragment != null;
         mapFragment.getMapAsync(this);
+
+        searchBar = findViewById(R.id.searchBar);
+        searchBar.setOnSearchActionListener(this);
 
         Create_events();
 
@@ -143,5 +149,31 @@ public class Search_map extends AppCompatActivity implements OnMapReadyCallback,
         mRecyclerView.setLayoutManager(mLayoutManager);
         all_event_map_adapter = new All_event_Map_adapter(Search_map.this,mDataset_map);
         mRecyclerView.setAdapter(all_event_map_adapter);
+    }
+
+    @Override
+    public void onSearchStateChanged(boolean enabled) {
+
+    }
+
+    @Override
+    public void onSearchConfirmed(CharSequence text) {
+
+    }
+
+    @Override
+    public void onButtonClicked(int buttonCode) {
+        switch (buttonCode) {
+            case MaterialSearchBar.BUTTON_NAVIGATION:
+
+                Search_filter search_filter = new Search_filter();
+                search_filter.show(getSupportFragmentManager(), "search_filter");
+                break;
+            case MaterialSearchBar.BUTTON_SPEECH:
+                break;
+            case MaterialSearchBar.BUTTON_BACK:
+                searchBar.closeSearch();
+                break;
+        }
     }
 }

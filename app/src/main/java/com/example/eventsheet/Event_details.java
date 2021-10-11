@@ -1,9 +1,14 @@
 package com.example.eventsheet;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,6 +20,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,10 +35,12 @@ public class Event_details extends AppCompatActivity implements OnMapReadyCallba
     private String eventImage, eventTitle, eventAuthor, eventContent, eventEndDate,
             eventFees, eventLocation, eventRange, eventSpec, eventStartDate, eventSubSpec,
             eventSubType, eventTime, eventType;
-    private ImageView eventImageView;
+    private ImageView eventImageView, cancel, confirm;
     private TextView eventTitleView, eventLocationView, eventContentView, eventStartDateView,
             eventEndDateView, eventTimeView, eventSubSpecView, eventRangeView, eventSpecView, eventFeesView,
             eventAuthorView;
+    RadioGroup radioGroup;
+    RadioButton radioButton1, radioButton2;
 
 
     @Override
@@ -54,7 +62,7 @@ public class Event_details extends AppCompatActivity implements OnMapReadyCallba
 
         load_data();
 
-        Log.d("getMethod", "onCreate: "+getclickedEventName());
+        Log.d("getMethod", "onCreate: " + getclickedEventName());
     }
 
     public void add_fragment_1(View view) {
@@ -82,7 +90,7 @@ public class Event_details extends AppCompatActivity implements OnMapReadyCallba
     private void load_data() {
 
         databaseReference = FirebaseDatabase.getInstance().getReference("events");
-        Log.d("the click id", " : "+clickedEventId);
+        Log.d("the click id", " : " + clickedEventId);
 
         databaseReference.orderByKey().equalTo(clickedEventId)
                 .addValueEventListener(new ValueEventListener() {
@@ -127,5 +135,45 @@ public class Event_details extends AppCompatActivity implements OnMapReadyCallba
 
     public static String getclickedEventName() {
         return clickedEventId;
+    }
+
+    public void ShareEvent(View view) {
+
+        final Dialog SharedDialog = new Dialog(getApplicationContext());
+        SharedDialog.setContentView(R.layout.share_dialog);
+        Window window = SharedDialog.getWindow();
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        SharedDialog.show();
+
+        radioButton1 = SharedDialog.findViewById(R.id.RadioButton1);
+        radioButton2 = SharedDialog.findViewById(R.id.RadioButton2);
+        radioGroup = SharedDialog.findViewById(R.id.RadioGroup);
+        confirm = SharedDialog.findViewById(R.id.done_icon);
+        cancel = SharedDialog.findViewById(R.id.cancel_icon);
+
+        confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                int selectedId = radioGroup.getCheckedRadioButtonId();
+
+                if (selectedId == R.id.RadioButton1) {
+                    databaseReference.child("sharedEvents").child(FirebaseAuth.getInstance().getCurrentUser()
+                            .getUid()).child((clickedEventId)).setValue("0");
+
+                } else if (selectedId == R.id.RadioButton2) {
+                    databaseReference.child("sharedEvents").child(FirebaseAuth.getInstance().getCurrentUser()
+                            .getUid()).child((clickedEventId)).setValue("1");
+                }
+                SharedDialog.dismiss();
+            }
+        });
+
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedDialog.dismiss();
+            }
+        });
     }
 }

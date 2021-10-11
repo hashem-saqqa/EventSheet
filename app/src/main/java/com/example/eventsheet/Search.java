@@ -365,24 +365,16 @@ public class Search extends AppCompatActivity implements MaterialSearchBar.OnSea
     public void onButtonClicked(int buttonCode) {
         switch (buttonCode) {
             case MaterialSearchBar.BUTTON_NAVIGATION:
-                Log.d("whatever", "works");
-                Toast.makeText(this, "whatever hi hi hi hi", Toast.LENGTH_SHORT).show();
+
                 Search_filter search_filter = new Search_filter();
-//                Window window = search_filter.getWindow();
-//                window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
-//                WindowManager.LayoutParams wlp = window.getAttributes();
-//                wlp.gravity = Gravity.BOTTOM;
                 search_filter.show(getSupportFragmentManager(), "search_filter");
                 break;
             case MaterialSearchBar.BUTTON_SPEECH:
                 break;
             case MaterialSearchBar.BUTTON_BACK:
-                Log.d("whatever", "not works");
-                Toast.makeText(this, "whatever by by by by", Toast.LENGTH_SHORT).show();
                 searchBar.closeSearch();
                 break;
         }
-
 
     }
 }

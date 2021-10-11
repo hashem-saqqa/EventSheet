@@ -279,6 +279,7 @@ public class All_Events extends AppCompatActivity implements MaterialSearchBar.O
     public void onButtonClicked(int buttonCode) {
         switch (buttonCode) {
             case MaterialSearchBar.BUTTON_NAVIGATION:
+
                 Search_filter search_filter = new Search_filter();
 //                Window window = search_filter.getWindow();
 //                window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
@@ -291,8 +292,7 @@ public class All_Events extends AppCompatActivity implements MaterialSearchBar.O
             case MaterialSearchBar.BUTTON_SPEECH:
                 break;
             case MaterialSearchBar.BUTTON_BACK:
-                Log.d("whatever", "not works");
-                Toast.makeText(this, "whatever by by by by", Toast.LENGTH_SHORT).show();
+
                 searchBar.closeSearch();
                 break;
         }

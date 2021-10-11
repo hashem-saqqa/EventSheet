@@ -1,21 +1,36 @@
 package com.example.eventsheet;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
 public class My_created_events_adapter extends RecyclerView.Adapter<My_created_events_adapter.ViewHolder> {
     private List<Event_model> DataSet;
     private Context mContext;
+    DatabaseReference databaseReference;
+    RadioGroup radioGroup;
+    RadioButton radioButton1;
+    RadioButton radioButton2;
+    ImageView confirm;
+    ImageView cancel;
 
     public My_created_events_adapter(Context mContext, List<Event_model> dataSet) {
         DataSet = dataSet;
@@ -39,6 +54,8 @@ public class My_created_events_adapter extends RecyclerView.Adapter<My_created_e
     @Override
     public void onBindViewHolder(@NonNull My_created_events_adapter.ViewHolder holder, int position) {
 
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+
         final Event_model model = DataSet.get(position);
 
         holder.Main_image.setImageResource(model.getImage());
@@ -61,6 +78,48 @@ public class My_created_events_adapter extends RecyclerView.Adapter<My_created_e
             }
         });
 
+        holder.ShareEvent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Dialog SharedDialog = new Dialog(mContext);
+                SharedDialog.setContentView(R.layout.share_dialog);
+                Window window = SharedDialog.getWindow();
+                window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+                SharedDialog.show();
+
+                radioButton1 = SharedDialog.findViewById(R.id.RadioButton1);
+                radioButton2 = SharedDialog.findViewById(R.id.RadioButton2);
+                radioGroup = SharedDialog.findViewById(R.id.RadioGroup);
+                confirm = SharedDialog.findViewById(R.id.done_icon);
+                cancel = SharedDialog.findViewById(R.id.cancel_icon);
+
+                confirm.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        int selectedId = radioGroup.getCheckedRadioButtonId();
+
+                        if (selectedId == R.id.RadioButton1) {
+                            databaseReference.child("sharedEvents").child(FirebaseAuth.getInstance().getCurrentUser()
+                                    .getUid()).child((model.getEventId())).setValue("0");
+
+                        } else if (selectedId == R.id.RadioButton2) {
+                            databaseReference.child("sharedEvents").child(FirebaseAuth.getInstance().getCurrentUser()
+                                    .getUid()).child((model.getEventId())).setValue("1");
+                        }
+                        SharedDialog.dismiss();
+                    }
+                });
+
+                cancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        SharedDialog.dismiss();
+                    }
+                });
+            }
+        });
+
 
     }
 
@@ -77,6 +136,7 @@ public class My_created_events_adapter extends RecyclerView.Adapter<My_created_e
         private final TextView start_date_text;
         private final TextView End_date_text;
         private final TextView My_event_status;
+        private final TextView ShareEvent;
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -93,8 +153,9 @@ public class My_created_events_adapter extends RecyclerView.Adapter<My_created_e
 
             End_date_text = itemView.findViewById(R.id.ela_calender_text);
 
-
             My_event_status = itemView.findViewById(R.id.events_status);
+
+            ShareEvent = itemView.findViewById(R.id.share_text);
         }
     }
 
