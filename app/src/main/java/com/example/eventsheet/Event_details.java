@@ -139,7 +139,7 @@ public class Event_details extends AppCompatActivity implements OnMapReadyCallba
 
     public void ShareEvent(View view) {
 
-        final Dialog SharedDialog = new Dialog(getApplicationContext());
+        final Dialog SharedDialog = new Dialog(this);
         SharedDialog.setContentView(R.layout.share_dialog);
         Window window = SharedDialog.getWindow();
         window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
