@@ -89,10 +89,10 @@ public class Event_details extends AppCompatActivity implements OnMapReadyCallba
 
     private void load_data() {
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("events");
+        databaseReference = FirebaseDatabase.getInstance().getReference();
         Log.d("the click id", " : " + clickedEventId);
 
-        databaseReference.orderByKey().equalTo(clickedEventId)
+        databaseReference.child("events").orderByKey().equalTo(clickedEventId)
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {

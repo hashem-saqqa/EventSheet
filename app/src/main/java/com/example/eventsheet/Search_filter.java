@@ -186,6 +186,7 @@ public class Search_filter extends BottomSheetDialogFragment {
                                     data.child("eventEndDate").getValue(String.class)));
 //
                         }
+                        Log.d("TAGg", "onDataChange: "+getActivity());
 
                         mRecyclerView = getActivity().findViewById(R.id.recyclerView_all_event);
                         mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
@@ -501,6 +502,4 @@ public class Search_filter extends BottomSheetDialogFragment {
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
         to_date.setText(sdf.format(myCalendar2.getTime()));
     }
-
-
 }

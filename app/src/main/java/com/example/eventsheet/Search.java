@@ -368,6 +368,7 @@ public class Search extends AppCompatActivity implements MaterialSearchBar.OnSea
 
                 Search_filter search_filter = new Search_filter();
                 search_filter.show(getSupportFragmentManager(), "search_filter");
+
                 break;
             case MaterialSearchBar.BUTTON_SPEECH:
                 break;

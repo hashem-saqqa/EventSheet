@@ -78,7 +78,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/title_label" />
+                app:layout_constraintTop_toTopOf="@id/title_label"
+                />
 
             <Spinner
                 android:id="@+id/country_spinner"

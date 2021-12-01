@@ -144,10 +144,6 @@ public class All_event_map extends AppCompatActivity implements OnMapReadyCallba
             case MaterialSearchBar.BUTTON_NAVIGATION:
 
                 Search_filter search_filter = new Search_filter();
-//                Window window = search_filter.getWindow();
-//                window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
-//                WindowManager.LayoutParams wlp = window.getAttributes();
-//                wlp.gravity = Gravity.BOTTOM;
                 search_filter.show(getSupportFragmentManager(), "search_filter");
                 break;
             case MaterialSearchBar.BUTTON_SPEECH:

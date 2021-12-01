@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -98,16 +99,18 @@ public class All_Events extends AppCompatActivity implements MaterialSearchBar.O
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     startDate = dataSnapshot.child("eventStartDate").getValue(String.class);
                     endDate = dataSnapshot.child("eventEndDate").getValue(String.class);
+                    if (startDate != null && endDate != null) {
 
-                    if (fromDateToStringToInt(currentDateTest) - fromDateToStringToInt(startDate) >= 0 &&
-                            fromDateToStringToInt(currentDateTest) - fromDateToStringToInt(endDate) < 0) {
-                        Event_model event_model = new Event_model(dataSnapshot.getKey(), R.drawable.nopath___copy__79_,
-                                dataSnapshot.child("eventTitle").getValue(String.class),
-                                dataSnapshot.child("eventLocation").getValue(String.class),
-                                dataSnapshot.child("eventStartDate").getValue(String.class),
-                                dataSnapshot.child("eventEndDate").getValue(String.class));
-                        event_model.setEventId(dataSnapshot.getKey());
-                        mDataset_all_event.add(event_model);
+                        if (fromDateToStringToInt(currentDateTest) - fromDateToStringToInt(startDate) >= 0 &&
+                                fromDateToStringToInt(currentDateTest) - fromDateToStringToInt(endDate) < 0) {
+                            Event_model event_model = new Event_model(dataSnapshot.getKey(), R.drawable.nopath___copy__79_,
+                                    dataSnapshot.child("eventTitle").getValue(String.class),
+                                    dataSnapshot.child("eventLocation").getValue(String.class),
+                                    dataSnapshot.child("eventStartDate").getValue(String.class),
+                                    dataSnapshot.child("eventEndDate").getValue(String.class));
+                            event_model.setEventId(dataSnapshot.getKey());
+                            mDataset_all_event.add(event_model);
+                        }
                     }
                 }
 
@@ -249,30 +252,6 @@ public class All_Events extends AppCompatActivity implements MaterialSearchBar.O
         all_event_adapter = new All_events_adapter(All_Events.this, mDataset_searched);
         mRecyclerView.setAdapter(all_event_adapter);
 
-//        databaseReference.orderByValue().equalTo(text.toString()).addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                Log.d(" the Search results", "onDataChange: "+snapshot);
-//                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-//                    mDataset_searched.add(new Event_model(R.drawable.nopath___copy__79_,
-//                            dataSnapshot.child("eventTitle").getValue(String.class),
-//                            dataSnapshot.child("eventLocation").getValue(String.class),
-//                            dataSnapshot.child("eventStartDate").getValue(String.class),
-//                            dataSnapshot.child("eventEndDate").getValue(String.class)));
-//                }
-//                mRecyclerView = findViewById(R.id.recyclerView_all_event);
-//                mLayoutManager = new LinearLayoutManager(getApplicationContext());
-//                mRecyclerView.setLayoutManager(mLayoutManager);
-//                all_event_adapter = new All_events_adapter(mDataset_searched);
-//                mRecyclerView.setAdapter(all_event_adapter);
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
-
     }
 
     @Override
@@ -281,11 +260,6 @@ public class All_Events extends AppCompatActivity implements MaterialSearchBar.O
             case MaterialSearchBar.BUTTON_NAVIGATION:
 
                 Search_filter search_filter = new Search_filter();
-//                Window window = search_filter.getWindow();
-//                window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
-//                WindowManager.LayoutParams wlp = window.getAttributes();
-//                wlp.gravity = Gravity.BOTTOM;
-
                 search_filter.show(getSupportFragmentManager(), "search_filter");
 
                 break;

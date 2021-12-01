@@ -34,7 +34,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-public class Home extends AppCompatActivity  {
+public class Home extends AppCompatActivity {
     protected List<Event_model> mDataset_1;
     protected List<Event_model> mDataset_2;
     protected List<Event_model> mDataset_3;
@@ -125,18 +125,21 @@ public class Home extends AppCompatActivity  {
                     startDate = dataSnapshot.child("eventStartDate").getValue(String.class);
                     endDate = dataSnapshot.child("eventEndDate").getValue(String.class);
 
-                    if (fromDateToStringToInt(currentDateTest) - fromDateToStringToInt(startDate) >= 0 &&
-                            fromDateToStringToInt(currentDateTest) - fromDateToStringToInt(endDate) < 0) {
+                    if (startDate != null && endDate != null) {
 
-                        mDataset_1.add(new Event_model(dataSnapshot.getKey(),
-                                R.drawable.nopath___copy__79_,
-                                dataSnapshot.child("eventTitle").getValue(String.class),
-                                dataSnapshot.child("eventLocation").getValue(String.class),
-                                dataSnapshot.child("eventContent").getValue(String.class),
-                                dataSnapshot.child("eventStartDate").getValue(String.class),
-                                dataSnapshot.child("eventEndDate").getValue(String.class),
-                                dataSnapshot.child("eventAuthor").getValue(String.class)));
+                        if (fromDateToStringToInt(currentDateTest) - fromDateToStringToInt(startDate) >= 0 &&
+                                fromDateToStringToInt(currentDateTest) - fromDateToStringToInt(endDate) < 0) {
 
+                            mDataset_1.add(new Event_model(dataSnapshot.getKey(),
+                                    R.drawable.nopath___copy__79_,
+                                    dataSnapshot.child("eventTitle").getValue(String.class),
+                                    dataSnapshot.child("eventLocation").getValue(String.class),
+                                    dataSnapshot.child("eventContent").getValue(String.class),
+                                    dataSnapshot.child("eventStartDate").getValue(String.class),
+                                    dataSnapshot.child("eventEndDate").getValue(String.class),
+                                    dataSnapshot.child("eventAuthor").getValue(String.class)));
+
+                        }
                     }
                 }
                 mRecyclerView = findViewById(R.id.recyclerView);
@@ -174,7 +177,7 @@ public class Home extends AppCompatActivity  {
                         mRecyclerView = findViewById(R.id.recyclerView_2);
                         mLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
                         mRecyclerView.setLayoutManager(mLayoutManager);
-                        Small_event_adapter event_adapter = new Small_event_adapter(context,mDataset_2);
+                        Small_event_adapter event_adapter = new Small_event_adapter(context, mDataset_2);
                         mRecyclerView.setAdapter(event_adapter);
 
                     }
@@ -204,7 +207,7 @@ public class Home extends AppCompatActivity  {
                         mRecyclerView = findViewById(R.id.recyclerView_3);
                         mLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
                         mRecyclerView.setLayoutManager(mLayoutManager);
-                        Small_event_adapter event_adapter = new Small_event_adapter(context,mDataset_3);
+                        Small_event_adapter event_adapter = new Small_event_adapter(context, mDataset_3);
                         mRecyclerView.setAdapter(event_adapter);
                     }
 
@@ -233,7 +236,7 @@ public class Home extends AppCompatActivity  {
                         mRecyclerView = findViewById(R.id.recyclerView_4);
                         mLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
                         mRecyclerView.setLayoutManager(mLayoutManager);
-                        Small_event_adapter event_adapter = new Small_event_adapter(context,mDataset_4);
+                        Small_event_adapter event_adapter = new Small_event_adapter(context, mDataset_4);
                         mRecyclerView.setAdapter(event_adapter);
                     }
 
