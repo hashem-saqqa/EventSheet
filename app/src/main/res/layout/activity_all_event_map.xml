@@ -95,7 +95,7 @@
                     >
 
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recyclerView_map"
+                        android:id="@+id/recyclerView_all_event_map"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         >

@@ -4,10 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
@@ -54,6 +56,7 @@ public class Search_filter extends BottomSheetDialogFragment {
     protected RecyclerView mRecyclerView;
     protected LinearLayoutManager mLayoutManager;
     All_events_adapter all_event_adapter;
+    FragmentActivity mActivity;
 
 
     View view;
@@ -186,12 +189,27 @@ public class Search_filter extends BottomSheetDialogFragment {
                                     data.child("eventEndDate").getValue(String.class)));
 //
                         }
-                        Log.d("TAGg", "onDataChange: "+getActivity());
+                        Log.d("TAGg", "onDataChange: "+mActivity.getClass().getSimpleName());
 
-                        mRecyclerView = getActivity().findViewById(R.id.recyclerView_all_event);
-                        mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
+                        String ActivityName  = mActivity.getClass().getSimpleName();
+
+                        switch (ActivityName){
+                            case "Search":
+                                mRecyclerView = mActivity.findViewById(R.id.recyclerView_search);
+                                break;
+                            case "All_Events" :
+                                mRecyclerView = mActivity.findViewById(R.id.recyclerView_all_event);
+                                break;
+                             case "Search_map" :
+                                mRecyclerView = mActivity.findViewById(R.id.recyclerView_map);
+                                break;
+                            case "All_event_map" :
+                                mRecyclerView = mActivity.findViewById(R.id.recyclerView_all_event_map);
+                                break;
+                        }
+                        mLayoutManager = new LinearLayoutManager(mActivity.getApplicationContext());
                         mRecyclerView.setLayoutManager(mLayoutManager);
-                        all_event_adapter = new All_events_adapter(getActivity(),mDataset_filtered);
+                        all_event_adapter = new All_events_adapter(mActivity,mDataset_filtered);
                         mRecyclerView.setAdapter(all_event_adapter);
 
                     }
@@ -501,5 +519,13 @@ public class Search_filter extends BottomSheetDialogFragment {
         String myFormat = "MM/dd/yy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
         to_date.setText(sdf.format(myCalendar2.getTime()));
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if (context instanceof Activity){
+            mActivity =(FragmentActivity) context;
+        }
     }
 }

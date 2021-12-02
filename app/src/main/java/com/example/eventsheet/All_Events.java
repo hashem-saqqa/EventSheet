@@ -260,7 +260,7 @@ public class All_Events extends AppCompatActivity implements MaterialSearchBar.O
             case MaterialSearchBar.BUTTON_NAVIGATION:
 
                 Search_filter search_filter = new Search_filter();
-                search_filter.show(getSupportFragmentManager(), "search_filter");
+                search_filter.show(getSupportFragmentManager(), "All_Events");
 
                 break;
             case MaterialSearchBar.BUTTON_SPEECH:

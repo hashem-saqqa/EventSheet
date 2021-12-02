@@ -167,7 +167,7 @@ public class Search_map extends AppCompatActivity implements OnMapReadyCallback,
             case MaterialSearchBar.BUTTON_NAVIGATION:
 
                 Search_filter search_filter = new Search_filter();
-                search_filter.show(getSupportFragmentManager(), "search_filter");
+                search_filter.show(getSupportFragmentManager(), "search_map");
                 break;
             case MaterialSearchBar.BUTTON_SPEECH:
                 break;

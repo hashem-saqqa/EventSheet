@@ -37,7 +37,6 @@ public class All_event_map extends AppCompatActivity implements OnMapReadyCallba
     private MaterialSearchBar searchBar;
 
 
-    //    ConstraintLayout dialog_constraint;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -144,7 +143,7 @@ public class All_event_map extends AppCompatActivity implements OnMapReadyCallba
             case MaterialSearchBar.BUTTON_NAVIGATION:
 
                 Search_filter search_filter = new Search_filter();
-                search_filter.show(getSupportFragmentManager(), "search_filter");
+                search_filter.show(getSupportFragmentManager(), "All_Events_map");
                 break;
             case MaterialSearchBar.BUTTON_SPEECH:
                 break;
